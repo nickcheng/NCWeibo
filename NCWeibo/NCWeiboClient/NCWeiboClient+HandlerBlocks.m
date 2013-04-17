@@ -28,7 +28,7 @@
     NCWeiboErrorResponse *errorResponse = [[NCWeiboErrorResponse alloc] initWithJson:error.userInfo[NSLocalizedRecoverySuggestionErrorKey]];
 
     // Check error code. If code means token expired, call expired block.
-    errorResponse.errorCode = 21327;
+//    errorResponse.errorCode = 21327; // Test code. Remove this when release.
     if (errorResponse && errorResponse.errorCode == 21327) {
       NSLog(@"Auth Token expired. Will call accessTokenExpiredHandler.");
       if (self.accessTokenExpiredHandler)
@@ -40,6 +40,24 @@
       handler(operation, errorResponse, error);
     }
   };
+}
+
+- (void)doAuthBeforeCallAPI:(APIHandlerBlock)apiHandler {
+  //
+  if (!self.isAuthenticated) {
+    // do oAuth
+    if (self.authentication && self.authViewController) {
+      [self authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
+        //
+        apiHandler();
+      } andCancellation:^(NCWeiboAuthentication *authentication) {
+        //
+      }];
+    }
+  }
+  else {
+    apiHandler();
+  }
 }
 
 @end

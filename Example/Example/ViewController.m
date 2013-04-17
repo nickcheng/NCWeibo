@@ -69,15 +69,16 @@
                                          andAppSecret:@"23eb634a581fe1c8d699d93c7718ca26"
                                     andCallbackScheme:@"nextday://"
                                     andViewController:self
+                                        andCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
+                                          //
+                                          if (success)
+                                            NSLog(@"Auth successed! Token: %@", authentication.accessToken);
+                                          else
+                                            NSLog(@"Auth failed! Error: %@", error);
+                                        }
                                       andCancellation:^(NCWeiboAuthentication *authentication) {
                                         //
                                         NSLog(@"Auth cancelled!");
-                                      } andCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
-                                        //
-                                        if (success)
-                                          NSLog(@"Auth successed! Token: %@", authentication.accessToken);
-                                        else
-                                          NSLog(@"Auth failed! Error: %@", error);
                                       }];
 }
 
@@ -86,16 +87,19 @@
   
   //
   _authViewHasShown = NO;
+  
+  //
+  [[NCWeiboClient sharedClient] setAuthenticationInfo:@"3402471288" andAppSecret:@"23eb634a581fe1c8d699d93c7718ca26" andCallbackScheme:@"nextday://" andViewController:self];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   
   //
-  if (!_authViewHasShown) {
-    _authViewHasShown = YES;
-    [self doAuth];
-  }
+//  if (!_authViewHasShown) {
+//    _authViewHasShown = YES;
+//    [self doAuth];
+//  }
   
   [NCWeiboClient sharedClient].accessTokenExpiredHandler = ^(){
     [[NCWeiboClient sharedClient] logOut];

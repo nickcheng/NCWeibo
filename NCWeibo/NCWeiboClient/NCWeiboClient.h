@@ -17,11 +17,14 @@ typedef void (^NCWeiboAuthCompletionBlock)(BOOL success, NCWeiboAuthentication *
 
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NCWeiboAuthentication *authentication;
+@property (nonatomic, strong) UIViewController *authViewController;
 @property (nonatomic, copy) void (^accessTokenExpiredHandler)();
 
 + (instancetype)sharedClient;
 
-- (void)authenticateForAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret andCallbackScheme:(NSString *)ssoCallbackScheme andViewController:(UIViewController *)viewController andCancellation:(NCWeiboAuthCancellationBlock)cancellation andCompletion:(NCWeiboAuthCompletionBlock)completion;
+- (void)setAuthenticationInfo:(NSString *)appKey andAppSecret:(NSString *)appSecret andCallbackScheme:(NSString *)ssoCallbackScheme andViewController:(UIViewController *)viewController;
+- (void)authenticateWithCompletion:(NCWeiboAuthCompletionBlock)completion andCancellation:(NCWeiboAuthCancellationBlock)cancellation;
+- (void)authenticateForAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret andCallbackScheme:(NSString *)ssoCallbackScheme andViewController:(UIViewController *)viewController andCompletion:(NCWeiboAuthCompletionBlock)completion andCancellation:(NCWeiboAuthCancellationBlock)cancellation;
 
 - (BOOL)isAuthenticated;
 - (void)logOut;

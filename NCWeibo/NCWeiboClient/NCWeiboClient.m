@@ -16,6 +16,7 @@
   BOOL _ssoLoggingIn;
   NSString *_accessToken;
   NCWeiboAuthentication *_authentication;
+  UIViewController *_authViewController;
   NCWeiboAuthCancellationBlock _authCancellationBlock;
   NCWeiboAuthCompletionBlock _authCompletionBlock;
   AFHTTPClient *_authHTTPClient;
@@ -23,6 +24,7 @@
 
 @synthesize authentication = _authentication;
 @synthesize accessToken = _accessToken;
+@synthesize authViewController = _authViewController;
 
 + (instancetype)sharedClient {
   static NCWeiboClient *sharedNCWeiboClient = nil;
@@ -52,9 +54,12 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)authenticateForAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret andCallbackScheme:(NSString *)ssoCallbackScheme andViewController:(UIViewController *)viewController andCancellation:(NCWeiboAuthCancellationBlock)cancellation andCompletion:(NCWeiboAuthCompletionBlock)completion {
-  //
-  _authentication = [[NCWeiboAuthentication alloc] initWithAppKey:appKey andAppSecret:appSecret andCallbackScheme:ssoCallbackScheme];
+- (void)setAuthenticationInfo:(NSString *)appKey andAppSecret:(NSString *)appSecret andCallbackScheme:(NSString *)ssoCallbackScheme andViewController:(UIViewController *)viewController {
+  self.authentication = [[NCWeiboAuthentication alloc] initWithAppKey:appKey andAppSecret:appSecret andCallbackScheme:ssoCallbackScheme];
+  self.authViewController = viewController;
+}
+
+- (void)authenticateWithCompletion:(NCWeiboAuthCompletionBlock)completion andCancellation:(NCWeiboAuthCancellationBlock)cancellation {
   _authCancellationBlock = cancellation;
   _authCompletionBlock = completion;
   
@@ -95,7 +100,7 @@
                                                initWithAuthentication:_authentication
                                                andCancellation:cancellation
                                                andCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
-                                                 // Get AccessToken 
+                                                 // Get AccessToken
                                                  if ([authentication.authorizationCode isEqualToString:@"21330"]) {
                                                    NSError *error = [NSError errorWithDomain:NCWEIBO_ERRORDOMAIN_OAUTH2 code:21330 userInfo:@{NSLocalizedDescriptionKey:@"NCWeibo.WebAuth.AccessDenied"}];
                                                    if (completion)
@@ -139,12 +144,18 @@
                                                  }
                                                }];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:webAuthVC];
-    [viewController presentViewController:navController animated:YES completion:NULL];
+    [self.authViewController presentViewController:navController animated:YES completion:NULL];
   }
 }
 
+- (void)authenticateForAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret andCallbackScheme:(NSString *)ssoCallbackScheme andViewController:(UIViewController *)viewController andCompletion:(NCWeiboAuthCompletionBlock)completion andCancellation:(NCWeiboAuthCancellationBlock)cancellation {
+  //
+  [self setAuthenticationInfo:appKey andAppSecret:appSecret andCallbackScheme:ssoCallbackScheme andViewController:viewController];
+  [self authenticateWithCompletion:completion andCancellation:cancellation];
+}
+
 - (BOOL)isAuthenticated {
-	return self.accessToken != nil;
+	return self.accessToken != nil && [self savedAuthDataIsWorking];
 }
 
 - (void)logOut {

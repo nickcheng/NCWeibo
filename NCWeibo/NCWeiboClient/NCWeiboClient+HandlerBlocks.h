@@ -14,10 +14,13 @@ typedef void (^AFNetworkingSuccessBlock)(AFHTTPRequestOperation *operation, id r
 typedef void (^AFNetworkingFailureBlock)(AFHTTPRequestOperation *operation, NSError *error);
 
 typedef void (^NCWeiboClientCompletionBlock)(AFHTTPRequestOperation *operation, id responseObject, NSError *error);
+typedef void (^APIHandlerBlock)();
 
 @interface NCWeiboClient (HandlerBlocks)
 
 - (AFNetworkingSuccessBlock)successHandlerForClientHandler:(NCWeiboClientCompletionBlock)handler;
 - (AFNetworkingFailureBlock)failureHandlerForClientHandler:(NCWeiboClientCompletionBlock)handler;
+
+- (void)doAuthBeforeCallAPI:(APIHandlerBlock)apiHandler;
 
 @end

@@ -12,14 +12,16 @@
 @implementation NCWeiboClient (User)
 
 - (void)followWithID:(NSString *)userId completion:(NCWeiboClientCompletionBlock)completionHandler {
-  NSDictionary *params = @{
-                           @"uid": userId
-                           };
-  [self postPath:@"friendships/create.json"
-      parameters:params
-         success:[self successHandlerForClientHandler:completionHandler]
-         failure:[self failureHandlerForClientHandler:completionHandler]];
-
+  //
+  [self doAuthBeforeCallAPI:^() {
+    NSDictionary *params = @{
+                             @"uid": userId
+                             };
+    [self postPath:@"friendships/create.json"
+        parameters:params
+           success:[self successHandlerForClientHandler:completionHandler]
+           failure:[self failureHandlerForClientHandler:completionHandler]];
+  }];
 }
 
 @end
