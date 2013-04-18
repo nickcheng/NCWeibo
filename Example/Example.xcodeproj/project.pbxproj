@@ -62,6 +62,7 @@
 		403C47D51709815500067625 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 403C47D41709815500067625 /* Security.framework */; };
 		403C47D8170A8F4400067625 /* AFHTTPRequestOperationLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 403C47D7170A8F4300067625 /* AFHTTPRequestOperationLogger.m */; };
 		403C47DA170C212A00067625 /* avator.png in Resources */ = {isa = PBXBuildFile; fileRef = 403C47D9170C212900067625 /* avator.png */; };
+		4081531D171E90C80003B2E3 /* NCWeiboUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4081531C171E90C80003B2E3 /* NCWeiboUser.m */; };
 		40D7D80A171A8EFA00435F6F /* NCWeiboErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D7D809171A8EFA00435F6F /* NCWeiboErrorResponse.m */; };
 /* End PBXBuildFile section */
 
@@ -167,6 +168,8 @@
 		403C47D6170A8F4300067625 /* AFHTTPRequestOperationLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperationLogger.h; path = ../../../../github/AFHTTPRequestOperationLogger/AFHTTPRequestOperationLogger.h; sourceTree = "<group>"; };
 		403C47D7170A8F4300067625 /* AFHTTPRequestOperationLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperationLogger.m; path = ../../../../github/AFHTTPRequestOperationLogger/AFHTTPRequestOperationLogger.m; sourceTree = "<group>"; };
 		403C47D9170C212900067625 /* avator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avator.png; sourceTree = "<group>"; };
+		4081531B171E90C80003B2E3 /* NCWeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWeiboUser.h; sourceTree = "<group>"; };
+		4081531C171E90C80003B2E3 /* NCWeiboUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWeiboUser.m; sourceTree = "<group>"; };
 		40D7D808171A8EFA00435F6F /* NCWeiboErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWeiboErrorResponse.h; sourceTree = "<group>"; };
 		40D7D809171A8EFA00435F6F /* NCWeiboErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWeiboErrorResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -404,6 +407,8 @@
 			children = (
 				4039902E17082287004F0BD7 /* NCWeiboAuthentication.h */,
 				4039902F17082287004F0BD7 /* NCWeiboAuthentication.m */,
+				4081531B171E90C80003B2E3 /* NCWeiboUser.h */,
+				4081531C171E90C80003B2E3 /* NCWeiboUser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -559,6 +564,7 @@
 				403C47D3170936DC00067625 /* SSKeychainQuery.m in Sources */,
 				403C47D8170A8F4400067625 /* AFHTTPRequestOperationLogger.m in Sources */,
 				40D7D80A171A8EFA00435F6F /* NCWeiboErrorResponse.m in Sources */,
+				4081531D171E90C80003B2E3 /* NCWeiboUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

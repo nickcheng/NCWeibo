@@ -12,6 +12,7 @@
 #import "NCWeiboAuthentication.h"
 #import "NCWeiboClient+User.h"
 #import "NCWeiboErrorResponse.h"
+#import "NCWeiboUser.h"
 
 @interface ViewController ()
 
@@ -23,12 +24,20 @@
   BOOL _authViewHasShown;
 }
 
+- (IBAction)getUserInfoTapped:(id)sender {
+  [[NCWeiboClient sharedClient] fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    //
+    NCWeiboUser *user = responseObject;
+    NSLog(@"responseObject: %@", user);
+  }];
+}
+
 - (IBAction)clearTapped:(id)sender {
   [[NCWeiboClient sharedClient] logOut];
 }
 
 - (IBAction)followTapped:(id)sender {
-  [[NCWeiboClient sharedClient] followWithID:@"2566997827" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+  [[NCWeiboClient sharedClient] followUserWithID:@"2566997827" completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
     //
     if (error) {
       NSLog(@"Follow failed. Error:%@", error);

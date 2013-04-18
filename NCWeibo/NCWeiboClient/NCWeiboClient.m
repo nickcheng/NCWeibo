@@ -67,7 +67,7 @@
   if ([self savedAuthDataIsWorking]) {
     NSLog(@"Got saved auth data");
     if (completion)
-      completion(YES, _authentication, nil);
+      completion(YES, self.authentication, nil);
     return;
   }
   
@@ -76,9 +76,9 @@
   UIDevice *device = [UIDevice currentDevice];
   if ([device respondsToSelector:@selector(isMultitaskingSupported)] && [device isMultitaskingSupported]) {
     NSDictionary *params = @{
-                             @"client_id": _authentication.appKey,
-                             @"redirect_uri": _authentication.redirectURI,
-                             @"callback_uri": _authentication.ssoCallbackScheme,
+                             @"client_id": self.authentication.appKey,
+                             @"redirect_uri": self.authentication.redirectURI,
+                             @"callback_uri": self.authentication.ssoCallbackScheme,
                              };
     // Try iPad first
     NSString *appAuthBaseURL = NCWEIBO_APPAUTHURL_IPAD;
@@ -125,12 +125,12 @@
                                                        NSString *userId = responseDictionary[@"uid"];
                                                        int expiresIn = [responseDictionary[@"expires_in"] intValue]; NSLog(@"ExpiresIn: %d", expiresIn);
                                                        if (accessToken.length > 0 && userId.length > 0) {
-                                                         _authentication.accessToken = accessToken;
-                                                         _authentication.userId = userId;
-                                                         _authentication.expirationDate = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
+                                                         self.authentication.accessToken = accessToken;
+                                                         self.authentication.userId = userId;
+                                                         self.authentication.expirationDate = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
                                                          self.accessToken = accessToken;
                                                          if (completion)
-                                                           completion(YES, _authentication, nil);
+                                                           completion(YES, self.authentication, nil);
                                                          return;
                                                        }
                                                      }
@@ -170,7 +170,7 @@
   NSDictionary *authData = [defaults objectForKey:@"NCWeiboAuthData"];
   if (authData[@"UserID"] && authData[@"ExpirationDate"] && authData[@"AppKey"]) {
     NSString *appkey = authData[@"AppKey"];
-    if (![appkey isEqualToString:_authentication.appKey]) {
+    if (![appkey isEqualToString:self.authentication.appKey]) {
       [self removeAuthData];
       return NO;
     }
@@ -186,9 +186,9 @@
     query.account = NCWEIBO_KEYCHAINACCOUNT;
     [query fetch:nil];
     NSString *token = query.password;
-    _authentication.userId = userId;
-    _authentication.accessToken = token;
-    _authentication.expirationDate = expirationDate;
+    self.authentication.userId = userId;
+    self.authentication.accessToken = token;
+    self.authentication.expirationDate = expirationDate;
     self.accessToken = token;
     return YES;
   }
@@ -212,9 +212,9 @@
 - (void)storeAuthData {
   // Save authentication to NSUserDefault
   NSDictionary *authData = @{
-                             @"UserID": _authentication.userId,
-                             @"ExpirationDate": _authentication.expirationDate,
-                             @"AppKey": _authentication.appKey
+                             @"UserID": self.authentication.userId,
+                             @"ExpirationDate": self.authentication.expirationDate,
+                             @"AppKey": self.authentication.appKey
                              };
   [[NSUserDefaults standardUserDefaults] setObject:authData forKey:@"NCWeiboAuthData"];
   [[NSUserDefaults standardUserDefaults] synchronize];

@@ -8,8 +8,15 @@
 
 #import "NCWeiboClient+HandlerBlocks.h"
 
+@class NCWeiboUser;
+
 @interface NCWeiboClient (User)
 
-- (void)followWithID:(NSString *)userId completion:(NCWeiboClientCompletionBlock)completionHandler;
+- (void)fetchCurrentUserWithCompletion:(NCWeiboClientCompletionBlock)completionHandler;
+- (void)fetchUserWithID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler;
+//- (void)fetchUsersWithIDs:(NSArray *)userIDs completion:(NCWeiboClientCompletionBlock)completionHandler;
+
+- (void)followUser:(NCWeiboUser *)user completion:(NCWeiboClientCompletionBlock)completionHandler;
+- (void)followUserWithID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler;
 
 @end

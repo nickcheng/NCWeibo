@@ -13,13 +13,17 @@
 
 - (AFNetworkingSuccessBlock)successHandlerForClientHandler:(NCWeiboClientCompletionBlock)handler {
   return ^(AFHTTPRequestOperation *operation, id responseObject) {
-    //
-    NSLog(@"%@", operation.request.allHTTPHeaderFields);
-
-    //
-    if (handler)
-      handler(operation, responseObject, nil);
+    [self processSuccessHandlerWithRequestOperation:operation andResponseObject:responseObject andHandler:handler];
   };
+}
+
+- (void)processSuccessHandlerWithRequestOperation:(AFHTTPRequestOperation *)operation andResponseObject:(id)responseObject andHandler:(NCWeiboClientCompletionBlock)handler {
+  //
+  NSLog(@"%@", operation.request.allHTTPHeaderFields);
+  
+  //
+  if (handler)
+    handler(operation, responseObject, nil);
 }
 
 - (AFNetworkingFailureBlock)failureHandlerForClientHandler:(NCWeiboClientCompletionBlock)handler {

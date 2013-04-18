@@ -20,6 +20,7 @@ typedef void (^APIHandlerBlock)();
 
 - (AFNetworkingSuccessBlock)successHandlerForClientHandler:(NCWeiboClientCompletionBlock)handler;
 - (AFNetworkingFailureBlock)failureHandlerForClientHandler:(NCWeiboClientCompletionBlock)handler;
+- (void)processSuccessHandlerWithRequestOperation:(AFHTTPRequestOperation *)operation andResponseObject:(id)responseObject andHandler:(NCWeiboClientCompletionBlock)handler;
 
 - (void)doAuthBeforeCallAPI:(APIHandlerBlock)apiHandler;
 
