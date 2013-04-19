@@ -8,6 +8,7 @@
 
 #import "NCWeiboAuthentication.h"
 #import "NCWeiboClientConfig.h"
+#import "NCWeiboUser.h"
 
 @implementation NCWeiboAuthentication {
   NSString *_appKey;
@@ -20,8 +21,9 @@
   
   NSString *_authorizationCode;
   NSString *_accessToken;
-  NSString *_userId;
+  NSString *_userID;
   NSDate *_expirationDate;
+  NCWeiboUser *_user;
 }
 
 @synthesize appKey = _appKey;
@@ -34,8 +36,9 @@
 
 @synthesize authorizationCode = _authorizationCode;
 @synthesize accessToken = _accessToken;
-@synthesize userId = _userId;
+@synthesize userID = _userID;
 @synthesize expirationDate = _expirationDate;
+@synthesize user = _user;
 
 - (id)initWithAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret andCallbackScheme:(NSString *)ssoCallbackScheme {
   //
@@ -52,11 +55,6 @@
                    [_appKey stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
                    [_redirectURI stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
   _accessTokenBaseURL = NCWEIBO_ACCESSTOKENBASEURL;
-//  _accessTokenBaseURL = [NSString stringWithFormat:@"%@?client_id=%@&client_secret=%@&grant_type=authorization_code&redirect_uri=%@&code=",
-//                         NCWEIBO_ACCESSTOKENURL,
-//                         [_appKey stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-//                         [_appSecret stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-//                         [_redirectURI stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 
   //
   return self;

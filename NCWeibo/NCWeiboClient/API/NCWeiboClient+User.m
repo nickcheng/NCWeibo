@@ -14,7 +14,7 @@
 
 - (void)fetchCurrentUserWithCompletion:(NCWeiboClientCompletionBlock)completionHandler {
   [self doAuthBeforeCallAPI:^{
-    [self fetchUserWithID:self.authentication.userId completion:completionHandler];
+    [self fetchUserWithID:self.authentication.userID completion:completionHandler];
   }];
 }
 

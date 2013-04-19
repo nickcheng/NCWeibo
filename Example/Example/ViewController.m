@@ -41,9 +41,10 @@
     //
     if (error) {
       NSLog(@"Follow failed. Error:%@", error);
+      NSLog(@"User: %@", [NCWeiboClient sharedClient].authentication.user);
     }
     else
-      NSLog(@"Follow succeed.");
+      NSLog(@"Follow succeed. User: %@", [NCWeiboClient sharedClient].authentication.user);
   }];
 }
 

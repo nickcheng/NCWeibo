@@ -11,6 +11,7 @@
 #import "NCWeiboWebAuthViewController.h"
 #import "NCWeiboAuthentication.h"
 #import "SSKeychain.h"
+#import "NCWeiboClient+User.h"
 
 @implementation NCWeiboClient {
   BOOL _ssoLoggingIn;
@@ -47,6 +48,7 @@
     [self setDefaultHeader:@"User-Agent" value:NCWEIBO_USERAGENT];
 //		[self registerHTTPOperationClass:[NCWeiboJSONRequestOperation class]];
 		[self addObserver:self forKeyPath:@"accessToken" options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:@"authentication.userID" options:NSKeyValueObservingOptionNew context:nil];
 	}
   return self;
 }
@@ -126,8 +128,8 @@
                                                        int expiresIn = [responseDictionary[@"expires_in"] intValue]; NSLog(@"ExpiresIn: %d", expiresIn);
                                                        if (accessToken.length > 0 && userId.length > 0) {
                                                          self.authentication.accessToken = accessToken;
-                                                         self.authentication.userId = userId;
                                                          self.authentication.expirationDate = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
+                                                         self.authentication.userID = userId;
                                                          self.accessToken = accessToken;
                                                          if (completion)
                                                            completion(YES, self.authentication, nil);
@@ -155,7 +157,12 @@
 }
 
 - (BOOL)isAuthenticated {
-	return self.accessToken != nil && [self savedAuthDataIsWorking];
+	return (
+          self.accessToken != nil
+          && self.authentication
+          && self.authentication.expirationDate
+          && ([self.authentication.expirationDate compare:[NSDate date]] == NSOrderedDescending)
+          );
 }
 
 - (void)logOut {
@@ -174,7 +181,7 @@
       [self removeAuthData];
       return NO;
     }
-    NSString *userId = authData[@"UserID"];
+    NSString *userID = authData[@"UserID"];
     NSDate *expirationDate = authData[@"ExpirationDate"]; NSLog(@"ExpirationDate: %@", expirationDate);
     NSDate *now = [NSDate date];
     if ([expirationDate compare:now] == NSOrderedAscending)
@@ -186,9 +193,9 @@
     query.account = NCWEIBO_KEYCHAINACCOUNT;
     [query fetch:nil];
     NSString *token = query.password;
-    self.authentication.userId = userId;
     self.authentication.accessToken = token;
     self.authentication.expirationDate = expirationDate;
+    self.authentication.userID = userID;
     self.accessToken = token;
     return YES;
   }
@@ -212,7 +219,7 @@
 - (void)storeAuthData {
   // Save authentication to NSUserDefault
   NSDictionary *authData = @{
-                             @"UserID": self.authentication.userId,
+                             @"UserID": self.authentication.userID,
                              @"ExpirationDate": self.authentication.expirationDate,
                              @"AppKey": self.authentication.appKey
                              };
@@ -230,15 +237,27 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqualToString:@"accessToken"]) {
+	// AccessToken
+  if ([keyPath isEqualToString:@"accessToken"]) {
 		if (self.accessToken) {
 			[self setDefaultHeader:@"Authorization" value:[@"OAuth2 " stringByAppendingString:self.accessToken]];
       [self storeAuthData];
+      self.authentication.userID = self.authentication.userID; // When get token, trigger "authentication.userID" again to fetch user.
 		} else {
 			[self setDefaultHeader:@"Authorization" value:nil];
       [self removeAuthData];
 		}
 	}
+  
+  // Authentication.userID
+  if ([keyPath isEqualToString:@"authentication.userID"]) {
+    if (self.isAuthenticated && self.authentication.userID && !self.authentication.user) {
+      [self fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+        self.authentication.user = responseObject;
+      }];
+    }
+  }
+  
 }
 
 - (NSString *)serializeURL:(NSString *)baseURL params:(NSDictionary *)params httpMethod:(NSString *)httpMethod
