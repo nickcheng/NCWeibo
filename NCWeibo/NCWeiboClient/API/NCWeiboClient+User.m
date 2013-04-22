@@ -15,7 +15,7 @@
 - (void)fetchCurrentUserWithCompletion:(NCWeiboClientCompletionBlock)completionHandler {
   [self doAuthBeforeCallAPI:^{
     [self fetchUserWithID:self.authentication.userID completion:completionHandler];
-  }];
+  } andAuthErrorProcess:completionHandler];
 }
 
 - (void)fetchUserWithID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler {
@@ -31,7 +31,7 @@
             [self processSuccessHandlerWithRequestOperation:operation andResponseObject:user andHandler:completionHandler];
            }
            failure:[self failureHandlerForClientHandler:completionHandler]];
-  }];
+  } andAuthErrorProcess:completionHandler];
 }
 
 //- (void)fetchUsersWithIDs:(NSArray *)userIDs completion:(NCWeiboClientCompletionBlock)completionHandler {
@@ -44,7 +44,7 @@
 
 - (void)followUserWithID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler {
   //
-  [self doAuthBeforeCallAPI:^() {
+  [self doAuthBeforeCallAPI:^{
     NSDictionary *params = @{
                              @"uid": userID
                              };
@@ -52,7 +52,7 @@
         parameters:params
            success:[self successHandlerForClientHandler:completionHandler]
            failure:[self failureHandlerForClientHandler:completionHandler]];
-  }];
+  } andAuthErrorProcess:completionHandler];
 }
 
 @end

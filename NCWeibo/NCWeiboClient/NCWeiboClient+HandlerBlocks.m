@@ -28,7 +28,7 @@
 
 - (AFNetworkingFailureBlock)failureHandlerForClientHandler:(NCWeiboClientCompletionBlock)handler {
   return ^(AFHTTPRequestOperation *operation,  NSError *error) {
-    NSLog(@"%@", operation.request.allHTTPHeaderFields);
+//    NSLog(@"%@", operation.request.allHTTPHeaderFields);
     NCWeiboErrorResponse *errorResponse = [[NCWeiboErrorResponse alloc] initWithJson:error.userInfo[NSLocalizedRecoverySuggestionErrorKey]];
 
     // Check error code. If code means token expired, call expired block.
@@ -46,13 +46,18 @@
   };
 }
 
-- (void)doAuthBeforeCallAPI:(APIHandlerBlock)apiHandler {
+- (void)doAuthBeforeCallAPI:(APIHandlerBlock)apiHandler andAuthErrorProcess:(NCWeiboClientCompletionBlock)completionHandler {
   if (!self.isAuthenticated) {
     self.originalAPICallBlock = apiHandler;
     if (self.authentication && self.authViewController) {
       [self authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
-        if (success)
-          apiHandler();
+        if (success) {
+          if (apiHandler)
+            apiHandler();
+        } else {
+          NCWeiboErrorResponse *errorResponse = [[NCWeiboErrorResponse alloc] initWithJson:error.userInfo[NSLocalizedRecoverySuggestionErrorKey]];
+          completionHandler(nil, errorResponse, error);
+        }
       } andCancellation:nil]; // If you need to do sth in cancellation, use authenticateWithCompletion yourself.
     }
   } else {

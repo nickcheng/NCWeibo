@@ -20,7 +20,7 @@
 }
 
 - (void)createTextStatusWithText:(NSString *)text completion:(NCWeiboClientCompletionBlock)completionHandler {
-  [self doAuthBeforeCallAPI:^() {
+  [self doAuthBeforeCallAPI:^{
     NSDictionary *params = @{
                              @"status": text,
                              };
@@ -28,11 +28,11 @@
         parameters:params
            success:[self successHandlerForClientHandler:completionHandler]
            failure:[self failureHandlerForClientHandler:completionHandler]];
-  }];
+  } andAuthErrorProcess:completionHandler];
 }
 
 - (void)createImageStatusWithImage:(UIImage *)image andText:(NSString *)text completion:(NCWeiboClientCompletionBlock)completionHandler {
-  [self doAuthBeforeCallAPI:^() {
+  [self doAuthBeforeCallAPI:^{
     NSDictionary *params = @{
                              @"status": text,
                              };
@@ -47,7 +47,7 @@
                                                                              failure:[self failureHandlerForClientHandler:completionHandler]];
     //  [requestOperation setUploadProgressBlock:progressHandler];
     [self enqueueHTTPRequestOperation:requestOperation];
-  }];
+  } andAuthErrorProcess:completionHandler];
 }
 
 @end
