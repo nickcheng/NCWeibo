@@ -36,7 +36,7 @@
     if (errorResponse && errorResponse.errorCode == 21327) {
       NSLog(@"Auth Token expired. Will call accessTokenExpiredHandler.");
       if (self.accessTokenExpiredHandler)
-        self.accessTokenExpiredHandler();
+        self.accessTokenExpiredHandler(self.originalAPICallBlock);
     }
 
     //
@@ -47,19 +47,15 @@
 }
 
 - (void)doAuthBeforeCallAPI:(APIHandlerBlock)apiHandler {
-  //
   if (!self.isAuthenticated) {
-    // do oAuth
+    self.originalAPICallBlock = apiHandler;
     if (self.authentication && self.authViewController) {
       [self authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
-        //
-        apiHandler();
-      } andCancellation:^(NCWeiboAuthentication *authentication) {
-        //
-      }];
+        if (success)
+          apiHandler();
+      } andCancellation:nil]; // If you need to do sth in cancellation, use authenticateWithCompletion yourself.
     }
-  }
-  else {
+  } else {
     apiHandler();
   }
 }

@@ -111,9 +111,12 @@
 //    [self doAuth];
 //  }
   
-  [NCWeiboClient sharedClient].accessTokenExpiredHandler = ^(){
+  [NCWeiboClient sharedClient].accessTokenExpiredHandler = ^(APIHandlerBlock apiHandler){
     [[NCWeiboClient sharedClient] logOut];
-    [self doAuth];
+    [[NCWeiboClient sharedClient] authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
+      if (apiHandler)
+        apiHandler();
+    } andCancellation:nil];
   };
 }
 
