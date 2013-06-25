@@ -8,6 +8,7 @@
 
 #import "NCWeiboClient+HandlerBlocks.h"
 #import "NCWeiboErrorResponse.h"
+#import "NCWeiboClientConfig.h"
 
 @implementation NCWeiboClient (HandlerBlocks)
 
@@ -19,7 +20,7 @@
 
 - (void)processSuccessHandlerWithRequestOperation:(AFHTTPRequestOperation *)operation andResponseObject:(id)responseObject andHandler:(NCWeiboClientCompletionBlock)handler {
   //
-  NSLog(@"%@", operation.request.allHTTPHeaderFields);
+  NCLogInfo(@"%@", operation.request.allHTTPHeaderFields);
   
   //
   if (handler)
@@ -28,13 +29,13 @@
 
 - (AFNetworkingFailureBlock)failureHandlerForClientHandler:(NCWeiboClientCompletionBlock)handler {
   return ^(AFHTTPRequestOperation *operation,  NSError *error) {
-//    NSLog(@"%@", operation.request.allHTTPHeaderFields);
+//    NCLogInfo(@"%@", operation.request.allHTTPHeaderFields);
     NCWeiboErrorResponse *errorResponse = [[NCWeiboErrorResponse alloc] initWithJson:error.userInfo[NSLocalizedRecoverySuggestionErrorKey]];
 
     // Check error code. If code means token expired, call expired block.
 //    errorResponse.errorCode = 21327; // Test code. Remove this when release.
     if (errorResponse && errorResponse.errorCode == 21327) {
-      NSLog(@"Auth Token expired. Will call accessTokenExpiredHandler.");
+      NCLogError(@"Auth Token expired. Will call accessTokenExpiredHandler.");
       if (self.accessTokenExpiredHandler)
         self.accessTokenExpiredHandler(self.originalAPICallBlock);
     }

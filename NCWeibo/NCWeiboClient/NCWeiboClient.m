@@ -67,9 +67,13 @@
   
   // Check saved auth data
   if ([self savedAuthDataIsWorking]) {
-    NSLog(@"Got saved auth data");
-    if (completion)
-      completion(YES, self.authentication, nil);
+    NCLogInfo(@"Got saved auth data");
+    [self fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+      self.authentication.user = responseObject;
+      if (completion)
+        completion(YES, self.authentication, nil);
+    }];
+
     return;
   }
   
@@ -124,15 +128,18 @@
                                                      NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
                                                      if (responseDictionary[@"access_token"]) {
                                                        NSString *accessToken = responseDictionary[@"access_token"];
-                                                       NSString *userId = responseDictionary[@"uid"];
-                                                       int expiresIn = [responseDictionary[@"expires_in"] intValue]; NSLog(@"ExpiresIn: %d", expiresIn);
-                                                       if (accessToken.length > 0 && userId.length > 0) {
+                                                       NSString *userID = responseDictionary[@"uid"];
+                                                       int expiresIn = [responseDictionary[@"expires_in"] intValue]; NCLogInfo(@"ExpiresIn: %d", expiresIn);
+                                                       if (accessToken.length > 0 && userID.length > 0) {
                                                          self.authentication.accessToken = accessToken;
                                                          self.authentication.expirationDate = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
-                                                         self.authentication.userID = userId;
+                                                         self.authentication.userID = userID;
                                                          self.accessToken = accessToken;
-                                                         if (completion)
-                                                           completion(YES, self.authentication, nil);
+                                                         [self fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+                                                           self.authentication.user = responseObject;
+                                                           if (completion)
+                                                             completion(YES, self.authentication, nil);
+                                                         }];
                                                          return;
                                                        }
                                                      }
@@ -182,7 +189,7 @@
       return NO;
     }
     NSString *userID = authData[@"UserID"];
-    NSDate *expirationDate = authData[@"ExpirationDate"]; NSLog(@"ExpirationDate: %@", expirationDate);
+    NSDate *expirationDate = authData[@"ExpirationDate"]; NCLogInfo(@"ExpirationDate: %@", expirationDate);
     NSDate *now = [NSDate date];
     if ([expirationDate compare:now] == NSOrderedAscending)
       return NO;
@@ -213,7 +220,7 @@
   query.account = NCWEIBO_KEYCHAINACCOUNT;
   [query delete:nil];
   
-  NSLog(@"Auth data deleted.");
+  NCLogInfo(@"Auth data deleted.");
 }
 
 - (void)storeAuthData {
@@ -233,7 +240,7 @@
   query.password = self.accessToken;
   [query save:nil];
   
-  NSLog(@"Auth data saved.");
+  NCLogInfo(@"Auth data saved.");
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -248,32 +255,18 @@
       [self removeAuthData];
 		}
 	}
-  
-  // Authentication.userID
-  if ([keyPath isEqualToString:@"authentication.userID"]) {
-    if (self.isAuthenticated && self.authentication.userID && !self.authentication.user) {
-      [self fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
-        self.authentication.user = responseObject;
-      }];
-    }
-  }
-  
 }
 
-- (NSString *)serializeURL:(NSString *)baseURL params:(NSDictionary *)params httpMethod:(NSString *)httpMethod
-{
+- (NSString *)serializeURL:(NSString *)baseURL params:(NSDictionary *)params httpMethod:(NSString *)httpMethod {
   NSURL* parsedURL = [NSURL URLWithString:baseURL];
   NSString* queryPrefix = parsedURL.query ? @"&" : @"?";
   
   NSMutableArray* pairs = [NSMutableArray array];
-  for (NSString* key in [params keyEnumerator])
-  {
+  for (NSString* key in [params keyEnumerator]) {
     if (([[params objectForKey:key] isKindOfClass:[UIImage class]])
-        ||([[params objectForKey:key] isKindOfClass:[NSData class]]))
-    {
-      if ([httpMethod isEqualToString:@"GET"])
-      {
-        NSLog(@"can not use GET to upload a file");
+        ||([[params objectForKey:key] isKindOfClass:[NSData class]])) {
+      if ([httpMethod isEqualToString:@"GET"]) {
+        NCLogInfo(@"can not use GET to upload a file");
       }
       continue;
     }
@@ -292,11 +285,9 @@
   return [NSString stringWithFormat:@"%@%@%@", baseURL, queryPrefix, query];
 }
 
-BOOL SinaWeiboIsDeviceIPad()
-{
+BOOL SinaWeiboIsDeviceIPad() {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30200
-  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-  {
+  if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
     return YES;
   }
 #endif

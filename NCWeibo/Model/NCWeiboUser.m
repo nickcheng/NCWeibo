@@ -7,9 +7,10 @@
 //
 
 #import "NCWeiboUser.h"
+#import "NCWeiboClientConfig.h"
 
 @implementation NCWeiboUser {
-  NSString *_userId;
+  NSString *_userID;
   NSString *_screenName;
   NSString *_name;
   NSString *_province;
@@ -46,7 +47,7 @@
   int _blockWord;
 }
 
-@synthesize userId = _userId;
+@synthesize userID = _userID;
 @synthesize screenName = _screenName;
 @synthesize name = _name;
 @synthesize province = _province;
@@ -82,20 +83,17 @@
 @synthesize mbrank = _mbrank;
 @synthesize blockWord = _blockWord;
 
-- (id)initWithJSONString:(NSString *)jsonString {
+- (id)initWithJSONDict:(NSDictionary *)jsonDict {
   //
 	if((self = [super init]) == nil) return nil;
   
   // Custom initialization
-  NSError *jsonError;
-  NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&jsonError];
-  if (jsonError) {
-    NSLog(@"Generate JSONDict Error: %@", jsonError);
+  if (jsonDict == nil) {
     return nil;
   }
   
-  // 
-  _userId = jsonDict[@"idstr"];
+  //
+  _userID = jsonDict[@"idstr"];
   _screenName = jsonDict[@"screen_name"];
   _name = jsonDict[@"name"];
   _province = jsonDict[@"province"];
@@ -132,6 +130,18 @@
   _blockWord = [jsonDict[@"block_word"] intValue];
   
   return self;
+}
+
+- (id)initWithJSONString:(NSString *)jsonString {
+  NSError *jsonError;
+  NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&jsonError];
+  if (jsonError) {
+    NCLogError(@"Generate JSONDict Error: %@", jsonError);
+    return nil;
+  }
+  
+  //
+  return [self initWithJSONDict:jsonDict];
 }
 
 - (NSDate *)dateFromString:(NSString *)dateString {

@@ -22,7 +22,7 @@
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) NSDate *expirationDate;
-@property (nonatomic, strong) NCWeiboUser *user;
+@property (nonatomic, strong) NCWeiboUser *user; // This property is for convenience. It will be nil unless you done authentication.
 
 - (id)initWithAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret andCallbackScheme:(NSString *)ssoCallbackScheme;
 

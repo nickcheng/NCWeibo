@@ -39,7 +39,7 @@
 //}
 
 - (void)followUser:(NCWeiboUser *)user completion:(NCWeiboClientCompletionBlock)completionHandler {
-  return [self followUserWithID:user.userId completion:completionHandler];
+  return [self followUserWithID:user.userID completion:completionHandler];
 }
 
 - (void)followUserWithID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler {

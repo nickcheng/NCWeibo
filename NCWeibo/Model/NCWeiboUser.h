@@ -20,7 +20,7 @@ typedef enum {
 
 @interface NCWeiboUser : NSObject
 
-@property (nonatomic, strong) NSString *userId;
+@property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) NSString *screenName;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *province;
@@ -58,5 +58,6 @@ typedef enum {
 @property (nonatomic, assign) int blockWord;
 
 - (id)initWithJSONString:(NSString *)jsonString;
+- (id)initWithJSONDict:(NSDictionary *)jsonDict;
 
 @end

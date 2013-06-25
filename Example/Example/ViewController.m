@@ -13,6 +13,7 @@
 #import "NCWeiboClient+User.h"
 #import "NCWeiboErrorResponse.h"
 #import "NCWeiboUser.h"
+#import "NCWeiboClient+Friendship.h"
 
 @interface ViewController ()
 
@@ -22,6 +23,16 @@
 
 @implementation ViewController {
   BOOL _authViewHasShown;
+}
+
+- (IBAction)getFollowingTapped:(id)sender {
+  [[NCWeiboClient sharedClient] authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
+    NCWeiboUser *user = authentication.user;
+    [[NCWeiboClient sharedClient] fetchFollowingForUser:user
+                                             completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+                                               NSLog(@"result count: %d", [(NSArray *)responseObject count]);
+                                             }];
+  } andCancellation:nil];
 }
 
 - (IBAction)getUserInfoTapped:(id)sender {

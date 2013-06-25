@@ -71,7 +71,7 @@
 - (void)refresh:(id)sender {
   _closed = NO;
   NSURL *url = [NSURL URLWithString:_authentication.authorizeURL];
-  NSLog(@"request url: %@", url);
+  NCLogInfo(@"request url: %@", url);
   NSURLRequest *request =[NSURLRequest requestWithURL:url
                                           cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                                       timeoutInterval:60.0f];
@@ -111,12 +111,12 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-  NSLog(@"%@", request.URL.absoluteString);
+  NCLogInfo(@"%@", request.URL.absoluteString);
   NSRange range = [request.URL.absoluteString rangeOfString:@"code="];
   
   if (range.location != NSNotFound) {
     NSString *code = [request.URL.absoluteString substringFromIndex:range.location + range.length];
-    NSLog(@"code: %@", code);
+    NCLogInfo(@"code: %@", code);
     
     [_hub hide:YES];
     _closed = YES;

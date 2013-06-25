@@ -18,3 +18,23 @@
 #define NCWEIBO_KEYCHAINACCOUNT @"com.ncweibo"
 #define NCWEIBO_USERAGENT @"NCWeibo"
 #define NCWEIBO_UPLOADIMAGENAME @"ncweibo.jpg"
+#define NCWEIBO_PAGESIZE 200
+
+// Logging
+#ifdef DDLogInfo
+#define NCLogInfo(frmt, ...) DDLogInfo(frmt, ##__VA_ARGS__)
+#else
+#define NCLogInfo(frmt, ...) NSLog(frmt, ##__VA_ARGS__)
+#endif
+
+#ifdef DDLogWarn
+#define NCLogWarn(frmt, ...) DDLogWarn(frmt, ##__VA_ARGS__)
+#else
+#define NCLogWarn(frmt, ...) NSLog(frmt, ##__VA_ARGS__)
+#endif
+
+#ifdef DDLogError
+#define NCLogError(frmt, ...) DDLogError(frmt, ##__VA_ARGS__)
+#else
+#define NCLogError(frmt, ...) NSLog(frmt, ##__VA_ARGS__)
+#endif

@@ -8,6 +8,11 @@
 
 #import "NCWeiboClient+HandlerBlocks.h"
 
+@class NCWeiboUser;
+
 @interface NCWeiboClient (Friendship)
+
+- (void)fetchFollowingForUser:(NCWeiboUser *)user completion:(NCWeiboClientCompletionBlock)completionHandler;
+- (void)fetchFollowingForUserID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler;
 
 @end
