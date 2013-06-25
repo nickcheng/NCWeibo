@@ -10,6 +10,7 @@ Progress:
 
 - [ ] Sina Weibo SSO oAuth.
 - [ ] More API.
+- [x] Get friends list.
 - [x] Follow user.
 - [x] Post status and post status w/ image.
 - [x] oAuth 2.0
