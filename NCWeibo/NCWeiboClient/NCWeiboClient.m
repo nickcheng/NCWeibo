@@ -70,8 +70,14 @@
     NCLogInfo(@"Got saved auth data");
     [self fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
       self.authentication.user = responseObject;
+      
+      // Completion
       if (completion)
         completion(YES, self.authentication, nil);
+      
+      // authSucceedHandler
+      if (self.authSucceedHandler != nil)
+        self.authSucceedHandler();
     }];
 
     return;
@@ -137,8 +143,14 @@
                                                          self.accessToken = accessToken;
                                                          [self fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
                                                            self.authentication.user = responseObject;
+                                                           
+                                                           // Completion
                                                            if (completion)
                                                              completion(YES, self.authentication, nil);
+                                                           
+                                                           // authSucceedHandler
+                                                           if (self.authSucceedHandler != nil)
+                                                             self.authSucceedHandler();
                                                          }];
                                                          return;
                                                        }

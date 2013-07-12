@@ -129,6 +129,9 @@
         apiHandler();
     } andCancellation:nil];
   };
+  [NCWeiboClient sharedClient].authSucceedHandler = ^(){
+    NSLog(@"Auth Succeed!");
+  };
 }
 
 - (void)didReceiveMemoryWarning {

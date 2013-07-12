@@ -71,7 +71,6 @@
       resultDict[@"counter"] = [NSNumber numberWithInteger:[resultDict[@"counter"] integerValue] + 1];
       cursor += NCWEIBO_PAGESIZE;
     }
-    dispatch_release(fetchqueue);
   } andAuthErrorProcess:completionHandler];
 }
 
