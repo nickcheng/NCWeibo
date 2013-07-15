@@ -10,6 +10,7 @@
 
 #import "ViewController.h"
 #import "AFHTTPRequestOperationLogger.h"
+#import "NCWeiboClient.h"
 
 @implementation AppDelegate
 
@@ -23,6 +24,14 @@
   self.window.rootViewController = self.viewController;
   [self.window makeKeyAndVisible];
   return YES;
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+  return [[NCWeiboClient sharedClient] handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+  return [[NCWeiboClient sharedClient] handleOpenURL:url];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

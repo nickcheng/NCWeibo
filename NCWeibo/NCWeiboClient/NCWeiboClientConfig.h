@@ -20,6 +20,12 @@
 #define NCWEIBO_UPLOADIMAGENAME @"ncweibo.jpg"
 #define NCWEIBO_PAGESIZE 200
 
+typedef enum
+{
+	NCWeiboErrorCodeParseError       = 200,
+	NCWeiboErrorCodeSSOParamsError   = 202,
+} NCWeiboErrorCode;
+
 // Logging
 #ifdef DDLogInfo
 #define NCLogInfo(frmt, ...) DDLogInfo(frmt, ##__VA_ARGS__)

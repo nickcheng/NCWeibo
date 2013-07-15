@@ -88,7 +88,7 @@
 - (void)doAuth {
   [[NCWeiboClient sharedClient] authenticateForAppKey:@"3402471288"
                                          andAppSecret:@"23eb634a581fe1c8d699d93c7718ca26"
-                                    andCallbackScheme:@"nextday://"
+                                    andCallbackScheme:@"nextday://com.nxmix.nextday.login"
                                     andViewController:self
                                         andCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
                                           //
@@ -110,7 +110,7 @@
   _authViewHasShown = NO;
   
   //
-  [[NCWeiboClient sharedClient] setAuthenticationInfo:@"3402471288" andAppSecret:@"23eb634a581fe1c8d699d93c7718ca26" andCallbackScheme:@"nextday://" andViewController:self];
+  [[NCWeiboClient sharedClient] setAuthenticationInfo:@"3402471288" andAppSecret:@"23eb634a581fe1c8d699d93c7718ca26" andCallbackScheme:@"nextday://com.nxmix.nextday.login" andViewController:self];
 }
 
 -(void)viewDidAppear:(BOOL)animated {

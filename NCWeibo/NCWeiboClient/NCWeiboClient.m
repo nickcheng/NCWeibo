@@ -130,34 +130,8 @@
                                                                             @"grant_type": @"authorization_code"
                                                                             };
                                                    [authHTTPClient postPath:@"access_token" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                                     //
                                                      NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-                                                     if (responseDictionary[@"access_token"]) {
-                                                       NSString *accessToken = responseDictionary[@"access_token"];
-                                                       NSString *userID = responseDictionary[@"uid"];
-                                                       int expiresIn = [responseDictionary[@"expires_in"] intValue]; NCLogInfo(@"ExpiresIn: %d", expiresIn);
-                                                       if (accessToken.length > 0 && userID.length > 0) {
-                                                         self.authentication.accessToken = accessToken;
-                                                         self.authentication.expirationDate = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
-                                                         self.authentication.userID = userID;
-                                                         self.accessToken = accessToken;
-                                                         [self fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
-                                                           self.authentication.user = responseObject;
-                                                           
-                                                           // Completion
-                                                           if (completion)
-                                                             completion(YES, self.authentication, nil);
-                                                           
-                                                           // authSucceedHandler
-                                                           if (self.authSucceedHandler != nil)
-                                                             self.authSucceedHandler();
-                                                         }];
-                                                         return;
-                                                       }
-                                                     }
-                                                     NSError *error = [NSError errorWithDomain:NCWEIBO_ERRORDOMAIN_OAUTH2 code:-1 userInfo:@{NSLocalizedDescriptionKey: @"NCWeibo.WebAuth.AccessTokenNotFound", NSLocalizedFailureReasonErrorKey: responseDictionary}];
-                                                     if (completion)
-                                                       completion(NO, authentication, error);
+                                                     [self logInDidFinishWithAuthInfo:responseDictionary];
                                                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                      if (completion)
                                                        completion(NO, authentication, error);
@@ -175,6 +149,73 @@
   [self authenticateWithCompletion:completion andCancellation:cancellation];
 }
 
+- (BOOL)handleOpenURL:(NSURL *)url {
+  NSString *urlString = [url absoluteString];
+  NSLog(@"URL: %@", urlString);
+
+  if ([urlString hasPrefix:self.authentication.ssoCallbackScheme]) {
+    if (!_ssoLoggingIn) {
+      // sso callback after user have manually opened the app
+      // ignore the request
+    } else {
+      _ssoLoggingIn = NO;
+      
+      if ([self getParamValueFromUrl:urlString paramName:@"sso_error_user_cancelled"]) {
+        if (_authCancellationBlock != nil) {
+          _authCancellationBlock(self.authentication);
+        }
+      } else if ([self getParamValueFromUrl:urlString paramName:@"sso_error_invalid_params"]) {
+        if (_authCompletionBlock != nil) {
+          NSString *error_description = @"Invalid sso params";
+          NSDictionary *userInfo = @{NSLocalizedDescriptionKey: error_description};
+          NSError *error = [NSError errorWithDomain:NCWEIBO_ERRORDOMAIN_OAUTH2
+                                               code:NCWeiboErrorCodeSSOParamsError
+                                           userInfo:userInfo];
+          _authCompletionBlock(NO, self.authentication, error);
+        }
+      } else if ([self getParamValueFromUrl:urlString paramName:@"error_code"]) {
+        if (_authCompletionBlock != nil) {
+          NSString *error_code = [self getParamValueFromUrl:urlString paramName:@"error_code"];
+          NSString *error = [self getParamValueFromUrl:urlString paramName:@"error"];
+          NSString *error_uri = [self getParamValueFromUrl:urlString paramName:@"error_uri"];
+          NSString *error_description = [self getParamValueFromUrl:urlString paramName:@"error_description"];
+          NSDictionary *errorInfo = @{
+                                      @"error": error,
+                                      @"error_uri": error_uri,
+                                      @"error_code": error_code,
+                                      @"error_description": error_description
+                                      };
+          NSDictionary *userInfo = @{
+                                     @"error": errorInfo,
+                                     NSLocalizedDescriptionKey: error_description
+                                     };
+          NSError *err = [NSError errorWithDomain:NCWEIBO_ERRORDOMAIN_OAUTH2
+                                             code:error_code.intValue
+                                         userInfo:userInfo];
+          _authCompletionBlock(NO, self.authentication, err);
+        }
+      } else {
+        NSString *access_token = [self getParamValueFromUrl:urlString paramName:@"access_token"];
+        NSString *expires_in = [self getParamValueFromUrl:urlString paramName:@"expires_in"];
+        NSString *remind_in = [self getParamValueFromUrl:urlString paramName:@"remind_in"];
+        NSString *uid = [self getParamValueFromUrl:urlString paramName:@"uid"];
+        NSString *refresh_token = [self getParamValueFromUrl:urlString paramName:@"refresh_token"];
+        
+        NSMutableDictionary *authInfo = [NSMutableDictionary dictionary];
+        if (access_token) [authInfo setObject:access_token forKey:@"access_token"];
+        if (expires_in) [authInfo setObject:expires_in forKey:@"expires_in"];
+        if (remind_in) [authInfo setObject:remind_in forKey:@"remind_in"];
+        if (refresh_token) [authInfo setObject:refresh_token forKey:@"refresh_token"];
+        if (uid) [authInfo setObject:uid forKey:@"uid"];
+        
+        [self logInDidFinishWithAuthInfo:authInfo];
+      }
+    }
+  }
+
+  return YES;
+}
+
 - (BOOL)isAuthenticated {
 	return (
           self.accessToken != nil
@@ -190,6 +231,36 @@
 
 #pragma mark -
 #pragma mark Private Methods
+
+- (void)logInDidFinishWithAuthInfo:(NSDictionary *)authInfo {
+  if (authInfo[@"access_token"] != nil) {
+    NSString *accessToken = authInfo[@"access_token"];
+    NSString *userID = authInfo[@"uid"];
+    int expiresIn = [authInfo[@"expires_in"] intValue];
+    if (accessToken.length > 0 && userID.length > 0) {
+      self.authentication.accessToken = accessToken;
+      self.authentication.expirationDate = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
+      self.authentication.userID = userID;
+      self.accessToken = accessToken;
+      [self fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+        self.authentication.user = responseObject;
+        
+        // Completion
+        if (_authCompletionBlock)
+          _authCompletionBlock(YES, self.authentication, nil);
+        
+        // authSucceedHandler
+        if (self.authSucceedHandler != nil)
+          self.authSucceedHandler();
+      }];
+      return;
+    }
+  }
+  if (_authCompletionBlock != nil) {
+    NSError *error = [NSError errorWithDomain:NCWEIBO_ERRORDOMAIN_OAUTH2 code:-1 userInfo:@{NSLocalizedDescriptionKey: @"NCWeibo.WebAuth.AccessTokenNotFound", NSLocalizedFailureReasonErrorKey: authInfo}];
+    _authCompletionBlock(NO, self.authentication, error);
+  }
+}
 
 - (BOOL)savedAuthDataIsWorking {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -267,6 +338,31 @@
       [self removeAuthData];
 		}
 	}
+}
+
+- (NSString *)getParamValueFromUrl:(NSString*)url paramName:(NSString *)paramName {
+  if (![paramName hasSuffix:@"="]) {
+    paramName = [NSString stringWithFormat:@"%@=", paramName];
+  }
+  
+  NSString *str = nil;
+  NSRange start = [url rangeOfString:paramName];
+  if (start.location != NSNotFound) {
+    // confirm that the parameter is not a partial name match
+    unichar c = '?';
+    if (start.location != 0) {
+      c = [url characterAtIndex:start.location - 1];
+    }
+    if (c == '?' || c == '&' || c == '#') {
+      NSRange end = [[url substringFromIndex:start.location+start.length] rangeOfString:@"&"];
+      NSUInteger offset = start.location+start.length;
+      str = end.location == NSNotFound ?
+      [url substringFromIndex:offset] :
+      [url substringWithRange:NSMakeRange(offset, end.location)];
+      str = [str stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
+  }
+  return str;
 }
 
 - (NSString *)serializeURL:(NSString *)baseURL params:(NSDictionary *)params httpMethod:(NSString *)httpMethod {
