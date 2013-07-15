@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = "NCWeibo"
-  s.version      = "0.1.6"
+  s.version      = "0.1.7"
   s.summary      = "Another non-official Sina Weibo SDK in Objective-C."
   s.homepage     = "https://github.com/nickcheng/NCWeibo"
   s.license      = {:type=>'MIT', :file=>"LICENSE"}
   s.author       = { "nickcheng" => "n@nickcheng.com" }
-  s.source       = { :git => "https://github.com/nickcheng/NCWeibo.git", :tag => "0.1.6" }
+  s.source       = { :git => "https://github.com/nickcheng/NCWeibo.git", :tag => "0.1.7" }
   s.platform     = :ios, '5.0'
   s.source_files = 'NCWeibo/**/*.{h,m}'
   s.public_header_files = 'NCWeibo/**/*.h'
