@@ -8,8 +8,8 @@ This SDK can work now, but it still in developing and only support few API.
 
 Progress:
 
-- [ ] Sina Weibo SSO oAuth.
 - [ ] More API.
+- [x] Sina Weibo SSO oAuth.
 - [x] Get friends list.
 - [x] Follow user.
 - [x] Post status and post status w/ image.
