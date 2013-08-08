@@ -19,7 +19,7 @@
   UIBarButtonItem *_cancelButton;
   UIBarButtonItem *_stopButton;
   UIBarButtonItem *_refreshButton;
-  MBProgressHUD *_hub;
+  MBProgressHUD *_hud;
 
   NCWeiboAuthentication *_authentication;
   BOOL _closed;
@@ -54,7 +54,7 @@
 
 - (void)cancel:(id)sender {
   //
-  [_hub hide:YES];
+  [_hud hide:YES];
   _closed = YES;
   
   //
@@ -85,28 +85,28 @@
 	self.title = NSLocalizedString(@"NCWeibo.WebAuth.LoadingMessage", @"加载中...(NCWeibo.WebAuth.LoadingMessage)");
   self.navigationItem.rightBarButtonItem = _stopButton;
   
-  if (!_hub) {
-    _hub = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.view addSubview:_hub];
+  if (!_hud) {
+    _hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view.window];
+    [self.view.window addSubview:_hud];
     
-    _hub.delegate = self;
-    _hub.labelText = NSLocalizedString(@"NCWeibo.WebAuth.LoadingMessage", @"加载中...(NCWeibo.WebAuth.LoadingMessage)");
-    [_hub show:YES];
+    _hud.delegate = self;
+    _hud.labelText = NSLocalizedString(@"NCWeibo.WebAuth.LoadingMessage", @"加载中...(NCWeibo.WebAuth.LoadingMessage)");
+    [_hud show:YES];
   }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
 	self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
   self.navigationItem.rightBarButtonItem = _refreshButton;
-  [_hub hide:YES];
+  [_hud hide:YES];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
   if (error.code != NSURLErrorCancelled && !_closed) {
     self.title = NSLocalizedString(@"NCWeibo.WebAuth.LoadingFailed", @"网页加载失败(NCWeibo.WebAuth.LoadingFailed)");
     self.navigationItem.rightBarButtonItem = _refreshButton;
-    _hub.labelText = NSLocalizedString(@"NCWeibo.WebAuth.LoadingFailed", @"网页加载失败(NCWeibo.WebAuth.LoadingFailed)");
-    [_hub hide:YES afterDelay:2];
+    _hud.labelText = NSLocalizedString(@"NCWeibo.WebAuth.LoadingFailed", @"网页加载失败(NCWeibo.WebAuth.LoadingFailed)");
+    [_hud hide:YES afterDelay:2];
   }
 }
 
@@ -118,7 +118,7 @@
     NSString *code = [request.URL.absoluteString substringFromIndex:range.location + range.length];
     NCLogInfo(@"code: %@", code);
     
-    [_hub hide:YES];
+    [_hud hide:YES];
     _closed = YES;
     [self dismissViewControllerAnimated:YES completion:^{
       //
