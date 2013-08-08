@@ -66,22 +66,8 @@
   _authCompletionBlock = completion;
   
   // Check saved auth data
-  if ([self savedAuthDataIsWorking]) {
-    NCLogInfo(@"Got saved auth data");
-    [self fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
-      self.authentication.user = responseObject;
-      
-      // Completion
-      if (completion)
-        completion(YES, self.authentication, nil);
-      
-      // authSucceedHandler
-      if (self.authSucceedHandler != nil)
-        self.authSucceedHandler();
-    }];
-
+  if ([self tryToAuthWithSavedInfoAndCompletion:completion])
     return;
-  }
   
   // SSO Login
   _ssoLoggingIn = NO;
@@ -227,6 +213,27 @@
 
 - (void)logOut {
 	self.accessToken = nil;
+}
+
+- (BOOL)tryToAuthWithSavedInfoAndCompletion:(NCWeiboAuthCompletionBlock)completion {
+  if ([self savedAuthDataIsWorking]) {
+    NCLogInfo(@"Got saved auth data");
+    [self fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+      self.authentication.user = responseObject;
+      
+      // Completion
+      if (completion)
+        completion(YES, self.authentication, nil);
+      
+      // authSucceedHandler
+      if (self.authSucceedHandler != nil)
+        self.authSucceedHandler();
+    }];
+    
+    return YES;
+  }
+  
+  return NO;
 }
 
 #pragma mark -

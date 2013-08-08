@@ -30,6 +30,7 @@ typedef void (^NCWeiboEmptyBlock)();
 - (void)authenticateWithCompletion:(NCWeiboAuthCompletionBlock)completion andCancellation:(NCWeiboAuthCancellationBlock)cancellation;
 - (void)authenticateForAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret andCallbackScheme:(NSString *)ssoCallbackScheme andViewController:(UIViewController *)viewController andCompletion:(NCWeiboAuthCompletionBlock)completion andCancellation:(NCWeiboAuthCancellationBlock)cancellation;
 - (BOOL)handleOpenURL:(NSURL *)url;
+- (BOOL)tryToAuthWithSavedInfoAndCompletion:(NCWeiboAuthCompletionBlock)completion;
 
 - (BOOL)isAuthenticated;
 - (void)logOut;
