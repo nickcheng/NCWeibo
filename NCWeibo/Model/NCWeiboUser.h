@@ -57,6 +57,9 @@ typedef enum {
 @property (nonatomic, assign) int mbrank;
 @property (nonatomic, assign) int blockWord;
 
+// Not in Weibo structure. Just for extension.
+@property (nonatomic, assign) int extFlag;
+
 - (id)initWithJSONString:(NSString *)jsonString;
 - (id)initWithJSONDict:(NSDictionary *)jsonDict;
 

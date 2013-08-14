@@ -45,6 +45,8 @@
   int _mbtype;
   int _mbrank;
   int _blockWord;
+  
+  int _extFlag;
 }
 
 @synthesize userID = _userID;
@@ -82,6 +84,8 @@
 @synthesize mbtype = _mbtype;
 @synthesize mbrank = _mbrank;
 @synthesize blockWord = _blockWord;
+
+@synthesize extFlag = _extFlag;
 
 - (id)initWithJSONDict:(NSDictionary *)jsonDict {
   //
@@ -128,6 +132,8 @@
   _mbtype = [jsonDict[@"mbtype"] intValue];
   _mbrank = [jsonDict[@"mbrank"] intValue];
   _blockWord = [jsonDict[@"block_word"] intValue];
+  
+  _extFlag = 0;
   
   return self;
 }
