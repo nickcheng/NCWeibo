@@ -137,7 +137,7 @@
 
 - (BOOL)handleOpenURL:(NSURL *)url {
   NSString *urlString = [url absoluteString];
-  NSLog(@"URL: %@", urlString);
+  NCLogInfo(@"URL: %@", urlString);
 
   if ([urlString hasPrefix:self.authentication.ssoCallbackScheme]) {
     if (!_ssoLoggingIn) {
