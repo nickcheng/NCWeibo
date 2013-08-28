@@ -82,7 +82,7 @@
 #pragma mark UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-	self.title = NSLocalizedString(@"NCWeibo.WebAuth.LoadingMessage", @"加载中...(NCWeibo.WebAuth.LoadingMessage)");
+	self.title = NSLocalizedString(@"ncweibo.webauth.loadingmessage", @"加载中...(NCWeibo.WebAuth.LoadingMessage)");
   self.navigationItem.rightBarButtonItem = _stopButton;
   
   if (!_hud) {
@@ -90,7 +90,7 @@
     [self.view.window addSubview:_hud];
     
     _hud.delegate = self;
-    _hud.labelText = NSLocalizedString(@"NCWeibo.WebAuth.LoadingMessage", @"加载中...(NCWeibo.WebAuth.LoadingMessage)");
+    _hud.labelText = NSLocalizedString(@"ncweibo.webauth.loadingmessage", @"加载中...(NCWeibo.WebAuth.LoadingMessage)");
     [_hud show:YES];
   }
 }
@@ -103,9 +103,9 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
   if (error.code != NSURLErrorCancelled && !_closed) {
-    self.title = NSLocalizedString(@"NCWeibo.WebAuth.LoadingFailed", @"网页加载失败(NCWeibo.WebAuth.LoadingFailed)");
+    self.title = NSLocalizedString(@"ncweibo.webauth.loadingfailed", @"网页加载失败(NCWeibo.WebAuth.LoadingFailed)");
     self.navigationItem.rightBarButtonItem = _refreshButton;
-    _hud.labelText = NSLocalizedString(@"NCWeibo.WebAuth.LoadingFailed", @"网页加载失败(NCWeibo.WebAuth.LoadingFailed)");
+    _hud.labelText = NSLocalizedString(@"ncweibo.webauth.loadingfailed", @"网页加载失败(NCWeibo.WebAuth.LoadingFailed)");
     [_hud hide:YES afterDelay:2];
   }
 }
@@ -158,7 +158,7 @@
   _webView.delegate = self;
   [self.view addSubview:_webView];
   
-  NSString *html = [NSString stringWithFormat:@"<html><body><div align=center>%@</div></body></html>", NSLocalizedString(@"NCWeibo.WebAuth.LoadingMessage", @"加载中...(NCWeibo.WebAuth.LoadingMessage)")];
+  NSString *html = [NSString stringWithFormat:@"<html><body><div align=center>%@</div></body></html>", NSLocalizedString(@"ncweibo.webauth.loadingmessage", @"加载中...(NCWeibo.WebAuth.LoadingMessage)")];
   [_webView loadHTMLString:html baseURL:nil];
   
   self.navigationItem.leftBarButtonItem = _cancelButton;
