@@ -308,7 +308,7 @@
   SSKeychainQuery *query = [[SSKeychainQuery alloc] init];
   query.service = NCWEIBO_KEYCHAINSERVICE;
   query.account = NCWEIBO_KEYCHAINACCOUNT;
-  [query delete:nil];
+  [query deleteItem:nil];
   
   NCLogInfo(@"Auth data deleted.");
 }
