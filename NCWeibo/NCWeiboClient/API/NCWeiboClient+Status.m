@@ -38,7 +38,7 @@
                              };
     
     NSMutableURLRequest *request = [self multipartFormRequestWithMethod:@"POST" path:@"statuses/upload.json" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-      NSData *data = UIImageJPEGRepresentation(image, .9f);
+      NSData *data = UIImageJPEGRepresentation(image, 1);
       [formData appendPartWithFileData:data name:@"pic" fileName:NCWEIBO_UPLOADIMAGENAME mimeType:@"image/jpeg"];
     }];
 		
