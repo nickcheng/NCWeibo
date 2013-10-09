@@ -219,6 +219,13 @@
   if ([self savedAuthDataIsWorking]) {
     NCLogInfo(@"Got saved auth data");
     [self fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+      // Handle error
+      if (error != nil) {
+        NCLogError(@"Fetch current user error: %@", error);
+        return;
+      }
+      
+      //
       self.authentication.user = responseObject;
       
       // Completion
