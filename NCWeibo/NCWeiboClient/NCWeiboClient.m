@@ -20,7 +20,7 @@
   UIViewController *_authViewController;
   NCWeiboAuthCancellationBlock _authCancellationBlock;
   NCWeiboAuthCompletionBlock _authCompletionBlock;
-  AFHTTPClient *_authHTTPClient;
+  AFHTTPSessionManager *_authHTTPSessionManager;
 }
 
 @synthesize authentication = _authentication;
@@ -41,12 +41,25 @@
 }
 
 - (id)init {
-  if ((self = [super initWithBaseURL:[[self class] APIBaseURL]])) {
-		self.parameterEncoding = AFFormURLParameterEncoding;
-//		self.pagination = [[NCWeiboPaginationSettings alloc] init];
-		[self setDefaultHeader:@"Accept" value:@"application/json"];
-    [self setDefaultHeader:@"User-Agent" value:NCWEIBO_USERAGENT];
-//		[self registerHTTPOperationClass:[NCWeiboJSONRequestOperation class]];
+  NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+  [sessionConfig setHTTPAdditionalHeaders:@{
+                                            @"Accept": @"application/json",
+                                            @"User-Agent": NCWEIBO_USERAGENT
+                                            }];
+  self = [super initWithBaseURL:[[self class] APIBaseURL]
+           sessionConfiguration:sessionConfig];
+
+  if (self) {
+    self.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+    self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"application/json", @"text/json", @"text/javascript", nil];
+
+    //
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    _authHTTPSessionManager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:config];
+    _authHTTPSessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    _authHTTPSessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"application/json", @"text/json", @"text/javascript", nil];
+    
+    //
 		[self addObserver:self forKeyPath:@"accessToken" options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:@"authentication.userID" options:NSKeyValueObservingOptionNew context:nil];
 	}
@@ -105,9 +118,6 @@
                                                      completion(NO, authentication, error);
                                                  } else {
                                                    //
-                                                   AFHTTPClient *authHTTPClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:authentication.accessTokenBaseURL]];
-                                                   authHTTPClient.parameterEncoding = AFFormURLParameterEncoding;
-                                                   [authHTTPClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
                                                    NSDictionary *params = @{
                                                                             @"client_id" : authentication.appKey,
                                                                             @"client_secret": authentication.appSecret,
@@ -115,10 +125,11 @@
                                                                             @"code": authentication.authorizationCode,
                                                                             @"grant_type": @"authorization_code"
                                                                             };
-                                                   [authHTTPClient postPath:@"access_token" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                                     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+                                                   NSString *accesstokenPOSTURL = [authentication.accessTokenBaseURL stringByAppendingPathComponent:@"access_token"];
+                                                   [_authHTTPSessionManager POST:accesstokenPOSTURL parameters:params success:^(NSURLSessionDataTask *task, id responseObject) {
+                                                     NSDictionary *responseDictionary = responseObject;
                                                      [self logInDidFinishWithAuthInfo:responseDictionary];
-                                                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                   } failure:^(NSURLSessionDataTask *task, NSError *error) {
                                                      if (completion)
                                                        completion(NO, authentication, error);
                                                    }];
@@ -218,7 +229,7 @@
 - (BOOL)tryToAuthWithSavedInfoAndCompletion:(NCWeiboAuthCompletionBlock)completion {
   if ([self savedAuthDataIsWorking]) {
     NCLogInfo(@"Got saved auth data");
-    [self fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+    [self fetchCurrentUserWithCompletion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
       // Handle error
       if (error != nil) {
         NCLogError(@"Fetch current user error: %@", error);
@@ -256,7 +267,7 @@
       self.authentication.expirationDate = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
       self.authentication.userID = userID;
       self.accessToken = accessToken;
-      [self fetchCurrentUserWithCompletion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+      [self fetchCurrentUserWithCompletion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
         self.authentication.user = responseObject;
         
         // Completion
@@ -344,11 +355,11 @@
 	// AccessToken
   if ([keyPath isEqualToString:@"accessToken"]) {
 		if (self.accessToken) {
-			[self setDefaultHeader:@"Authorization" value:[@"OAuth2 " stringByAppendingString:self.accessToken]];
+      [self.requestSerializer setValue:[@"OAuth2 " stringByAppendingString:self.accessToken] forHTTPHeaderField:@"Authorization"];
       [self storeAuthData];
       self.authentication.userID = self.authentication.userID; // When get token, trigger "authentication.userID" again to fetch user.
 		} else {
-			[self setDefaultHeader:@"Authorization" value:nil];
+      [self.requestSerializer setValue:nil forHTTPHeaderField:@"Authorization"];
       [self removeAuthData];
 		}
 	}

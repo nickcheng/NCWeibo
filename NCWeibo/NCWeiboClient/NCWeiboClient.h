@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 NC. All rights reserved.
 //
 
-#import "AFNetworking.h"
+#import <AFNetworking.h>
 
 @class NCWeiboAuthentication;
 
@@ -15,7 +15,7 @@ typedef void (^NCWeiboAuthCompletionBlock)(BOOL success, NCWeiboAuthentication *
 typedef void (^NCWeiboAccessTokenExpiredBlock)(void (^OriginalAPICallBlock)());
 typedef void (^NCWeiboEmptyBlock)();
 
-@interface NCWeiboClient : AFHTTPClient
+@interface NCWeiboClient : AFHTTPSessionManager
 
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NCWeiboAuthentication *authentication;

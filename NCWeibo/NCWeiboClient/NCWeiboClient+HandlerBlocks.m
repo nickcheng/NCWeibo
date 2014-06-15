@@ -13,22 +13,22 @@
 @implementation NCWeiboClient (HandlerBlocks)
 
 - (AFNetworkingSuccessBlock)successHandlerForClientHandler:(NCWeiboClientCompletionBlock)handler {
-  return ^(AFHTTPRequestOperation *operation, id responseObject) {
-    [self processSuccessHandlerWithRequestOperation:operation andResponseObject:responseObject andHandler:handler];
+  return ^(NSURLSessionDataTask *task, id responseObject) {
+    [self processSuccessHandlerWithRequestOperation:task andResponseObject:responseObject andHandler:handler];
   };
 }
 
-- (void)processSuccessHandlerWithRequestOperation:(AFHTTPRequestOperation *)operation andResponseObject:(id)responseObject andHandler:(NCWeiboClientCompletionBlock)handler {
+- (void)processSuccessHandlerWithRequestOperation:(NSURLSessionDataTask *)task andResponseObject:(id)responseObject andHandler:(NCWeiboClientCompletionBlock)handler {
   //
-  NCLogInfo(@"%@", operation.request.allHTTPHeaderFields);
+  NCLogInfo(@"%@", task.currentRequest.allHTTPHeaderFields);
   
   //
   if (handler)
-    handler(operation, responseObject, nil);
+    handler(task, responseObject, nil);
 }
 
 - (AFNetworkingFailureBlock)failureHandlerForClientHandler:(NCWeiboClientCompletionBlock)handler {
-  return ^(AFHTTPRequestOperation *operation,  NSError *error) {
+  return ^(NSURLSessionDataTask *task,  NSError *error) {
 //    NCLogInfo(@"%@", operation.request.allHTTPHeaderFields);
     NCWeiboErrorResponse *errorResponse = [[NCWeiboErrorResponse alloc] initWithJson:error.userInfo[NSLocalizedRecoverySuggestionErrorKey]];
 
@@ -42,7 +42,7 @@
 
     //
     if (handler) {
-      handler(operation, errorResponse, error);
+      handler(task, errorResponse, error);
     }
   };
 }

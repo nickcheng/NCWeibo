@@ -23,12 +23,12 @@
     NSDictionary *params = @{
                              @"uid": userID
                              };
-    [self getPath:@"users/show.json"
+    [self GET:@"users/show.json"
        parameters:params
-          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          success:^(NSURLSessionDataTask *task, id responseObject) {
              // make user and replace responseObject
-            NCWeiboUser *user = [[NCWeiboUser alloc] initWithJSONString:operation.responseString];
-            [self processSuccessHandlerWithRequestOperation:operation andResponseObject:user andHandler:completionHandler];
+            NCWeiboUser *user = [[NCWeiboUser alloc] initWithJSONDict:responseObject];
+            [self processSuccessHandlerWithRequestOperation:task andResponseObject:user andHandler:completionHandler];
            }
            failure:[self failureHandlerForClientHandler:completionHandler]];
   } andAuthErrorProcess:completionHandler];
@@ -48,7 +48,7 @@
     NSDictionary *params = @{
                              @"uid": userID
                              };
-    [self postPath:@"friendships/create.json"
+    [self POST:@"friendships/create.json"
         parameters:params
            success:[self successHandlerForClientHandler:completionHandler]
            failure:[self failureHandlerForClientHandler:completionHandler]];

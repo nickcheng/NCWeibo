@@ -37,19 +37,10 @@
                                @"cursor": [NSNumber numberWithInteger:cursor],
                                };
       dispatch_async(fetchqueue, ^{
-        [self getPath:@"friendships/friends.json"
+        [self GET:@"friendships/friends.json"
            parameters:params
-              success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                //
-                NSError *jsonError;
-                NSDictionary *jsonDict = [NSJSONSerialization
-                                          JSONObjectWithData:[operation.responseString dataUsingEncoding:NSUTF8StringEncoding]
-                                          options:NSJSONReadingMutableContainers error:&jsonError];
-                if (jsonError != nil) {
-                  NCLogError(@"Generate JSONDict Error: %@", jsonError);
-                  [self failureHandlerForClientHandler:completionHandler];
-                  return;
-                }
+              success:^(NSURLSessionDataTask *task, id responseObject) {
+                NSDictionary *jsonDict = responseObject;
                 
                 //
                 for (NSDictionary *dict in jsonDict[@"users"]) {
@@ -60,7 +51,7 @@
                 
                 //
                 if ([resultDict[@"counter"] integerValue] <= 0)
-                  [self processSuccessHandlerWithRequestOperation:operation
+                  [self processSuccessHandlerWithRequestOperation:task
                                                 andResponseObject:resultDict[@"array"]
                                                        andHandler:completionHandler];
               }
@@ -75,7 +66,7 @@
 }
 
 - (void)fetchFollowingForUserID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler {
-  [self fetchUserWithID:userID completion:^(AFHTTPRequestOperation *operation, id responseObject, NSError *error) {
+  [self fetchUserWithID:userID completion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
     NCWeiboUser *user = responseObject;
     [self fetchFollowingForUser:user completion:completionHandler];
   }];

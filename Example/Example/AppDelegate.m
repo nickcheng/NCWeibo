@@ -9,8 +9,8 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
-#import "AFHTTPRequestOperationLogger.h"
 #import "NCWeiboClient.h"
+#import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
 
 @implementation AppDelegate
 
@@ -18,7 +18,8 @@
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   // Override point for customization after application launch.
   
-  [[AFHTTPRequestOperationLogger sharedLogger] startLogging];
+  [AFNetworkActivityLogger sharedLogger].level = AFLoggerLevelDebug;
+  [[AFNetworkActivityLogger sharedLogger] startLogging];
   
   self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
   self.window.rootViewController = self.viewController;
