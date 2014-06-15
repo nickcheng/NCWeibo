@@ -8,6 +8,7 @@ This SDK can work now, but it still in developing and only support few API.
 
 Progress:
 
+- [ ] Readme to be updated.
 - [ ] More API.
 - [x] Sina Weibo SSO oAuth.
 - [x] Get friends list.
