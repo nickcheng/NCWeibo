@@ -97,9 +97,9 @@
                            
                            // Do something with the result.
                            if (error) {
-                             NSLog(@"Error: %@", error);
+                             NCLogInfo(@"Error: %@", error);
                            } else {
-                             NSLog(@"Success: %@", responseObject);
+                             NCLogInfo(@"Success: %@", responseObject);
                            }
                          }];
           
