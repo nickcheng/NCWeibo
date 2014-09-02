@@ -14,6 +14,7 @@
 
 - (void)fetchCurrentUserWithCompletion:(NCWeiboClientCompletionBlock)completionHandler;
 - (void)fetchUserWithID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler;
+- (void)fetchUserWithName:(NSString *)screenName completion:(NCWeiboClientCompletionBlock)completionHandler;
 //- (void)fetchUsersWithIDs:(NSArray *)userIDs completion:(NCWeiboClientCompletionBlock)completionHandler;
 
 - (void)followUser:(NCWeiboUser *)user completion:(NCWeiboClientCompletionBlock)completionHandler;

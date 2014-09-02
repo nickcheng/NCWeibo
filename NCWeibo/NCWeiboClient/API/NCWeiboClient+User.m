@@ -34,6 +34,22 @@
   } andAuthErrorProcess:completionHandler];
 }
 
+- (void)fetchUserWithName:(NSString *)screenName completion:(NCWeiboClientCompletionBlock)completionHandler {
+  [self doAuthBeforeCallAPI:^{
+    NSDictionary *params = @{
+                             @"screen_name": screenName
+                             };
+    [self GET:@"users/show.json"
+   parameters:params
+      success:^(NSURLSessionDataTask *task, id responseObject) {
+        // make user and replace responseObject
+        NCWeiboUser *user = [[NCWeiboUser alloc] initWithJSONDict:responseObject];
+        [self processSuccessHandlerWithRequestOperation:task andResponseObject:user andHandler:completionHandler];
+      }
+      failure:[self failureHandlerForClientHandler:completionHandler]];
+  } andAuthErrorProcess:completionHandler];
+}
+
 //- (void)fetchUsersWithIDs:(NSArray *)userIDs completion:(NCWeiboClientCompletionBlock)completionHandler {
 //  
 //}
