@@ -47,6 +47,7 @@
   int _blockWord;
   
   int _extFlag;
+  NSString *_extInfo;
 }
 
 @synthesize userID = _userID;
@@ -86,6 +87,7 @@
 @synthesize blockWord = _blockWord;
 
 @synthesize extFlag = _extFlag;
+@synthesize extInfo = _extInfo;
 
 - (id)initWithJSONDict:(NSDictionary *)jsonDict {
   //
@@ -134,6 +136,7 @@
   _blockWord = [jsonDict[@"block_word"] intValue];
   
   _extFlag = 0;
+  _extInfo = @"";
   
   return self;
 }

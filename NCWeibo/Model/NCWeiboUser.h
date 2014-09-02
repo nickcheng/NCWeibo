@@ -59,6 +59,7 @@ typedef enum {
 
 // Not in Weibo structure. Just for extension.
 @property (nonatomic, assign) int extFlag;
+@property (nonatomic, strong) NSString *extInfo;
 
 - (id)initWithJSONString:(NSString *)jsonString;
 - (id)initWithJSONDict:(NSDictionary *)jsonDict;
