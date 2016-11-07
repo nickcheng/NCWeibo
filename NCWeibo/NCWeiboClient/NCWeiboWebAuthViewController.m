@@ -54,7 +54,7 @@
 
 - (void)cancel:(id)sender {
   //
-  [_hud hide:YES];
+  [_hud hideAnimated:YES];
   _closed = YES;
   
   //
@@ -82,31 +82,31 @@
 #pragma mark UIWebViewDelegate
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
-	self.title = NSLocalizedString(@"ncweibo.webauth.loadingmessage", @"加载中...(NCWeibo.WebAuth.LoadingMessage)");
-  self.navigationItem.rightBarButtonItem = _stopButton;
-  
-  if (!_hud) {
-    _hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view.window];
-    [self.view.window addSubview:_hud];
+    self.title = NSLocalizedString(@"ncweibo.webauth.loadingmessage", @"加载中...(NCWeibo.WebAuth.LoadingMessage)");
+    self.navigationItem.rightBarButtonItem = _stopButton;
     
-    _hud.delegate = self;
-    _hud.labelText = NSLocalizedString(@"ncweibo.webauth.loadingmessage", @"加载中...(NCWeibo.WebAuth.LoadingMessage)");
-    [_hud show:YES];
-  }
+    if (!_hud) {
+        _hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view.window];
+        [self.view.window addSubview:_hud];
+        
+        _hud.delegate = self;
+        _hud.label.text = NSLocalizedString(@"ncweibo.webauth.loadingmessage", @"加载中...(NCWeibo.WebAuth.LoadingMessage)");
+        [_hud showAnimated:YES];
+    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
 	self.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
   self.navigationItem.rightBarButtonItem = _refreshButton;
-  [_hud hide:YES];
+  [_hud hideAnimated:YES];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
   if (error.code != NSURLErrorCancelled && !_closed) {
     self.title = NSLocalizedString(@"ncweibo.webauth.loadingfailed", @"网页加载失败(NCWeibo.WebAuth.LoadingFailed)");
     self.navigationItem.rightBarButtonItem = _refreshButton;
-    _hud.labelText = NSLocalizedString(@"ncweibo.webauth.loadingfailed", @"网页加载失败(NCWeibo.WebAuth.LoadingFailed)");
-    [_hud hide:YES afterDelay:2];
+    _hud.label.text = NSLocalizedString(@"ncweibo.webauth.loadingfailed", @"网页加载失败(NCWeibo.WebAuth.LoadingFailed)");
+    [_hud hideAnimated:YES afterDelay:2];
   }
 }
 
@@ -118,7 +118,7 @@
     NSString *code = [request.URL.absoluteString substringFromIndex:range.location + range.length];
     NCLogInfo(@"code: %@", code);
     
-    [_hud hide:YES];
+    [_hud hideAnimated:YES];
     _closed = YES;
     [self dismissViewControllerAnimated:YES completion:^{
       //

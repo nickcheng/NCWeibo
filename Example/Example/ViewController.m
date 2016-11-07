@@ -30,17 +30,17 @@
     NCWeiboUser *user = authentication.user;
     [[NCWeiboClient sharedClient] fetchFollowingForUser:user
                                              completion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-                                               NSLog(@"result count: %d", [(NSArray *)responseObject count]);
+                                               NSLog(@"result count: %lu", (unsigned long)[(NSArray *)responseObject count]);
                                              }];
   } andCancellation:nil];
 }
 
 - (IBAction)getUserInfoTapped:(id)sender {
-  [[NCWeiboClient sharedClient] fetchCurrentUserWithCompletion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-    //
-    NCWeiboUser *user = responseObject;
-    NSLog(@"responseObject: %@", user);
-  }];
+    [[NCWeiboClient sharedClient] fetchCurrentUserWithCompletion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        //
+        NCWeiboUser *user = responseObject;
+        NSLog(@"responseObject: %@", user);
+    }];
 }
 
 - (IBAction)clearTapped:(id)sender {
@@ -111,11 +111,14 @@
   _authViewHasShown = NO;
   
   //
-  [[NCWeiboClient sharedClient] setAuthenticationInfo:@"3402471288" andAppSecret:@"23eb634a581fe1c8d699d93c7718ca26" andCallbackScheme:@"nextday://com.nxmix.nextday.login" andViewController:self];
+  [[NCWeiboClient sharedClient] setAuthenticationInfo:@"3402471288"
+                                         andAppSecret:@"23eb634a581fe1c8d699d93c7718ca26"
+                                    andCallbackScheme:@"nextday://com.nxmix.nextday.login"
+                                    andViewController:self];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
+    [super viewDidAppear:animated];
   
   //
 //  if (!_authViewHasShown) {
@@ -123,25 +126,21 @@
 //    [self doAuth];
 //  }
   
-  [NCWeiboClient sharedClient].accessTokenExpiredHandler = ^(APIHandlerBlock apiHandler){
-    [[NCWeiboClient sharedClient] logOut];
-    [[NCWeiboClient sharedClient] authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
-      if (apiHandler)
-        apiHandler();
-    } andCancellation:nil];
-  };
-  [NCWeiboClient sharedClient].authSucceedHandler = ^(){
-    NSLog(@"Auth Succeed!");
-  };
+    [NCWeiboClient sharedClient].accessTokenExpiredHandler = ^(APIHandlerBlock apiHandler){
+        [[NCWeiboClient sharedClient] logOut];
+        [[NCWeiboClient sharedClient] authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
+            if (apiHandler)
+                apiHandler();
+        } andCancellation:nil];
+    };
+    [NCWeiboClient sharedClient].authSucceedHandler = ^(){
+        NSLog(@"Auth Succeed!");
+    };
 }
 
 - (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidUnload {
-  [self setContent:nil];
-  [super viewDidUnload];
-}
 @end

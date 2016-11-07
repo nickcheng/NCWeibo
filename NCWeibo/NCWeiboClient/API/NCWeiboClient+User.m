@@ -13,9 +13,9 @@
 @implementation NCWeiboClient (User)
 
 - (void)fetchCurrentUserWithCompletion:(NCWeiboClientCompletionBlock)completionHandler {
-  [self doAuthBeforeCallAPI:^{
-    [self fetchUserWithID:self.authentication.userID completion:completionHandler];
-  } andAuthErrorProcess:completionHandler];
+    [self doAuthBeforeCallAPI:^{
+        [self fetchUserWithID:self.authentication.userID completion:completionHandler];
+    } andAuthErrorProcess:completionHandler];
 }
 
 - (void)fetchUserWithID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler {

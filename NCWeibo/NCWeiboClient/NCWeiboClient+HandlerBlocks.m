@@ -48,27 +48,27 @@
 }
 
 - (void)doAuthBeforeCallAPI:(APIHandlerBlock)apiHandler andAuthErrorProcess:(NCWeiboClientCompletionBlock)completionHandler {
-  if (!self.isAuthenticated) {
-    self.originalAPICallBlock = apiHandler;
-    if (self.authentication && self.authViewController) {
-      [self authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
-        if (success) {
-          if (apiHandler != nil)
-            apiHandler();
+    if (!self.isAuthenticated) {
+        self.originalAPICallBlock = apiHandler;
+        if (self.authentication && self.authViewController) {
+            [self authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
+                if (success) {
+                    if (apiHandler != nil)
+                        apiHandler();
+                } else {
+                    NCWeiboErrorResponse *errorResponse = [[NCWeiboErrorResponse alloc] initWithJson:error.userInfo[NSLocalizedRecoverySuggestionErrorKey]];
+                    completionHandler(nil, errorResponse, error);
+                }
+            } andCancellation:nil]; // If you need to do sth in cancellation, use authenticateWithCompletion yourself.
         } else {
-          NCWeiboErrorResponse *errorResponse = [[NCWeiboErrorResponse alloc] initWithJson:error.userInfo[NSLocalizedRecoverySuggestionErrorKey]];
-          completionHandler(nil, errorResponse, error);
+            if (completionHandler != nil) {
+                NSError *error = [NSError errorWithDomain:NCWEIBO_ERRORDOMAIN_OAUTH2 code:400 userInfo:@{NSLocalizedDescriptionKey:@"NCWeibo.Auth.NoAuthInfo"}];
+                completionHandler(nil, nil, error);
+            }
         }
-      } andCancellation:nil]; // If you need to do sth in cancellation, use authenticateWithCompletion yourself.
     } else {
-      if (completionHandler != nil) {
-        NSError *error = [NSError errorWithDomain:NCWEIBO_ERRORDOMAIN_OAUTH2 code:400 userInfo:@{NSLocalizedDescriptionKey:@"NCWeibo.Auth.NoAuthInfo"}];
-        completionHandler(nil, nil, error);
-      }
+        apiHandler();
     }
-  } else {
-    apiHandler();
-  }
 }
 
 @end
