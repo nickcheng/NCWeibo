@@ -11,19 +11,11 @@
 @interface NCWeiboAuthentication : NSObject
 
 @property (nonatomic, strong) NSString *appKey;
-@property (nonatomic, strong) NSString *appSecret;
-@property (nonatomic, strong) NSString *redirectURI;
-@property (nonatomic, strong) NSString *ssoCallbackScheme;
 
-@property (nonatomic, strong) NSString *authorizeURL;
-@property (nonatomic, strong) NSString *accessTokenBaseURL;
-
-@property (nonatomic, strong) NSString *authorizationCode;
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) NSDate *expirationDate;
-@property (nonatomic, strong) NCWeiboUser *user; // This property is for convenience. It will be nil unless you done authentication.
 
-- (id)initWithAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret andCallbackScheme:(NSString *)ssoCallbackScheme;
+@property (nonatomic, strong) NCWeiboUser *user; // This property is for convenience. It will be nil unless you done authentication.
 
 @end

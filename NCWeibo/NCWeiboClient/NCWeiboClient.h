@@ -6,8 +6,6 @@
 //  Copyright (c) 2013年 NC. All rights reserved.
 //
 
-#import <AFNetworking.h>
-
 @class NCWeiboAuthentication;
 
 typedef void (^NCWeiboAuthCancellationBlock)(NCWeiboAuthentication *authentication);
@@ -15,7 +13,9 @@ typedef void (^NCWeiboAuthCompletionBlock)(BOOL success, NCWeiboAuthentication *
 typedef void (^NCWeiboAccessTokenExpiredBlock)(void (^OriginalAPICallBlock)());
 typedef void (^NCWeiboEmptyBlock)();
 
-@interface NCWeiboClient : AFHTTPSessionManager
+@interface NCWeiboClient : NSObject
+
+@property (nonatomic, readonly) NSString *appKey;
 
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NCWeiboAuthentication *authentication;
@@ -26,15 +26,13 @@ typedef void (^NCWeiboEmptyBlock)();
 
 + (instancetype)sharedClient;
 
-- (void)setAuthenticationInfo:(NSString *)appKey andAppSecret:(NSString *)appSecret andCallbackScheme:(NSString *)ssoCallbackScheme andViewController:(UIViewController *)viewController;
-- (void)authenticateWithCompletion:(NCWeiboAuthCompletionBlock)completion andCancellation:(NCWeiboAuthCancellationBlock)cancellation;
-- (void)authenticateForAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret andCallbackScheme:(NSString *)ssoCallbackScheme andViewController:(UIViewController *)viewController andCompletion:(NCWeiboAuthCompletionBlock)completion andCancellation:(NCWeiboAuthCancellationBlock)cancellation;
-- (BOOL)handleOpenURL:(NSURL *)url;
-- (BOOL)tryToAuthWithSavedInfoAndCompletion:(NCWeiboAuthCompletionBlock)completion;
+- (void)configWithAppKey:(NSString *)appKey;
 
+- (void)authenticateWithCompletion:(NCWeiboAuthCompletionBlock)completion andCancellation:(NCWeiboAuthCancellationBlock)cancellation;
+- (BOOL)tryToAuthWithSavedInfoAndCompletion:(NCWeiboAuthCompletionBlock)completion;
 - (BOOL)isAuthenticated;
 - (void)logOut;
 
-@end
+- (BOOL)handleOpenURL:(NSURL *)url;
 
-extern BOOL SinaWeiboIsDeviceIPad();
+@end

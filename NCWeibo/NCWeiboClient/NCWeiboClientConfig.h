@@ -1,5 +1,5 @@
 //
-//  WeiboOAuth2Config.h
+//  NCWeiboClientConfig.h
 //  NCWeibo
 //
 //  Created by nickcheng on 13-3-28.
@@ -12,8 +12,9 @@
 #define NCWEIBO_APPAUTHURL_IPAD @"sinaweibohdsso://login"
 #define NCWEIBO_ACCESSTOKENBASEURL @"https://api.weibo.com/oauth2"
 #define NCWEIBO_ACCESSTOKENURL @"https://api.weibo.com/oauth2/access_token"
-#define NCWEIBO_ERRORDOMAIN_OAUTH2 @"com.ncweibo.OAuth2"
+#define NCWEIBO_ERRORDOMAIN_GENERAL @"com.ncweibo.general"
 #define NCWEIBO_ERRORDOMAIN_API @"com.ncweibo.api"
+#define NCWEIBO_ERRORDOMAIN_WEIBOSDK @"com.ncweibo.weibosdk"
 #define NCWEIBO_KEYCHAINSERVICE @"com.ncweibo"
 #define NCWEIBO_KEYCHAINACCOUNT @"com.ncweibo"
 #define NCWEIBO_USERAGENT @"NCWeibo"

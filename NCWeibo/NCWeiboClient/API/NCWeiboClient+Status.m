@@ -12,11 +12,11 @@
 @implementation NCWeiboClient (Status)
 
 - (void)createStatusWithText:(NSString *)text andImage:(UIImage *)image completion:(NCWeiboClientCompletionBlock)completionHandler {
-  if (!image) {
-    [self createTextStatusWithText:text completion:completionHandler];
-  } else {
-    [self createImageStatusWithImage:image andText:text completion:completionHandler];
-  }
+    if (!image) {
+        [self createTextStatusWithText:text completion:completionHandler];
+    } else {
+        [self createImageStatusWithImage:image andText:text completion:completionHandler];
+    }
 }
 
 - (void)createTextStatusWithText:(NSString *)text completion:(NCWeiboClientCompletionBlock)completionHandler {

@@ -2,8 +2,6 @@ target "Example" do
     
 pod 'SAMKeychain'
 pod 'MBProgressHUD'
-pod 'AFNetworking'
-pod 'AFNetworkActivityLogger'
 pod "WeiboSDK", :git => "https://github.com/sinaweibosdk/weibo_ios_sdk.git" 
 
 end
