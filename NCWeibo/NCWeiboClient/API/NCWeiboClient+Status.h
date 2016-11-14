@@ -8,6 +8,7 @@
 
 #import "NCWeiboClient+HandlerBlocks.h"
 
+
 @interface NCWeiboClient (Status)
 
 - (void)createStatusWithText:(NSString *)text andImage:(UIImage *)image completion:(NCWeiboClientCompletionBlock)completionHandler;

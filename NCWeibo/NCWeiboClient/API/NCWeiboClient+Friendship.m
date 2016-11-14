@@ -10,66 +10,75 @@
 #import "NCWeiboUser.h"
 #import "NCWeiboClientConfig.h"
 #import "NCWeiboClient+User.h"
+#import "WeiboSDK.h"
+
 
 @implementation NCWeiboClient (Friendship)
 
 - (void)fetchFollowingForUser:(NCWeiboUser *)user completion:(NCWeiboClientCompletionBlock)completionHandler {
-  if (user == nil) {
-    [self failureHandlerForClientHandler:completionHandler];
-    return;
-  }
-  
-  //
-  [self doAuthBeforeCallAPI:^{
-    //
-    NSInteger followingCount = user.friendsCount;
-    NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
-    resultDict[@"counter"] = @0;
-    resultDict[@"array"] = [[NSMutableArray alloc] init];
-    NSInteger cursor = 0;
+    if (user == nil) {
+        if (completionHandler) {
+            NSError *error = [NSError
+                errorWithDomain:NCWEIBO_ERRORDOMAIN_API
+                code:400
+                userInfo:@{
+                    NSLocalizedDescriptionKey:@"Don't have user info."
+                }];
+            [self processRequestCompletion:nil result:nil error:error handler:completionHandler];
+        }
+        return;
+    }
     
     //
-    dispatch_queue_t fetchqueue = dispatch_queue_create("com.nxmix.nextday.fetchfollowing", NULL);
-    while (cursor < followingCount) {
-      NSDictionary *params = @{
-                               @"uid": [NSNumber numberWithDouble:user.userID.doubleValue],
-                               @"count": [NSNumber numberWithInt:NCWEIBO_PAGESIZE],
-                               @"cursor": [NSNumber numberWithInteger:cursor],
-                               };
-      dispatch_async(fetchqueue, ^{
-        [self GET:@"friendships/friends.json"
-           parameters:params
-              success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSDictionary *jsonDict = responseObject;
-                
-                //
-                for (NSDictionary *dict in jsonDict[@"users"]) {
-                  NCWeiboUser *user = [[NCWeiboUser alloc] initWithJSONDict:dict];
-                  [resultDict[@"array"] addObject:user];
-                }
-                resultDict[@"counter"] = [NSNumber numberWithInteger:[resultDict[@"counter"] integerValue] - 1];
-                
-                //
-                if ([resultDict[@"counter"] integerValue] <= 0)
-                  [self processSuccessHandlerWithRequestOperation:task
-                                                andResponseObject:resultDict[@"array"]
-                                                       andHandler:completionHandler];
-              }
-              failure:[self failureHandlerForClientHandler:completionHandler]];
-      });
-      
-      //
-      resultDict[@"counter"] = [NSNumber numberWithInteger:[resultDict[@"counter"] integerValue] + 1];
-      cursor += NCWEIBO_PAGESIZE;
-    }
-  } andAuthErrorProcess:completionHandler];
+    [self doAuthBeforeCallAPI:^{
+        NSOperationQueue *fetchQueue = [[NSOperationQueue alloc] init];
+        fetchQueue.maxConcurrentOperationCount =1;
+        
+        NSMutableArray *resultArray = [[NSMutableArray alloc] init];
+        
+        NSInteger followingCount = user.friendsCount;
+        NSInteger cursor = 0;
+        
+        while (cursor < followingCount) {
+            // Doc: http://open.weibo.com/wiki/2/friendships/friends/en .
+            NSDictionary *extraParaDict = @{
+                                            @"cursor": @(cursor),
+                                            @"count": @(NCWEIBO_PAGESIZE),
+                                            };
+            
+            [WBHttpRequest
+                requestForFriendsListOfUser:user.userID
+                withAccessToken:self.accessToken
+                andOtherProperties:extraParaDict
+                queue:fetchQueue
+                withCompletionHandler:^(WBHttpRequest *httpRequest, id result, NSError *error) {
+                    if (error) {
+                        //
+                        return;
+                    }
+                    
+                    NSDictionary *resultDict = result;
+                    for (NSDictionary *dict in resultDict[@"users"]) {
+                        NCWeiboUser *user = [[NCWeiboUser alloc] initWithJSONDict:dict];
+                        [resultArray addObject:user];
+                    }
+                    
+                    if ([resultDict[@"next_cursor"] integerValue] <= 0) {
+                        [self processRequestCompletion:httpRequest result:resultDict error:nil handler:completionHandler];
+                    }
+                }];
+            
+            //
+            cursor += NCWEIBO_PAGESIZE;
+        }
+    } andAuthErrorProcess:completionHandler];
 }
 
 - (void)fetchFollowingForUserID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler {
-  [self fetchUserWithID:userID completion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-    NCWeiboUser *user = responseObject;
-    [self fetchFollowingForUser:user completion:completionHandler];
-  }];
+    [self fetchUserWithID:userID completion:^(id responseObject, NSError *error) {
+        NCWeiboUser *user = responseObject;
+        [self fetchFollowingForUser:user completion:completionHandler];
+    }];
 }
 
 @end

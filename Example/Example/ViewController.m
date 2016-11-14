@@ -61,14 +61,14 @@
         NCWeiboUser *user = authentication.user;
         [[NCWeiboClient sharedClient]
             fetchFollowingForUser:user
-            completion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+            completion:^(id responseObject, NSError *error) {
                 NSLog(@"result count: %lu", (unsigned long)[(NSArray *)responseObject count]);
             }];
     } andCancellation:nil];
 }
 
 - (IBAction)getUserInfoTapped:(id)sender {
-    [[NCWeiboClient sharedClient] fetchCurrentUserWithCompletion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+    [[NCWeiboClient sharedClient] fetchCurrentUserWithCompletion:^(id responseObject, NSError *error) {
         //
         NCWeiboUser *user = responseObject;
         NSLog(@"responseObject: %@", user);
@@ -80,7 +80,7 @@
 }
 
 - (IBAction)followTapped:(id)sender {
-  [[NCWeiboClient sharedClient] followUserWithID:@"2566997827" completion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+  [[NCWeiboClient sharedClient] followUserWithID:@"2566997827" completion:^(id responseObject, NSError *error) {
     //
     if (error) {
       NSLog(@"Follow failed. Error:%@", error);
@@ -95,7 +95,7 @@
   //
   NSString *c = self.content.text;
   [[NCWeiboClient sharedClient] createStatusWithText:c andImage:[UIImage imageNamed:@"avator"]
-                                          completion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+                                          completion:^(id responseObject, NSError *error) {
                                             //
                                             if (error)
                                               NSLog(@"Post status failed. Error:%@", error);
@@ -109,7 +109,7 @@
   NSString *c = self.content.text;
   [[NCWeiboClient sharedClient] createStatusWithText:c
                                             andImage:nil
-                                          completion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+                                          completion:^(id responseObject, NSError *error) {
                                           //
                                           if (error)
                                             NSLog(@"Post status failed. Error:%@", error);

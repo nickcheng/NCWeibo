@@ -27,23 +27,22 @@
     }
 }
 
-- (void)doAuthBeforeCallAPI:(APIHandlerBlock)apiHandler andAuthErrorProcess:(NCWeiboClientCompletionBlock)completionHandler {
+- (void)doAuthBeforeCallAPI:(APIHandlerBlock)apiHandler andAuthErrorProcess:(NCWeiboClientCompletionBlock)errorHandler {
     if (!self.isAuthenticated) {
         self.originalAPICallBlock = apiHandler;
         if (self.authentication && self.authViewController) {
             [self authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
                 if (success) {
-                    if (apiHandler != nil)
-                        apiHandler();
+                    if (apiHandler) apiHandler();
                 } else {
                     NCWeiboErrorResponse *errorResponse = [[NCWeiboErrorResponse alloc] initWithJson:error.userInfo[NSLocalizedRecoverySuggestionErrorKey]];
-                    completionHandler(nil, errorResponse, error);
+                    errorHandler(errorResponse, error);
                 }
             } andCancellation:nil]; // If you need to do sth in cancellation, use authenticateWithCompletion yourself.
         } else {
-            if (completionHandler != nil) {
-                NSError *error = [NSError errorWithDomain:NCWEIBO_ERRORDOMAIN_OAUTH2 code:400 userInfo:@{NSLocalizedDescriptionKey:@"NCWeibo.Auth.NoAuthInfo"}];
-                completionHandler(nil, nil, error);
+            if (errorHandler) {
+                NSError *error = [NSError errorWithDomain:NCWEIBO_ERRORDOMAIN_GENERAL code:400 userInfo:@{NSLocalizedDescriptionKey:@"NCWeibo.Auth.NoAuthInfo"}];
+                errorHandler(nil, error);
             }
         }
     } else {

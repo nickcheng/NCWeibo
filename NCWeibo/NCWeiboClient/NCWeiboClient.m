@@ -8,7 +8,6 @@
 
 #import "NCWeiboClient.h"
 #import "NCWeiboClientConfig.h"
-#import "NCWeiboWebAuthViewController.h"
 #import "NCWeiboAuthentication.h"
 #import "SAMKeychain.h"
 #import "NCWeiboClient+User.h"
@@ -105,7 +104,7 @@
 - (BOOL)tryToAuthWithSavedInfoAndCompletion:(NCWeiboAuthCompletionBlock)completion {
     if ([self savedAuthDataIsWorking]) {
         NCLogInfo(@"Got saved auth data");
-        [self fetchCurrentUserWithCompletion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        [self fetchCurrentUserWithCompletion:^(id responseObject, NSError *error) {
             // Handle error
             if (error != nil) {
                 NCLogError(@"Fetch current user error: %@", error);
@@ -144,7 +143,7 @@
         self.authentication.userID = userID;
         self.accessToken = accessToken;
         [self storeAuthData];
-        [self fetchCurrentUserWithCompletion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        [self fetchCurrentUserWithCompletion:^(id responseObject, NSError *error) {
             self.authentication.user = responseObject;
             
             // Completion

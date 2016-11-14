@@ -24,15 +24,15 @@
 - (void)createTextStatusWithText:(NSString *)text completion:(NCWeiboClientCompletionBlock)completionHandler {
     [self doAuthBeforeCallAPI:^{
         [WBHttpRequest
-         requestForShareAStatus:text
-         contatinsAPicture:nil
-         orPictureUrl:nil
-         withAccessToken:self.accessToken
-         andOtherProperties:nil
-         queue:nil
-         withCompletionHandler:^(WBHttpRequest *httpRequest, id result, NSError *error) {
-             [self processRequestCompletion:httpRequest result:result error:error handler:completionHandler];
-         }];
+            requestForShareAStatus:text
+            contatinsAPicture:nil
+            orPictureUrl:nil
+            withAccessToken:self.accessToken
+            andOtherProperties:nil
+            queue:nil
+            withCompletionHandler:^(WBHttpRequest *httpRequest, id result, NSError *error) {
+                [self processRequestCompletion:httpRequest result:result error:error handler:completionHandler];
+            }];
     } andAuthErrorProcess:completionHandler];
 }
 
@@ -43,15 +43,15 @@
         
         //
         [WBHttpRequest
-         requestForShareAStatus:text
-         contatinsAPicture:imageObject
-         orPictureUrl:nil
-         withAccessToken:self.accessToken
-         andOtherProperties:nil
-         queue:nil
-         withCompletionHandler:^(WBHttpRequest *httpRequest, id result, NSError *error) {
-             [self processRequestCompletion:httpRequest result:result error:error handler:completionHandler];
-         }];
+            requestForShareAStatus:text
+            contatinsAPicture:imageObject
+            orPictureUrl:nil
+            withAccessToken:self.accessToken
+            andOtherProperties:nil
+            queue:nil
+            withCompletionHandler:^(WBHttpRequest *httpRequest, id result, NSError *error) {
+                [self processRequestCompletion:httpRequest result:result error:error handler:completionHandler];
+            }];
     } andAuthErrorProcess:completionHandler];
 }
 
