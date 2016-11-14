@@ -8,6 +8,7 @@
 
 #import "NCWeiboClient+HandlerBlocks.h"
 
+
 @class NCWeiboUser;
 
 @interface NCWeiboClient (User)

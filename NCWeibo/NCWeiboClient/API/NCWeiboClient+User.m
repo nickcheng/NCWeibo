@@ -9,6 +9,8 @@
 #import "NCWeiboClient+User.h"
 #import "NCWeiboAuthentication.h"
 #import "NCWeiboUser.h"
+#import "WeiboSDK.h"
+
 
 @implementation NCWeiboClient (User)
 
@@ -19,56 +21,62 @@
 }
 
 - (void)fetchUserWithID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler {
-  [self doAuthBeforeCallAPI:^{
-    NSDictionary *params = @{
-                             @"uid": userID
-                             };
-    [self GET:@"users/show.json"
-       parameters:params
-          success:^(NSURLSessionDataTask *task, id responseObject) {
-             // make user and replace responseObject
-            NCWeiboUser *user = [[NCWeiboUser alloc] initWithJSONDict:responseObject];
-            [self processSuccessHandlerWithRequestOperation:task andResponseObject:user andHandler:completionHandler];
-           }
-           failure:[self failureHandlerForClientHandler:completionHandler]];
-  } andAuthErrorProcess:completionHandler];
+    [self doAuthBeforeCallAPI:^{
+        [WBHttpRequest
+            requestForUserProfile:userID
+            withAccessToken:self.accessToken
+            andOtherProperties:nil
+            queue:nil
+            withCompletionHandler:^(WBHttpRequest *httpRequest, id result, NSError *error) {
+                if (error) {
+                    [self processRequestCompletion:nil result:nil error:error handler:completionHandler];
+                    return;
+                }
+                
+                NCWeiboUser *user = [[NCWeiboUser alloc] initWithJSONDict:result];
+                [self processRequestCompletion:httpRequest result:user error:nil handler:completionHandler];
+            }];
+    } andAuthErrorProcess:completionHandler];
 }
 
 - (void)fetchUserWithName:(NSString *)screenName completion:(NCWeiboClientCompletionBlock)completionHandler {
-  [self doAuthBeforeCallAPI:^{
     NSDictionary *params = @{
                              @"screen_name": screenName
                              };
-    [self GET:@"users/show.json"
-   parameters:params
-      success:^(NSURLSessionDataTask *task, id responseObject) {
-        // make user and replace responseObject
-        NCWeiboUser *user = [[NCWeiboUser alloc] initWithJSONDict:responseObject];
-        [self processSuccessHandlerWithRequestOperation:task andResponseObject:user andHandler:completionHandler];
-      }
-      failure:[self failureHandlerForClientHandler:completionHandler]];
-  } andAuthErrorProcess:completionHandler];
+    [self doAuthBeforeCallAPI:^{
+        [WBHttpRequest
+            requestForUserProfile:nil
+            withAccessToken:self.accessToken
+            andOtherProperties:params
+            queue:nil
+            withCompletionHandler:^(WBHttpRequest *httpRequest, id result, NSError *error) {
+                if (error) {
+                    [self processRequestCompletion:nil result:nil error:error handler:completionHandler];
+                    return;
+                }
+                
+                NCWeiboUser *user = [[NCWeiboUser alloc] initWithJSONDict:result];
+                [self processRequestCompletion:httpRequest result:user error:nil handler:completionHandler];
+            }];
+    } andAuthErrorProcess:completionHandler];
 }
 
-//- (void)fetchUsersWithIDs:(NSArray *)userIDs completion:(NCWeiboClientCompletionBlock)completionHandler {
-//  
-//}
-
 - (void)followUser:(NCWeiboUser *)user completion:(NCWeiboClientCompletionBlock)completionHandler {
-  return [self followUserWithID:user.userID completion:completionHandler];
+    return [self followUserWithID:user.userID completion:completionHandler];
 }
 
 - (void)followUserWithID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler {
-  //
-  [self doAuthBeforeCallAPI:^{
-    NSDictionary *params = @{
-                             @"uid": userID
-                             };
-    [self POST:@"friendships/create.json"
-        parameters:params
-           success:[self successHandlerForClientHandler:completionHandler]
-           failure:[self failureHandlerForClientHandler:completionHandler]];
-  } andAuthErrorProcess:completionHandler];
+    //
+    [self doAuthBeforeCallAPI:^{
+        [WBHttpRequest
+            requestForFollowAUser:userID
+            withAccessToken:self.accessToken
+            andOtherProperties:nil
+            queue:nil
+            withCompletionHandler:^(WBHttpRequest *httpRequest, id result, NSError *error) {
+                [self processRequestCompletion:httpRequest result:result error:error handler:completionHandler];
+            }];
+    } andAuthErrorProcess:completionHandler];
 }
 
 @end

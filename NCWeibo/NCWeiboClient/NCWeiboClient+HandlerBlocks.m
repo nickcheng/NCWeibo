@@ -30,7 +30,7 @@
 - (void)doAuthBeforeCallAPI:(APIHandlerBlock)apiHandler andAuthErrorProcess:(NCWeiboClientCompletionBlock)errorHandler {
     if (!self.isAuthenticated) {
         self.originalAPICallBlock = apiHandler;
-        if (self.authentication && self.authViewController) {
+        if (self.authentication) {
             [self authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
                 if (success) {
                     if (apiHandler) apiHandler();

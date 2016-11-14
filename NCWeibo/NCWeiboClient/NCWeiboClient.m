@@ -73,9 +73,9 @@
     
     //
     WBAuthorizeRequest *request = [WBAuthorizeRequest request];
-    request.redirectURI = @"http://";
+    request.redirectURI = @"http://www.sina.com";
     request.scope = @"all";
-    request.userInfo = @{};
+//    request.userInfo = @{};
     [WeiboSDK sendRequest:request];
 }
 

@@ -30,7 +30,7 @@
     [super viewDidLoad];
     
     //
-    [[NCWeiboClient sharedClient] configWithAppKey:@"3402471288"];
+    [[NCWeiboClient sharedClient] configWithAppKey:@"2045436852"];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
@@ -72,6 +72,9 @@
         //
         NCWeiboUser *user = responseObject;
         NSLog(@"responseObject: %@", user);
+        
+        if (error)
+            NSLog(@"%@", error);
     }];
 }
 

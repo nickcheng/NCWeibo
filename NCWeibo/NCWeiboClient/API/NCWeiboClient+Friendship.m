@@ -17,15 +17,13 @@
 
 - (void)fetchFollowingForUser:(NCWeiboUser *)user completion:(NCWeiboClientCompletionBlock)completionHandler {
     if (user == nil) {
-        if (completionHandler) {
-            NSError *error = [NSError
-                errorWithDomain:NCWEIBO_ERRORDOMAIN_API
-                code:400
-                userInfo:@{
-                    NSLocalizedDescriptionKey:@"Don't have user info."
-                }];
-            [self processRequestCompletion:nil result:nil error:error handler:completionHandler];
-        }
+        NSError *error = [NSError
+            errorWithDomain:NCWEIBO_ERRORDOMAIN_API
+            code:400
+            userInfo:@{
+                NSLocalizedDescriptionKey:@"Don't have user info."
+            }];
+        [self processRequestCompletion:nil result:nil error:error handler:completionHandler];
         return;
     }
     
@@ -53,7 +51,7 @@
                 queue:fetchQueue
                 withCompletionHandler:^(WBHttpRequest *httpRequest, id result, NSError *error) {
                     if (error) {
-                        //
+                        [self processRequestCompletion:nil result:nil error:error handler:completionHandler];
                         return;
                     }
                     
