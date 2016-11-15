@@ -66,6 +66,7 @@
 		403C47D9170C212900067625 /* avator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avator.png; sourceTree = "<group>"; };
 		4081531B171E90C80003B2E3 /* NCWeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWeiboUser.h; sourceTree = "<group>"; };
 		4081531C171E90C80003B2E3 /* NCWeiboUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWeiboUser.m; sourceTree = "<group>"; };
+		40AD07E11DDB3CCA0028E6AA /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
 		40D7D808171A8EFA00435F6F /* NCWeiboErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWeiboErrorResponse.h; sourceTree = "<group>"; };
 		40D7D809171A8EFA00435F6F /* NCWeiboErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWeiboErrorResponse.m; sourceTree = "<group>"; };
 		40E05932194AE2F900B38E52 /* NCWeiboClient+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCWeiboClient+User.h"; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 		40398F921702EF2F004F0BD7 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				40AD07E11DDB3CCA0028E6AA /* Example.entitlements */,
 				40398FAF1702EF7F004F0BD7 /* NCWeibo */,
 				40398F9B1702EF2F004F0BD7 /* AppDelegate.h */,
 				40398F9C1702EF2F004F0BD7 /* AppDelegate.m */,
@@ -246,6 +248,15 @@
 			attributes = {
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = NC;
+				TargetAttributes = {
+					40398F881702EF2F004F0BD7 = {
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = 40398F841702EF2F004F0BD7 /* Build configuration list for PBXProject "Example" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -448,12 +459,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3459A22BF69F960E61F47210 /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Example/Example.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: nick cheng (YC498C6U8M)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nickcheng.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickcheng.ncweibo.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4052AD43-1E7E-4000-BE28-C723A811CEEA";
 				WRAPPER_EXTENSION = app;
@@ -464,11 +476,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A57C132A9C4F38C5C0E5F2E8 /* Pods-Example.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Example/Example.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "Example/Example-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nickcheng.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nickcheng.ncweibo.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

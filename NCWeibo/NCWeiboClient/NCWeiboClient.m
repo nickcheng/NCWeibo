@@ -73,9 +73,9 @@
     
     //
     WBAuthorizeRequest *request = [WBAuthorizeRequest request];
-    request.redirectURI = @"http://www.sina.com";
+    request.redirectURI = @"http://";
     request.scope = @"all";
-//    request.userInfo = @{};
+//    request.userInfo = nil;
     [WeiboSDK sendRequest:request];
 }
 
@@ -173,7 +173,7 @@
     NSDictionary *authData = [defaults objectForKey:@"NCWeiboAuthData"];
     if (authData[@"UserID"] && authData[@"ExpirationDate"] && authData[@"AppKey"]) {
         NSString *appkey = authData[@"AppKey"];
-        if (![appkey isEqualToString:self.authentication.appKey]) {
+        if (![appkey isEqualToString:self.appKey]) {
             [self clearAuthData];
             return NO;
         }
@@ -188,8 +188,20 @@
         SAMKeychainQuery *query = [[SAMKeychainQuery alloc] init];
         query.service = NCWEIBO_KEYCHAINSERVICE;
         query.account = NCWEIBO_KEYCHAINACCOUNT;
-        [query fetch:nil];
+        
+        NSError *error = nil;
+        [query fetch:&error];
+        if (error) {
+            NCLogError(@"Fetch token error: %@", error);
+            [self clearAuthData];
+            return NO;
+        }
+        
         NSString *token = query.password;
+        if (token == nil || token.length <= 0) {
+            [self clearAuthData];
+            return NO;
+        }
         self.authentication.accessToken = token;
         self.authentication.expirationDate = expirationDate;
         self.authentication.userID = userID;
@@ -208,9 +220,14 @@
     SAMKeychainQuery *query = [[SAMKeychainQuery alloc] init];
     query.service = NCWEIBO_KEYCHAINSERVICE;
     query.account = NCWEIBO_KEYCHAINACCOUNT;
-    [query deleteItem:nil];
     
-    NCLogInfo(@"Auth data deleted.");
+    NSError *error = nil;
+    [query deleteItem:&error];
+    if (error) {
+        NCLogError(@"Delete token error: %@", error);
+    } else {
+        NCLogInfo(@"Auth data deleted.");
+    }
 }
 
 - (void)storeAuthData {
@@ -218,7 +235,7 @@
     NSDictionary *authData = @{
                                @"UserID": self.authentication.userID,
                                @"ExpirationDate": self.authentication.expirationDate,
-                               @"AppKey": self.authentication.appKey
+                               @"AppKey": self.appKey
                                };
     [[NSUserDefaults standardUserDefaults] setObject:authData forKey:@"NCWeiboAuthData"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -228,40 +245,14 @@
     query.service = NCWEIBO_KEYCHAINSERVICE;
     query.account = NCWEIBO_KEYCHAINACCOUNT;
     query.password = self.accessToken;
-    [query save:nil];
-    
-    NCLogInfo(@"Auth data saved.");
-}
 
-#pragma mark -
-#pragma mark 
-
-- (NSString *)serializeURL:(NSString *)baseURL params:(NSDictionary *)params httpMethod:(NSString *)httpMethod {
-    NSURL* parsedURL = [NSURL URLWithString:baseURL];
-    NSString* queryPrefix = parsedURL.query ? @"&" : @"?";
-    
-    NSMutableArray* pairs = [NSMutableArray array];
-    for (NSString* key in [params keyEnumerator]) {
-        if (([[params objectForKey:key] isKindOfClass:[UIImage class]])
-            ||([[params objectForKey:key] isKindOfClass:[NSData class]])) {
-            if ([httpMethod isEqualToString:@"GET"]) {
-                NCLogInfo(@"can not use GET to upload a file");
-            }
-            continue;
-        }
-        
-        NSString* escaped_value = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(
-                                                                                                        NULL, /* allocator */
-                                                                                                        (__bridge CFStringRef)[params objectForKey:key],
-                                                                                                        NULL, /* charactersToLeaveUnescaped */
-                                                                                                        CFSTR("!*'();:@&=+$,/?%#[]"),
-                                                                                                        kCFStringEncodingUTF8);
-        
-        [pairs addObject:[NSString stringWithFormat:@"%@=%@", key, escaped_value]];
+    NSError *error = nil;
+    [query save:&error];
+    if (error) {
+        NCLogError(@"Save token error: %@", error);
+    } else {
+        NCLogInfo(@"Auth data saved.");
     }
-    NSString* query = [pairs componentsJoinedByString:@"&"];
-    
-    return [NSString stringWithFormat:@"%@%@%@", baseURL, queryPrefix, query];
 }
 
 #pragma mark -

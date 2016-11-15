@@ -33,7 +33,7 @@
                     return;
                 }
                 
-                NCWeiboUser *user = [[NCWeiboUser alloc] initWithJSONDict:result];
+                NCWeiboUser *user = result;
                 [self processRequestCompletion:httpRequest result:user error:nil handler:completionHandler];
             }];
     } andAuthErrorProcess:completionHandler];
@@ -55,7 +55,7 @@
                     return;
                 }
                 
-                NCWeiboUser *user = [[NCWeiboUser alloc] initWithJSONDict:result];
+                NCWeiboUser *user = result;
                 [self processRequestCompletion:httpRequest result:user error:nil handler:completionHandler];
             }];
     } andAuthErrorProcess:completionHandler];

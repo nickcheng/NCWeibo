@@ -34,14 +34,14 @@
         
         NSMutableArray *resultArray = [[NSMutableArray alloc] init];
         
-        NSInteger followingCount = user.friendsCount;
+        NSInteger followingCount = [user.friendsCount integerValue];
         NSInteger cursor = 0;
         
         while (cursor < followingCount) {
             // Doc: http://open.weibo.com/wiki/2/friendships/friends/en .
             NSDictionary *extraParaDict = @{
-                                            @"cursor": @(cursor),
-                                            @"count": @(NCWEIBO_PAGESIZE),
+                                            @"cursor": [NSString stringWithFormat:@"%ld", (long)cursor],
+                                            @"count": [NSString stringWithFormat:@"%ld", (long)NCWEIBO_PAGESIZE],
                                             };
             
             [WBHttpRequest
@@ -56,13 +56,12 @@
                     }
                     
                     NSDictionary *resultDict = result;
-                    for (NSDictionary *dict in resultDict[@"users"]) {
-                        NCWeiboUser *user = [[NCWeiboUser alloc] initWithJSONDict:dict];
+                    for (NCWeiboUser *user in resultDict[@"users"]) {
                         [resultArray addObject:user];
                     }
                     
                     if ([resultDict[@"next_cursor"] integerValue] <= 0) {
-                        [self processRequestCompletion:httpRequest result:resultDict error:nil handler:completionHandler];
+                        [self processRequestCompletion:httpRequest result:resultArray error:nil handler:completionHandler];
                     }
                 }];
             

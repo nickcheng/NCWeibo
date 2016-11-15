@@ -30,7 +30,7 @@
     [super viewDidLoad];
     
     //
-    [[NCWeiboClient sharedClient] configWithAppKey:@"2045436852"];
+    [[NCWeiboClient sharedClient] configWithAppKey:@"260591714"];
 }
 
 -(void)viewDidAppear:(BOOL)animated {

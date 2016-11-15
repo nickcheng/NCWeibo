@@ -10,8 +10,6 @@
 
 @interface NCWeiboAuthentication : NSObject
 
-@property (nonatomic, strong) NSString *appKey;
-
 @property (nonatomic, strong) NSString *accessToken;
 @property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) NSDate *expirationDate;
