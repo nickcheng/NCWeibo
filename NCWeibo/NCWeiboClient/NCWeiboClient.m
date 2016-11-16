@@ -14,6 +14,9 @@
 #import "WeiboSDK.h"
 
 
+NSString * const kNCWeiboRedirectURI = @"http://";
+NSString * const kNCWeiboScope = @"all";
+
 @interface NCWeiboClient () <WeiboSDKDelegate>
 
 @property (nonatomic, readwrite) NSString *appKey;
@@ -21,10 +24,6 @@
 @end
 
 @implementation NCWeiboClient {
-    BOOL _ssoLoggingIn;
-    NSString *_accessToken;
-    NCWeiboAuthentication *_authentication;
-    UIViewController *_authViewController;
     NCWeiboAuthCancellationBlock _authCancellationBlock;
     NCWeiboAuthCompletionBlock _authCompletionBlock;
 }
@@ -73,8 +72,8 @@
     
     //
     WBAuthorizeRequest *request = [WBAuthorizeRequest request];
-    request.redirectURI = @"http://";
-    request.scope = @"all";
+    request.redirectURI = kNCWeiboRedirectURI;
+    request.scope = kNCWeiboScope;
 //    request.userInfo = nil;
     [WeiboSDK sendRequest:request];
 }

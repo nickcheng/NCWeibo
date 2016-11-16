@@ -83,42 +83,42 @@
 }
 
 - (IBAction)followTapped:(id)sender {
-  [[NCWeiboClient sharedClient] followUserWithID:@"2566997827" completion:^(id responseObject, NSError *error) {
-    //
-    if (error) {
-      NSLog(@"Follow failed. Error:%@", error);
-      NSLog(@"User: %@", [NCWeiboClient sharedClient].authentication.user);
-    }
-    else
-      NSLog(@"Follow succeed. User: %@", [NCWeiboClient sharedClient].authentication.user);
-  }];
+    [[NCWeiboClient sharedClient] followUserWithID:@"2566997827" completion:^(id responseObject, NSError *error) {
+        //
+        if (error) {
+            NSLog(@"Follow failed. Error:%@", error);
+            NSLog(@"User: %@", [NCWeiboClient sharedClient].authentication.user);
+        } else {
+            NSLog(@"Follow succeed. User: %@", [NCWeiboClient sharedClient].authentication.user);
+        }
+    }];
 }
 
 - (IBAction)sendImageTapped:(id)sender {
-  //
-  NSString *c = self.content.text;
-  [[NCWeiboClient sharedClient] createStatusWithText:c andImage:[UIImage imageNamed:@"avator"]
-                                          completion:^(id responseObject, NSError *error) {
-                                            //
-                                            if (error)
-                                              NSLog(@"Post status failed. Error:%@", error);
-                                            else
-                                              NSLog(@"Post succeed.");
-                                          }];
+    //
+    NSString *c = self.content.text;
+    [[NCWeiboClient sharedClient] createStatusWithText:c andImage:[UIImage imageNamed:@"avator"]
+                                            completion:^(id responseObject, NSError *error) {
+                                                //
+                                                if (error)
+                                                    NSLog(@"Post status failed. Error:%@", error);
+                                                else
+                                                    NSLog(@"Post succeed.");
+                                            }];
 }
 
 - (IBAction)sendTapped:(id)sender {  
-  //
-  NSString *c = self.content.text;
-  [[NCWeiboClient sharedClient] createStatusWithText:c
-                                            andImage:nil
-                                          completion:^(id responseObject, NSError *error) {
-                                          //
-                                          if (error)
-                                            NSLog(@"Post status failed. Error:%@", error);
-                                          else
-                                            NSLog(@"Post succeed.");
-                                        }];
+    //
+    NSString *c = self.content.text;
+    [[NCWeiboClient sharedClient] createStatusWithText:c
+                                              andImage:nil
+                                            completion:^(id responseObject, NSError *error) {
+                                                //
+                                                if (error)
+                                                    NSLog(@"Post status failed. Error:%@", error);
+                                                else
+                                                    NSLog(@"Post succeed.");
+                                            }];
 }
 
 @end
