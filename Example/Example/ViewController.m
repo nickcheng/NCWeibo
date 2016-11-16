@@ -21,127 +21,104 @@
 
 @end
 
-@implementation ViewController {
-  BOOL _authViewHasShown;
-}
+@implementation ViewController
 
-- (IBAction)getFollowingTapped:(id)sender {
-  [[NCWeiboClient sharedClient] authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
-    NCWeiboUser *user = authentication.user;
-    [[NCWeiboClient sharedClient] fetchFollowingForUser:user
-                                             completion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-                                               NSLog(@"result count: %d", [(NSArray *)responseObject count]);
-                                             }];
-  } andCancellation:nil];
-}
-
-- (IBAction)getUserInfoTapped:(id)sender {
-  [[NCWeiboClient sharedClient] fetchCurrentUserWithCompletion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-    //
-    NCWeiboUser *user = responseObject;
-    NSLog(@"responseObject: %@", user);
-  }];
-}
-
-- (IBAction)clearTapped:(id)sender {
-  [[NCWeiboClient sharedClient] logOut];
-}
-
-- (IBAction)followTapped:(id)sender {
-  [[NCWeiboClient sharedClient] followUserWithID:@"2566997827" completion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-    //
-    if (error) {
-      NSLog(@"Follow failed. Error:%@", error);
-      NSLog(@"User: %@", [NCWeiboClient sharedClient].authentication.user);
-    }
-    else
-      NSLog(@"Follow succeed. User: %@", [NCWeiboClient sharedClient].authentication.user);
-  }];
-}
-
-- (IBAction)sendImageTapped:(id)sender {
-  //
-  NSString *c = self.content.text;
-  [[NCWeiboClient sharedClient] createStatusWithText:c andImage:[UIImage imageNamed:@"avator"]
-                                          completion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-                                            //
-                                            if (error)
-                                              NSLog(@"Post status failed. Error:%@", error);
-                                            else
-                                              NSLog(@"Post succeed.");
-                                          }];
-}
-
-- (IBAction)sendTapped:(id)sender {  
-  //
-  NSString *c = self.content.text;
-  [[NCWeiboClient sharedClient] createStatusWithText:c
-                                            andImage:nil
-                                          completion:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
-                                          //
-                                          if (error)
-                                            NSLog(@"Post status failed. Error:%@", error);
-                                          else
-                                            NSLog(@"Post succeed.");
-                                        }];
-}
-
-- (void)doAuth {
-  [[NCWeiboClient sharedClient] authenticateForAppKey:@"3402471288"
-                                         andAppSecret:@"23eb634a581fe1c8d699d93c7718ca26"
-                                    andCallbackScheme:@"nextday://com.nxmix.nextday.login"
-                                    andViewController:self
-                                        andCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
-                                          //
-                                          if (success)
-                                            NSLog(@"Auth successed! Token: %@", authentication.accessToken);
-                                          else
-                                            NSLog(@"Auth failed! Error: %@", error);
-                                        }
-                                      andCancellation:^(NCWeiboAuthentication *authentication) {
-                                        //
-                                        NSLog(@"Auth cancelled!");
-                                      }];
-}
+#pragma mark -
+#pragma mark Life Cycle
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  
-  //
-  _authViewHasShown = NO;
-  
-  //
-  [[NCWeiboClient sharedClient] setAuthenticationInfo:@"3402471288" andAppSecret:@"23eb634a581fe1c8d699d93c7718ca26" andCallbackScheme:@"nextday://com.nxmix.nextday.login" andViewController:self];
+    [super viewDidLoad];
+    
+    //
+    [[NCWeiboClient sharedClient] configWithAppKey:@"260591714"];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
-  
-  //
-//  if (!_authViewHasShown) {
-//    _authViewHasShown = YES;
-//    [self doAuth];
-//  }
-  
-  [NCWeiboClient sharedClient].accessTokenExpiredHandler = ^(APIHandlerBlock apiHandler){
-    [[NCWeiboClient sharedClient] logOut];
-    [[NCWeiboClient sharedClient] authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
-      if (apiHandler)
-        apiHandler();
-    } andCancellation:nil];
-  };
-  [NCWeiboClient sharedClient].authSucceedHandler = ^(){
-    NSLog(@"Auth Succeed!");
-  };
+    [super viewDidAppear:animated];
+    
+    [NCWeiboClient sharedClient].accessTokenExpiredHandler = ^(APIHandlerBlock apiHandler){
+        [[NCWeiboClient sharedClient] logOut];
+        [[NCWeiboClient sharedClient] authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
+            if (apiHandler)
+                apiHandler();
+        } andCancellation:nil];
+    };
+    [NCWeiboClient sharedClient].authSucceedHandler = ^(){
+        NSLog(@"Auth Succeed!");
+    };
 }
 
 - (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidUnload {
-  [self setContent:nil];
-  [super viewDidUnload];
+#pragma mark -
+#pragma mark Events
+
+- (IBAction)getFollowingTapped:(id)sender {
+    [[NCWeiboClient sharedClient] authenticateWithCompletion:^(BOOL success, NCWeiboAuthentication *authentication, NSError *error) {
+        NCWeiboUser *user = authentication.user;
+        [[NCWeiboClient sharedClient]
+            fetchFollowingForUser:user
+            completion:^(id responseObject, NSError *error) {
+                NSLog(@"result count: %lu", (unsigned long)[(NSArray *)responseObject count]);
+            }];
+    } andCancellation:nil];
 }
+
+- (IBAction)getUserInfoTapped:(id)sender {
+    [[NCWeiboClient sharedClient] fetchCurrentUserWithCompletion:^(id responseObject, NSError *error) {
+        //
+        NCWeiboUser *user = responseObject;
+        NSLog(@"responseObject: %@", user);
+        
+        if (error)
+            NSLog(@"%@", error);
+    }];
+}
+
+- (IBAction)clearTapped:(id)sender {
+    [[NCWeiboClient sharedClient] logOut];
+}
+
+- (IBAction)followTapped:(id)sender {
+    [[NCWeiboClient sharedClient] followUserWithID:@"2566997827" completion:^(id responseObject, NSError *error) {
+        //
+        if (error) {
+            NSLog(@"Follow failed. Error:%@", error);
+            NSLog(@"User: %@", [NCWeiboClient sharedClient].authentication.user);
+        } else {
+            NSLog(@"Follow succeed. User: %@", [NCWeiboClient sharedClient].authentication.user);
+        }
+    }];
+}
+
+- (IBAction)sendImageTapped:(id)sender {
+    //
+    NSString *c = self.content.text;
+    [[NCWeiboClient sharedClient] createStatusWithText:c andImage:[UIImage imageNamed:@"avator"]
+                                            completion:^(id responseObject, NSError *error) {
+                                                //
+                                                if (error)
+                                                    NSLog(@"Post status failed. Error:%@", error);
+                                                else
+                                                    NSLog(@"Post succeed.");
+                                            }];
+}
+
+- (IBAction)sendTapped:(id)sender {  
+    //
+    NSString *c = self.content.text;
+    [[NCWeiboClient sharedClient] createStatusWithText:c
+                                              andImage:nil
+                                            completion:^(id responseObject, NSError *error) {
+                                                //
+                                                if (error)
+                                                    NSLog(@"Post status failed. Error:%@", error);
+                                                else
+                                                    NSLog(@"Post succeed.");
+                                            }];
+}
+
 @end
