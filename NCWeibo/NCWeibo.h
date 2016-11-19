@@ -13,7 +13,6 @@
 #import "NCWeiboClient.h"
 #import "NCWeiboClient+HandlerBlocks.h"
 #import "NCWeiboClientConfig.h"
-#import "NCWeiboWebAuthViewController.h"
 #import "NCWeiboClient+Friendship.h"
 #import "NCWeiboClient+Status.h"
 #import "NCWeiboClient+User.h"

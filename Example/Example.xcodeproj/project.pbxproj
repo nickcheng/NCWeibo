@@ -87,6 +87,7 @@
 		404CA8391DDF485E0087D994 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		404CA83B1DDF486D0087D994 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		404CA83D1DDF48860087D994 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		404CA8401DE086BA0087D994 /* NCWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWeibo.h; sourceTree = "<group>"; };
 		4081531B171E90C80003B2E3 /* NCWeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWeiboUser.h; sourceTree = "<group>"; };
 		4081531C171E90C80003B2E3 /* NCWeiboUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWeiboUser.m; sourceTree = "<group>"; };
 		40AD07E11DDB3CCA0028E6AA /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
@@ -195,6 +196,7 @@
 		40398FAF1702EF7F004F0BD7 /* NCWeibo */ = {
 			isa = PBXGroup;
 			children = (
+				404CA8401DE086BA0087D994 /* NCWeibo.h */,
 				403990191703CCF8004F0BD7 /* NCWeiboClient */,
 				403990181703CCF8004F0BD7 /* Model */,
 				40D7D808171A8EFA00435F6F /* NCWeiboErrorResponse.h */,
