@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		254360858901CA9942E547DF68DA5BE6 /* SAMKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = EC9BFA624C4A25FD7A9498CE4D093D4F /* SAMKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		372F03C4D50DC4C0ED858A757950EC25 /* SAMKeychain-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C59040F86AAF9AC113EA5FCA7D21E585 /* SAMKeychain-dummy.m */; };
-		4D2F42D96601D0787AB6FB88FAF35B48 /* SAMKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F04F9EA2BD20DCB83BB4B6515B537305 /* SAMKeychainQuery.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		254360858901CA9942E547DF68DA5BE6 /* SAMKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = 48ADE735418E23F2CC8C04F671134364 /* SAMKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		372F03C4D50DC4C0ED858A757950EC25 /* SAMKeychain-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A792C64531E0E1BDB513ED163E0DF02 /* SAMKeychain-dummy.m */; };
+		4D2F42D96601D0787AB6FB88FAF35B48 /* SAMKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DF4C29B09B5D606F6A2CB9B35D83A4 /* SAMKeychainQuery.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		5A4AFCB23FEA5BA53ED54B10CF31AA5D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD15069DBFFAF7E7CD48183E2D230C /* Security.framework */; };
 		9B7837C9C640DC7158F51802D988C72A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4690263E3C2DD3C24DEAC554FFBD486 /* Foundation.framework */; };
-		A158EB8F3B637A1A1D5AFBF4DC38D3A9 /* SAMKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = DB904914F3D8C37EFEE21B22FDCDD645 /* SAMKeychain.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A158EB8F3B637A1A1D5AFBF4DC38D3A9 /* SAMKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0995C228FC1B7D4142C5C1BBD937A92E /* SAMKeychain.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		B186096089085CC7D14D83DD42A54CE2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4690263E3C2DD3C24DEAC554FFBD486 /* Foundation.framework */; };
 		D60571FB4C8F461A664B5BAB34F30025 /* Pods-Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 853BB94042284CB4296D1239BE467FB0 /* Pods-Example-dummy.m */; };
-		FA6ACD883EA83BCB33BB465D6D303BAE /* SAMKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EE1B0044BC6F00CB044CFC0A869632C /* SAMKeychainQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA6ACD883EA83BCB33BB465D6D303BAE /* SAMKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = B43D4E91BB1404796F7F8F59DCF64C16 /* SAMKeychainQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,39 +29,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00C12579BF10DF48EE7742A21EA8B489 /* WBSDKBasicButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKBasicButton.h; path = libWeiboSDK/WBSDKBasicButton.h; sourceTree = "<group>"; };
+		0995C228FC1B7D4142C5C1BBD937A92E /* SAMKeychain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAMKeychain.m; path = Sources/SAMKeychain.m; sourceTree = "<group>"; };
 		0AECF4A22395C2FDE55673592687C1AB /* Pods-Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1F1A0D1DEBF441FC233908533CCA1317 /* libWeiboSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeiboSDK.a; path = libWeiboSDK/libWeiboSDK.a; sourceTree = "<group>"; };
-		213474A20304C331AB34A4A8A700CACD /* WBHttpRequest+WeiboUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboUser.h"; path = "libWeiboSDK/WBHttpRequest+WeiboUser.h"; sourceTree = "<group>"; };
-		2265FB0F9EA62AF9E49481BE5A6B7812 /* WeiboSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WeiboSDK.h; path = libWeiboSDK/WeiboSDK.h; sourceTree = "<group>"; };
-		2AAE3856A36B867CAC5E5BD853364EF4 /* WBHttpRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBHttpRequest.h; path = libWeiboSDK/WBHttpRequest.h; sourceTree = "<group>"; };
 		2C83BF6702F0C48A8D1C5A59935A2117 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		2EE1B0044BC6F00CB044CFC0A869632C /* SAMKeychainQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAMKeychainQuery.h; path = Sources/SAMKeychainQuery.h; sourceTree = "<group>"; };
-		3A2EA61C33F50E8039814F97AC9924D7 /* WBHttpRequest+WeiboToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboToken.h"; path = "libWeiboSDK/WBHttpRequest+WeiboToken.h"; sourceTree = "<group>"; };
-		4DE0BD175541818F0EFC1BFF781E56EA /* WeiboSDK+Statistics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WeiboSDK+Statistics.h"; path = "libWeiboSDK/WeiboSDK+Statistics.h"; sourceTree = "<group>"; };
-		541B8D94298CCA409DEF46A9E12E2A36 /* SAMKeychain-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SAMKeychain-prefix.pch"; sourceTree = "<group>"; };
+		477501630802C82B13D1242339B64D73 /* SAMKeychain-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SAMKeychain-prefix.pch"; sourceTree = "<group>"; };
+		48ADE735418E23F2CC8C04F671134364 /* SAMKeychain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAMKeychain.h; path = Sources/SAMKeychain.h; sourceTree = "<group>"; };
 		5AC126EEC71A1BC407FE1D9DB3984EF4 /* Pods-Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-frameworks.sh"; sourceTree = "<group>"; };
 		623CAF15CA1213C1C72261CFA7C66D97 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Example.a"; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		63DF6A5124E2BD2D12BE5E5CD3AE0630 /* WBHttpRequest+WeiboShare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboShare.h"; path = "libWeiboSDK/WBHttpRequest+WeiboShare.h"; sourceTree = "<group>"; };
-		6533570E0CE458D208D4DB11BE59A6A8 /* WBSDKCommentButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKCommentButton.h; path = libWeiboSDK/WBSDKCommentButton.h; sourceTree = "<group>"; };
-		67D726516397B33167DEB6B79F67C4B4 /* WeiboSDK.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = WeiboSDK.bundle; path = libWeiboSDK/WeiboSDK.bundle; sourceTree = "<group>"; };
-		71678C93B7639C6412ADF6B140D142DC /* WBSDKRelationshipButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKRelationshipButton.h; path = libWeiboSDK/WBSDKRelationshipButton.h; sourceTree = "<group>"; };
 		74D16BBB58D3D00FC3350B65437D5E18 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
-		75E68420915EBB4E81C7FFFF20199897 /* WeiboUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WeiboUser.h; path = libWeiboSDK/WeiboUser.h; sourceTree = "<group>"; };
 		7A17B2D7486AA2A9CFA43FE47668BC7C /* Pods-Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		84B5FDC4117A18641341331D97AAB326 /* SAMKeychain.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SAMKeychain.bundle; path = Support/SAMKeychain.bundle; sourceTree = "<group>"; };
 		853BB94042284CB4296D1239BE467FB0 /* Pods-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Example-dummy.m"; sourceTree = "<group>"; };
+		8A792C64531E0E1BDB513ED163E0DF02 /* SAMKeychain-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SAMKeychain-dummy.m"; sourceTree = "<group>"; };
+		92DF4C29B09B5D606F6A2CB9B35D83A4 /* SAMKeychainQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAMKeychainQuery.m; path = Sources/SAMKeychainQuery.m; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A9FF02A208E929D3B8CFF2C56ECA6361 /* SAMKeychain.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SAMKeychain.xcconfig; sourceTree = "<group>"; };
-		ABBC1B4D5C0F70581F57C22A094FA15D /* WBHttpRequest+WeiboGame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboGame.h"; path = "libWeiboSDK/WBHttpRequest+WeiboGame.h"; sourceTree = "<group>"; };
+		AE2B3B53C752F1E236FE6CBB71C0A7BC /* SAMKeychain.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SAMKeychain.xcconfig; sourceTree = "<group>"; };
+		B43D4E91BB1404796F7F8F59DCF64C16 /* SAMKeychainQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAMKeychainQuery.h; path = Sources/SAMKeychainQuery.h; sourceTree = "<group>"; };
 		B4690263E3C2DD3C24DEAC554FFBD486 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		C59040F86AAF9AC113EA5FCA7D21E585 /* SAMKeychain-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SAMKeychain-dummy.m"; sourceTree = "<group>"; };
 		C6E3D4A869A4034AC4D2D2194B92A7A0 /* Pods-Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-resources.sh"; sourceTree = "<group>"; };
 		CAFD15069DBFFAF7E7CD48183E2D230C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		D3BBDF07647E4FA04BF7B89E38CCA58A /* libSAMKeychain.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSAMKeychain.a; path = libSAMKeychain.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB904914F3D8C37EFEE21B22FDCDD645 /* SAMKeychain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAMKeychain.m; path = Sources/SAMKeychain.m; sourceTree = "<group>"; };
-		EC9BFA624C4A25FD7A9498CE4D093D4F /* SAMKeychain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAMKeychain.h; path = Sources/SAMKeychain.h; sourceTree = "<group>"; };
-		F04F9EA2BD20DCB83BB4B6515B537305 /* SAMKeychainQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAMKeychainQuery.m; path = Sources/SAMKeychainQuery.m; sourceTree = "<group>"; };
+		F9C24987F49BF813990DFE52B15DB773 /* SAMKeychain.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SAMKeychain.bundle; path = Support/SAMKeychain.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,15 +72,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		106E6B3861B8835DBA3B16EC73D45AC3 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C993AAE17FBC75E21A65003DE5DAEC87 /* SAMKeychain */,
-				EC29D793EC03B82195195CDCFEB27DD5 /* WeiboSDK */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		2E339049816F198EB76DEA4264EF8374 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +89,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4A7BD6922BE2D6F9FEB09A03AF2A2C81 /* SAMKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				48ADE735418E23F2CC8C04F671134364 /* SAMKeychain.h */,
+				0995C228FC1B7D4142C5C1BBD937A92E /* SAMKeychain.m */,
+				B43D4E91BB1404796F7F8F59DCF64C16 /* SAMKeychainQuery.h */,
+				92DF4C29B09B5D606F6A2CB9B35D83A4 /* SAMKeychainQuery.m */,
+				9138EC939AE4F9FEC0B88CFB72C01F1B /* Resources */,
+				9B840CF54BEDFBBB4265C54954F765A4 /* Support Files */,
+			);
+			name = SAMKeychain;
+			path = SAMKeychain;
+			sourceTree = "<group>";
+		};
 		55B39F2C03820D5156B0C45CFB5AA346 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,14 +110,6 @@
 				D3BBDF07647E4FA04BF7B89E38CCA58A /* libSAMKeychain.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		5B71D3DA7AD3C3FF6695B788C4ABCCDE /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				67D726516397B33167DEB6B79F67C4B4 /* WeiboSDK.bundle */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		6C49482DA5D4F97709CE2787E2211CE4 /* Targets Support Files */ = {
@@ -156,72 +140,37 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				106E6B3861B8835DBA3B16EC73D45AC3 /* Pods */,
+				BF4BDEF7DEC1C21CD808737A4ACDE8FB /* Pods */,
 				55B39F2C03820D5156B0C45CFB5AA346 /* Products */,
 				6C49482DA5D4F97709CE2787E2211CE4 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		B75A1FB159C6008F39F4CD7CD2B34B88 /* Resources */ = {
+		9138EC939AE4F9FEC0B88CFB72C01F1B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				84B5FDC4117A18641341331D97AAB326 /* SAMKeychain.bundle */,
+				F9C24987F49BF813990DFE52B15DB773 /* SAMKeychain.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		C4D7A0700EFE27238B86906574826E79 /* Support Files */ = {
+		9B840CF54BEDFBBB4265C54954F765A4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A9FF02A208E929D3B8CFF2C56ECA6361 /* SAMKeychain.xcconfig */,
-				C59040F86AAF9AC113EA5FCA7D21E585 /* SAMKeychain-dummy.m */,
-				541B8D94298CCA409DEF46A9E12E2A36 /* SAMKeychain-prefix.pch */,
+				AE2B3B53C752F1E236FE6CBB71C0A7BC /* SAMKeychain.xcconfig */,
+				8A792C64531E0E1BDB513ED163E0DF02 /* SAMKeychain-dummy.m */,
+				477501630802C82B13D1242339B64D73 /* SAMKeychain-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SAMKeychain";
 			sourceTree = "<group>";
 		};
-		C993AAE17FBC75E21A65003DE5DAEC87 /* SAMKeychain */ = {
+		BF4BDEF7DEC1C21CD808737A4ACDE8FB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EC9BFA624C4A25FD7A9498CE4D093D4F /* SAMKeychain.h */,
-				DB904914F3D8C37EFEE21B22FDCDD645 /* SAMKeychain.m */,
-				2EE1B0044BC6F00CB044CFC0A869632C /* SAMKeychainQuery.h */,
-				F04F9EA2BD20DCB83BB4B6515B537305 /* SAMKeychainQuery.m */,
-				B75A1FB159C6008F39F4CD7CD2B34B88 /* Resources */,
-				C4D7A0700EFE27238B86906574826E79 /* Support Files */,
+				4A7BD6922BE2D6F9FEB09A03AF2A2C81 /* SAMKeychain */,
 			);
-			name = SAMKeychain;
-			path = SAMKeychain;
-			sourceTree = "<group>";
-		};
-		E53553BD3BD80617EF04B874CD6E3384 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1F1A0D1DEBF441FC233908533CCA1317 /* libWeiboSDK.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		EC29D793EC03B82195195CDCFEB27DD5 /* WeiboSDK */ = {
-			isa = PBXGroup;
-			children = (
-				2AAE3856A36B867CAC5E5BD853364EF4 /* WBHttpRequest.h */,
-				ABBC1B4D5C0F70581F57C22A094FA15D /* WBHttpRequest+WeiboGame.h */,
-				63DF6A5124E2BD2D12BE5E5CD3AE0630 /* WBHttpRequest+WeiboShare.h */,
-				3A2EA61C33F50E8039814F97AC9924D7 /* WBHttpRequest+WeiboToken.h */,
-				213474A20304C331AB34A4A8A700CACD /* WBHttpRequest+WeiboUser.h */,
-				00C12579BF10DF48EE7742A21EA8B489 /* WBSDKBasicButton.h */,
-				6533570E0CE458D208D4DB11BE59A6A8 /* WBSDKCommentButton.h */,
-				71678C93B7639C6412ADF6B140D142DC /* WBSDKRelationshipButton.h */,
-				2265FB0F9EA62AF9E49481BE5A6B7812 /* WeiboSDK.h */,
-				4DE0BD175541818F0EFC1BFF781E56EA /* WeiboSDK+Statistics.h */,
-				75E68420915EBB4E81C7FFFF20199897 /* WeiboUser.h */,
-				E53553BD3BD80617EF04B874CD6E3384 /* Frameworks */,
-				5B71D3DA7AD3C3FF6695B788C4ABCCDE /* Resources */,
-			);
-			name = WeiboSDK;
-			path = WeiboSDK;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,7 +326,7 @@
 		};
 		11227DC93D1BE6B90E7B03B760CB340A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9FF02A208E929D3B8CFF2C56ECA6361 /* SAMKeychain.xcconfig */;
+			baseConfigurationReference = AE2B3B53C752F1E236FE6CBB71C0A7BC /* SAMKeychain.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -463,7 +412,7 @@
 		};
 		9459BA49F06406E29BD50A3D4B6227D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9FF02A208E929D3B8CFF2C56ECA6361 /* SAMKeychain.xcconfig */;
+			baseConfigurationReference = AE2B3B53C752F1E236FE6CBB71C0A7BC /* SAMKeychain.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
