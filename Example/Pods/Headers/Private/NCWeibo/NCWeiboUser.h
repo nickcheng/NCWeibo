@@ -1,1 +1,1 @@
-../../../../../NCWeibo/Model/NCWeiboUser.h
+../../../NCWeibo/NCWeibo/Model/NCWeiboUser.h

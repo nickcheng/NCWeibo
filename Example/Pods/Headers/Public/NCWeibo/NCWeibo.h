@@ -1,1 +1,1 @@
-../../../../../NCWeibo/NCWeibo.h
+../../../NCWeibo/NCWeibo/NCWeibo.h

@@ -1,1 +1,1 @@
-../../../../../libWeiboSDK/WBSDKRelationshipButton.h
+../../../NCWeibo/libWeiboSDK/WBSDKRelationshipButton.h

@@ -1,1 +1,1 @@
-../../../../../NCWeibo/NCWeiboClient/NCWeiboClient.h
+../../../NCWeibo/NCWeibo/NCWeiboClient/NCWeiboClient.h

@@ -1,1 +1,1 @@
-../../../../../NCWeibo/NCWeiboClient/API/NCWeiboClient+Status.h
+../../../NCWeibo/NCWeibo/NCWeiboClient/API/NCWeiboClient+Status.h

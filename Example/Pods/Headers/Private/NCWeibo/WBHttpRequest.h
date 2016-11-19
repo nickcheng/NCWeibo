@@ -1,1 +1,1 @@
-../../../../../libWeiboSDK/WBHttpRequest.h
+../../../NCWeibo/libWeiboSDK/WBHttpRequest.h

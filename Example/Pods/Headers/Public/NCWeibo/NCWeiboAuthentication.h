@@ -1,1 +1,1 @@
-../../../../../NCWeibo/Model/NCWeiboAuthentication.h
+../../../NCWeibo/NCWeibo/Model/NCWeiboAuthentication.h

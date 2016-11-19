@@ -1,1 +1,1 @@
-../../../../../NCWeibo/NCWeiboErrorResponse.h
+../../../NCWeibo/NCWeibo/NCWeiboErrorResponse.h

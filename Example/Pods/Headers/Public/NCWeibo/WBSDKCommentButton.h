@@ -1,1 +1,1 @@
-../../../../../libWeiboSDK/WBSDKCommentButton.h
+../../../NCWeibo/libWeiboSDK/WBSDKCommentButton.h

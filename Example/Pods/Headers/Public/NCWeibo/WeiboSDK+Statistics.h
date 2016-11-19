@@ -1,1 +1,1 @@
-../../../../../libWeiboSDK/WeiboSDK+Statistics.h
+../../../NCWeibo/libWeiboSDK/WeiboSDK+Statistics.h
