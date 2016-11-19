@@ -20,16 +20,12 @@
 		40398FA91702EF2F004F0BD7 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40398FA71702EF2F004F0BD7 /* ViewController.xib */; };
 		403990131702F0CD004F0BD7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 403990121702F0CD004F0BD7 /* SystemConfiguration.framework */; };
 		403990151702F0D7004F0BD7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 403990141702F0D7004F0BD7 /* MobileCoreServices.framework */; };
-		4039901D1703CD21004F0BD7 /* NCWeiboClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4039901C1703CD21004F0BD7 /* NCWeiboClient.m */; };
-		4039902A17041B7B004F0BD7 /* NCWeiboClient+HandlerBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 4039902917041B7A004F0BD7 /* NCWeiboClient+HandlerBlocks.m */; };
-		4039903017082287004F0BD7 /* NCWeiboAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 4039902F17082287004F0BD7 /* NCWeiboAuthentication.m */; };
 		403C47D51709815500067625 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 403C47D41709815500067625 /* Security.framework */; };
 		403C47DA170C212A00067625 /* avator.png in Resources */ = {isa = PBXBuildFile; fileRef = 403C47D9170C212900067625 /* avator.png */; };
-		4081531D171E90C80003B2E3 /* NCWeiboUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4081531C171E90C80003B2E3 /* NCWeiboUser.m */; };
-		40D7D80A171A8EFA00435F6F /* NCWeiboErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D7D809171A8EFA00435F6F /* NCWeiboErrorResponse.m */; };
-		40E05936194AE2F900B38E52 /* NCWeiboClient+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E05933194AE2F900B38E52 /* NCWeiboClient+User.m */; };
-		40E0593E194AF5FF00B38E52 /* NCWeiboClient+Friendship.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E0593A194AF5FF00B38E52 /* NCWeiboClient+Friendship.m */; };
-		40E0593F194AF5FF00B38E52 /* NCWeiboClient+Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E0593D194AF5FF00B38E52 /* NCWeiboClient+Status.m */; };
+		404CA8381DDF484A0087D994 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 404CA8371DDF484A0087D994 /* ImageIO.framework */; };
+		404CA83A1DDF485E0087D994 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 404CA8391DDF485E0087D994 /* CoreText.framework */; };
+		404CA83C1DDF486D0087D994 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 404CA83B1DDF486D0087D994 /* QuartzCore.framework */; };
+		404CA83E1DDF48860087D994 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 404CA83D1DDF48860087D994 /* CoreTelephony.framework */; };
 		5E5963E8427467CE854B847B /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 358CB28781B71B4C9FCFDEC5 /* libPods-Example.a */; };
 /* End PBXBuildFile section */
 
@@ -55,26 +51,13 @@
 		40398FA81702EF2F004F0BD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		403990121702F0CD004F0BD7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		403990141702F0D7004F0BD7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		4039901B1703CD21004F0BD7 /* NCWeiboClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWeiboClient.h; sourceTree = "<group>"; };
-		4039901C1703CD21004F0BD7 /* NCWeiboClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWeiboClient.m; sourceTree = "<group>"; };
-		4039901E170416CC004F0BD7 /* NCWeiboClientConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWeiboClientConfig.h; sourceTree = "<group>"; };
-		4039902817041B7A004F0BD7 /* NCWeiboClient+HandlerBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCWeiboClient+HandlerBlocks.h"; sourceTree = "<group>"; };
-		4039902917041B7A004F0BD7 /* NCWeiboClient+HandlerBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCWeiboClient+HandlerBlocks.m"; sourceTree = "<group>"; };
-		4039902E17082287004F0BD7 /* NCWeiboAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWeiboAuthentication.h; sourceTree = "<group>"; };
-		4039902F17082287004F0BD7 /* NCWeiboAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWeiboAuthentication.m; sourceTree = "<group>"; };
 		403C47D41709815500067625 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		403C47D9170C212900067625 /* avator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avator.png; sourceTree = "<group>"; };
-		4081531B171E90C80003B2E3 /* NCWeiboUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWeiboUser.h; sourceTree = "<group>"; };
-		4081531C171E90C80003B2E3 /* NCWeiboUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWeiboUser.m; sourceTree = "<group>"; };
+		404CA8371DDF484A0087D994 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		404CA8391DDF485E0087D994 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		404CA83B1DDF486D0087D994 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		404CA83D1DDF48860087D994 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		40AD07E11DDB3CCA0028E6AA /* Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example.entitlements; sourceTree = "<group>"; };
-		40D7D808171A8EFA00435F6F /* NCWeiboErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NCWeiboErrorResponse.h; sourceTree = "<group>"; };
-		40D7D809171A8EFA00435F6F /* NCWeiboErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NCWeiboErrorResponse.m; sourceTree = "<group>"; };
-		40E05932194AE2F900B38E52 /* NCWeiboClient+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCWeiboClient+User.h"; sourceTree = "<group>"; };
-		40E05933194AE2F900B38E52 /* NCWeiboClient+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCWeiboClient+User.m"; sourceTree = "<group>"; };
-		40E0593A194AF5FF00B38E52 /* NCWeiboClient+Friendship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCWeiboClient+Friendship.m"; sourceTree = "<group>"; };
-		40E0593B194AF5FF00B38E52 /* NCWeiboClient+Friendship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCWeiboClient+Friendship.h"; sourceTree = "<group>"; };
-		40E0593C194AF5FF00B38E52 /* NCWeiboClient+Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NCWeiboClient+Status.h"; sourceTree = "<group>"; };
-		40E0593D194AF5FF00B38E52 /* NCWeiboClient+Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NCWeiboClient+Status.m"; sourceTree = "<group>"; };
 		A57C132A9C4F38C5C0E5F2E8 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +66,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				404CA83E1DDF48860087D994 /* CoreTelephony.framework in Frameworks */,
+				404CA83C1DDF486D0087D994 /* QuartzCore.framework in Frameworks */,
+				404CA83A1DDF485E0087D994 /* CoreText.framework in Frameworks */,
+				404CA8381DDF484A0087D994 /* ImageIO.framework in Frameworks */,
 				403C47D51709815500067625 /* Security.framework in Frameworks */,
 				403990151702F0D7004F0BD7 /* MobileCoreServices.framework in Frameworks */,
 				403990131702F0CD004F0BD7 /* SystemConfiguration.framework in Frameworks */,
@@ -120,6 +107,10 @@
 		40398F8B1702EF2F004F0BD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				404CA83D1DDF48860087D994 /* CoreTelephony.framework */,
+				404CA83B1DDF486D0087D994 /* QuartzCore.framework */,
+				404CA8391DDF485E0087D994 /* CoreText.framework */,
+				404CA8371DDF484A0087D994 /* ImageIO.framework */,
 				4010F9F11DC0E844006C44CE /* AssetsLibrary.framework */,
 				40398F8C1702EF2F004F0BD7 /* UIKit.framework */,
 				40398F8E1702EF2F004F0BD7 /* Foundation.framework */,
@@ -133,7 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				40AD07E11DDB3CCA0028E6AA /* Example.entitlements */,
-				40398FAF1702EF7F004F0BD7 /* NCWeibo */,
 				40398F9B1702EF2F004F0BD7 /* AppDelegate.h */,
 				40398F9C1702EF2F004F0BD7 /* AppDelegate.m */,
 				40398FA41702EF2F004F0BD7 /* ViewController.h */,
@@ -157,55 +147,6 @@
 				40398FA21702EF2F004F0BD7 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		40398FAF1702EF7F004F0BD7 /* NCWeibo */ = {
-			isa = PBXGroup;
-			children = (
-				403990191703CCF8004F0BD7 /* NCWeiboClient */,
-				403990181703CCF8004F0BD7 /* Model */,
-				40D7D808171A8EFA00435F6F /* NCWeiboErrorResponse.h */,
-				40D7D809171A8EFA00435F6F /* NCWeiboErrorResponse.m */,
-			);
-			name = NCWeibo;
-			path = ../../NCWeibo;
-			sourceTree = "<group>";
-		};
-		403990181703CCF8004F0BD7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4039902E17082287004F0BD7 /* NCWeiboAuthentication.h */,
-				4039902F17082287004F0BD7 /* NCWeiboAuthentication.m */,
-				4081531B171E90C80003B2E3 /* NCWeiboUser.h */,
-				4081531C171E90C80003B2E3 /* NCWeiboUser.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		403990191703CCF8004F0BD7 /* NCWeiboClient */ = {
-			isa = PBXGroup;
-			children = (
-				40E0592D194AE2F900B38E52 /* API */,
-				4039901E170416CC004F0BD7 /* NCWeiboClientConfig.h */,
-				4039901B1703CD21004F0BD7 /* NCWeiboClient.h */,
-				4039901C1703CD21004F0BD7 /* NCWeiboClient.m */,
-				4039902817041B7A004F0BD7 /* NCWeiboClient+HandlerBlocks.h */,
-				4039902917041B7A004F0BD7 /* NCWeiboClient+HandlerBlocks.m */,
-			);
-			path = NCWeiboClient;
-			sourceTree = "<group>";
-		};
-		40E0592D194AE2F900B38E52 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				40E0593B194AF5FF00B38E52 /* NCWeiboClient+Friendship.h */,
-				40E0593A194AF5FF00B38E52 /* NCWeiboClient+Friendship.m */,
-				40E0593C194AF5FF00B38E52 /* NCWeiboClient+Status.h */,
-				40E0593D194AF5FF00B38E52 /* NCWeiboClient+Status.m */,
-				40E05932194AE2F900B38E52 /* NCWeiboClient+User.h */,
-				40E05933194AE2F900B38E52 /* NCWeiboClient+User.m */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		D63911380F53950C59E19F7C /* Pods */ = {
@@ -347,14 +288,6 @@
 				40398F991702EF2F004F0BD7 /* main.m in Sources */,
 				40398F9D1702EF2F004F0BD7 /* AppDelegate.m in Sources */,
 				40398FA61702EF2F004F0BD7 /* ViewController.m in Sources */,
-				40E0593E194AF5FF00B38E52 /* NCWeiboClient+Friendship.m in Sources */,
-				4039901D1703CD21004F0BD7 /* NCWeiboClient.m in Sources */,
-				4039902A17041B7B004F0BD7 /* NCWeiboClient+HandlerBlocks.m in Sources */,
-				40E0593F194AF5FF00B38E52 /* NCWeiboClient+Status.m in Sources */,
-				4039903017082287004F0BD7 /* NCWeiboAuthentication.m in Sources */,
-				40D7D80A171A8EFA00435F6F /* NCWeiboErrorResponse.m in Sources */,
-				4081531D171E90C80003B2E3 /* NCWeiboUser.m in Sources */,
-				40E05936194AE2F900B38E52 /* NCWeiboClient+User.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,125 +7,233 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		254360858901CA9942E547DF68DA5BE6 /* SAMKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = EC9BFA624C4A25FD7A9498CE4D093D4F /* SAMKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		372F03C4D50DC4C0ED858A757950EC25 /* SAMKeychain-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C59040F86AAF9AC113EA5FCA7D21E585 /* SAMKeychain-dummy.m */; };
-		4D2F42D96601D0787AB6FB88FAF35B48 /* SAMKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = F04F9EA2BD20DCB83BB4B6515B537305 /* SAMKeychainQuery.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		5A4AFCB23FEA5BA53ED54B10CF31AA5D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFD15069DBFFAF7E7CD48183E2D230C /* Security.framework */; };
-		9B7837C9C640DC7158F51802D988C72A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4690263E3C2DD3C24DEAC554FFBD486 /* Foundation.framework */; };
-		A158EB8F3B637A1A1D5AFBF4DC38D3A9 /* SAMKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = DB904914F3D8C37EFEE21B22FDCDD645 /* SAMKeychain.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		B186096089085CC7D14D83DD42A54CE2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4690263E3C2DD3C24DEAC554FFBD486 /* Foundation.framework */; };
-		D60571FB4C8F461A664B5BAB34F30025 /* Pods-Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 853BB94042284CB4296D1239BE467FB0 /* Pods-Example-dummy.m */; };
-		FA6ACD883EA83BCB33BB465D6D303BAE /* SAMKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EE1B0044BC6F00CB044CFC0A869632C /* SAMKeychainQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0120EDFCBC8AD229ECAF76CF48A69FD9 /* NCWeiboUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F637E826D7584E71A4449DBA2AD21A5 /* NCWeiboUser.m */; };
+		01ACCE532F2E0EFAA2B864F21E7B4C28 /* WBHttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = ED15E3ABBF24697E9199516FFFB9C478 /* WBHttpRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03D9016423508D8F84F1DADB060A6DA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC585E1426ED99BFB2D1B39BD43E79C4 /* Foundation.framework */; };
+		03E03ADD0B7C9FAF9BDED542CECA0954 /* NCWeiboClient+HandlerBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 685DA3BD50D035D90E771522EAADB408 /* NCWeiboClient+HandlerBlocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09344F0EB3471029AB7FFB94FE51AB9D /* SAMKeychainQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 63DDCF48EA7798D0FFB5A7D08F08E4F1 /* SAMKeychainQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0942D9AD54A5BBD5FCD8D6A1CEC59317 /* WeiboUser.h in Headers */ = {isa = PBXBuildFile; fileRef = A9F1904F07AE2BC34ADA81A9087DD938 /* WeiboUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		10A069ACC6A8E852FDC1CA914D21BF34 /* WBHttpRequest+WeiboShare.h in Headers */ = {isa = PBXBuildFile; fileRef = CAEC105F68DA4A87FEEBB1F76DB973C9 /* WBHttpRequest+WeiboShare.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D6FF2ACFB6C3FC4F3ACE25199C00B5F /* NCWeiboClientConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 99E8394CBFD3A0D09BD66244EFF76320 /* NCWeiboClientConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1E7692B2AA30ADD9A607842E6AD2838F /* WeiboSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FF91E2882C4D09A354C667AA5679265 /* WeiboSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		257BD31B16DFF6FFA37191E1C449F5F2 /* NCWeiboClient+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 72882BF8E5AE3BAB1A1A991D61A2B225 /* NCWeiboClient+User.m */; };
+		30A686ED860AF030E5F1E1845E039239 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FF9F67D6687A841BB68A579617F82AC /* QuartzCore.framework */; };
+		3440B6B23A539C61920742E3B7BD8784 /* WBHttpRequest+WeiboGame.h in Headers */ = {isa = PBXBuildFile; fileRef = 64EA47D1927BF7F461D6AA1AD7727906 /* WBHttpRequest+WeiboGame.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3867EF9405F2D94016A0D6E85C4B761E /* SAMKeychain.h in Headers */ = {isa = PBXBuildFile; fileRef = A0E7E0F15E493A3BF3A7ADE371FA7524 /* SAMKeychain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38FA9318A812EDBAD20773540323BF6E /* NCWeibo.h in Headers */ = {isa = PBXBuildFile; fileRef = B93EEFF5306AC058B9DC56CA785D1E1A /* NCWeibo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		39AAFAFA41A0AFC57B37AFC10DA37928 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C60441A20DFCCFB92DBE1B22E5028D7D /* CoreText.framework */; };
+		49FBB1A48A6498F49222547CECA1CDBF /* NCWeiboClient+Status.h in Headers */ = {isa = PBXBuildFile; fileRef = CFAE0CFC6F715CFAFCE03AE45ECF4CF7 /* NCWeiboClient+Status.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4CE9669D79FE99C669A0234249D1E6C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1F291C3F22A3BD75E769732EC109C9 /* UIKit.framework */; };
+		53DE0A23D9D6AF0BC35A846709F2B92E /* SAMKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4B66E9CCB9D5ADF442B209302A6C90 /* SAMKeychain.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		54334A7E8DE54D616431D207A932B028 /* NCWeiboUser.h in Headers */ = {isa = PBXBuildFile; fileRef = B8208C1EBE617585A79C390151A5528A /* NCWeiboUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		56F50C1649BEA9C6DF0073E87A5DC1EB /* NCWeibo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F8A946E9F04B089894093797D9075C /* NCWeibo-dummy.m */; };
+		585D9B01EA0D9AB039D737B5A90C313B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A0D4826D59A800C8B6246B5C33F74A /* Security.framework */; };
+		58AE4A0AC7AF40DBF959810B39059FD5 /* WBSDKBasicButton.h in Headers */ = {isa = PBXBuildFile; fileRef = B871CA95F8121B5A47AE0050C193C8D6 /* WBSDKBasicButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B39DA4DA6269261F6E88F24D655E8BE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC585E1426ED99BFB2D1B39BD43E79C4 /* Foundation.framework */; };
+		5F56157E3F7448D50B149E1C0726FE27 /* NCWeiboAuthentication.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CD34D3A0D65E7C1EA3272BEADC155E9 /* NCWeiboAuthentication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FC474BCB2BF93AEDC10E27951318030 /* NCWeiboErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 19D174A6FE79BD7E210330D4DB103B4A /* NCWeiboErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64DB1A6927E3E928DFE9A118E05349AC /* NCWeiboErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAD6826BC1F08CFB054C72E131B8130 /* NCWeiboErrorResponse.m */; };
+		6AF6A828217E1D17450EC7FA71F02898 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 433CE853DBAD1A1E35896918F91C59A3 /* SystemConfiguration.framework */; };
+		72B740F968FB27D67E1B88F01696C673 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC585E1426ED99BFB2D1B39BD43E79C4 /* Foundation.framework */; };
+		7300081A5E550E428037F88436F56876 /* Pods-Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 853BB94042284CB4296D1239BE467FB0 /* Pods-Example-dummy.m */; };
+		7DB4B5BC4C8D24D50F98ABF18FB3EA23 /* NCWeiboClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A9C17226526E5F7EA5864E6D323FA31 /* NCWeiboClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7ECE8082820CEC44E938156F14EB2B29 /* SAMKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3F0ECF0B19BD7AB5388088D3060A22 /* SAMKeychainQuery.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		816D8A709D7A0AE061EC0C59E28C744B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A0D4826D59A800C8B6246B5C33F74A /* Security.framework */; };
+		8FF851521D9CD1E2CDFF5C4D77FF6845 /* NCWeiboClient+User.h in Headers */ = {isa = PBXBuildFile; fileRef = 8296D4F985B7F5282725178A6586FEB6 /* NCWeiboClient+User.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A78F098D71D6E5B2A4490F46FA579CCF /* NCWeiboClient+HandlerBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 17C4B1C77C7BDD31FDFD3AF4E389F9BE /* NCWeiboClient+HandlerBlocks.m */; };
+		AC70481983A900D32B2A29404A8AFCC0 /* SAMKeychain-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD0057EC403F851B0C90B16E79B85B3 /* SAMKeychain-dummy.m */; };
+		AE6680B7051F4C250A6D5F2A3F6A88A2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2E4C473A4D7E0553A8214BA6AD9DE6F /* CoreTelephony.framework */; };
+		AF9E4BE71246DF6EAE8E1C8CAE2729A1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 348A3669A2F57E226816DCE05D540C56 /* MobileCoreServices.framework */; };
+		B009904B93C248B3ED36C0267CD4A6E5 /* WBSDKRelationshipButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C984F63667815DC871A882C3E9A2EC5 /* WBSDKRelationshipButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B07463B45AC01A83BCE4DDAD426C0812 /* WBHttpRequest+WeiboToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A6287ED714026603B57FEC270DD1888 /* WBHttpRequest+WeiboToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8451734933C92409D0CCD6549EEA884 /* WBHttpRequest+WeiboUser.h in Headers */ = {isa = PBXBuildFile; fileRef = FE470FE343F66048DD5E97DF621DFEB2 /* WBHttpRequest+WeiboUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C0FDDAB923C50BD31F2C29E8488E67E8 /* NCWeiboClient+Friendship.h in Headers */ = {isa = PBXBuildFile; fileRef = B824EDB86E08E87123214788A2303776 /* NCWeiboClient+Friendship.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D1B8D65A66C2715D9D69F7DD26288D5B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C09D357A5D7E990208F2CEAB7817D029 /* CoreGraphics.framework */; };
+		E6A0394851081B562DF8597BD24DF2EB /* NCWeiboClient.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA77A79E10E2578991C9944661F5DC6 /* NCWeiboClient.m */; };
+		EA06AC0743EF9B15755623A97467E11D /* WeiboSDK+Statistics.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DD85BD671D74FF93CBF6CF1A96D280E /* WeiboSDK+Statistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC830B99F71FCFEEBAAF73D8EDB04651 /* NCWeiboClient+Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D5369EF3A047AE05CE5577AEAE3284 /* NCWeiboClient+Status.m */; };
+		F2F3F09EE9B02916D45F100248C65E1D /* NCWeiboClient+Friendship.m in Sources */ = {isa = PBXBuildFile; fileRef = 512B478AAA4BAAFA4036D2DB13FC4CB0 /* NCWeiboClient+Friendship.m */; };
+		F716793EE9E632DE9B6E62C71BC240DE /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA5D045770FFBE89646F0B95ADAE00C9 /* ImageIO.framework */; };
+		FBD3ACA850EAC0AC11A4721D9CDA2509 /* WBSDKCommentButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 15ED672E7FEA9ACEEDB50F6DDBFC0898 /* WBSDKCommentButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FBE69B839E54ED8A66733BA2E3158DBF /* NCWeiboAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E979CCE16FF2732ECD42408C4878EC1 /* NCWeiboAuthentication.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6A647B8D2E4E33E506D66DDF4D84F38E /* PBXContainerItemProxy */ = {
+		0612F8A61C98C55300B72A18BA77BBD7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = FFB0E91839E545942102F67D95AE50A9;
+			remoteGlobalIDString = E76F82BAC7B43137AEA580B4479EC17D;
+			remoteInfo = NCWeibo;
+		};
+		260573E75C56346981259F95A60A4536 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D1932FD6466D1C534924979945BD95E;
+			remoteInfo = SAMKeychain;
+		};
+		29D4C64F2FCBCEE5E24ED6AD0796AB42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D1932FD6466D1C534924979945BD95E;
 			remoteInfo = SAMKeychain;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00C12579BF10DF48EE7742A21EA8B489 /* WBSDKBasicButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKBasicButton.h; path = libWeiboSDK/WBSDKBasicButton.h; sourceTree = "<group>"; };
 		0AECF4A22395C2FDE55673592687C1AB /* Pods-Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1F1A0D1DEBF441FC233908533CCA1317 /* libWeiboSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeiboSDK.a; path = libWeiboSDK/libWeiboSDK.a; sourceTree = "<group>"; };
-		213474A20304C331AB34A4A8A700CACD /* WBHttpRequest+WeiboUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboUser.h"; path = "libWeiboSDK/WBHttpRequest+WeiboUser.h"; sourceTree = "<group>"; };
-		2265FB0F9EA62AF9E49481BE5A6B7812 /* WeiboSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WeiboSDK.h; path = libWeiboSDK/WeiboSDK.h; sourceTree = "<group>"; };
-		2AAE3856A36B867CAC5E5BD853364EF4 /* WBHttpRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBHttpRequest.h; path = libWeiboSDK/WBHttpRequest.h; sourceTree = "<group>"; };
+		0B1F291C3F22A3BD75E769732EC109C9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		0CD34D3A0D65E7C1EA3272BEADC155E9 /* NCWeiboAuthentication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCWeiboAuthentication.h; path = NCWeibo/Model/NCWeiboAuthentication.h; sourceTree = "<group>"; };
+		0F637E826D7584E71A4449DBA2AD21A5 /* NCWeiboUser.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCWeiboUser.m; path = NCWeibo/Model/NCWeiboUser.m; sourceTree = "<group>"; };
+		15A2D4DB2B74087C191ACB9A543EF8DD /* SAMKeychain.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SAMKeychain.xcconfig; sourceTree = "<group>"; };
+		15ED672E7FEA9ACEEDB50F6DDBFC0898 /* WBSDKCommentButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKCommentButton.h; path = libWeiboSDK/WBSDKCommentButton.h; sourceTree = "<group>"; };
+		17C4B1C77C7BDD31FDFD3AF4E389F9BE /* NCWeiboClient+HandlerBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NCWeiboClient+HandlerBlocks.m"; path = "NCWeibo/NCWeiboClient/NCWeiboClient+HandlerBlocks.m"; sourceTree = "<group>"; };
+		19D174A6FE79BD7E210330D4DB103B4A /* NCWeiboErrorResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCWeiboErrorResponse.h; path = NCWeibo/NCWeiboErrorResponse.h; sourceTree = "<group>"; };
+		1C984F63667815DC871A882C3E9A2EC5 /* WBSDKRelationshipButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKRelationshipButton.h; path = libWeiboSDK/WBSDKRelationshipButton.h; sourceTree = "<group>"; };
 		2C83BF6702F0C48A8D1C5A59935A2117 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		2EE1B0044BC6F00CB044CFC0A869632C /* SAMKeychainQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAMKeychainQuery.h; path = Sources/SAMKeychainQuery.h; sourceTree = "<group>"; };
-		3A2EA61C33F50E8039814F97AC9924D7 /* WBHttpRequest+WeiboToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboToken.h"; path = "libWeiboSDK/WBHttpRequest+WeiboToken.h"; sourceTree = "<group>"; };
-		4DE0BD175541818F0EFC1BFF781E56EA /* WeiboSDK+Statistics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WeiboSDK+Statistics.h"; path = "libWeiboSDK/WeiboSDK+Statistics.h"; sourceTree = "<group>"; };
-		541B8D94298CCA409DEF46A9E12E2A36 /* SAMKeychain-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SAMKeychain-prefix.pch"; sourceTree = "<group>"; };
+		348A3669A2F57E226816DCE05D540C56 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		3A6287ED714026603B57FEC270DD1888 /* WBHttpRequest+WeiboToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboToken.h"; path = "libWeiboSDK/WBHttpRequest+WeiboToken.h"; sourceTree = "<group>"; };
+		433CE853DBAD1A1E35896918F91C59A3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		4FF9F67D6687A841BB68A579617F82AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		512B478AAA4BAAFA4036D2DB13FC4CB0 /* NCWeiboClient+Friendship.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NCWeiboClient+Friendship.m"; path = "NCWeibo/NCWeiboClient/API/NCWeiboClient+Friendship.m"; sourceTree = "<group>"; };
+		52D5369EF3A047AE05CE5577AEAE3284 /* NCWeiboClient+Status.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NCWeiboClient+Status.m"; path = "NCWeibo/NCWeiboClient/API/NCWeiboClient+Status.m"; sourceTree = "<group>"; };
+		5A9C17226526E5F7EA5864E6D323FA31 /* NCWeiboClient.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCWeiboClient.h; path = NCWeibo/NCWeiboClient/NCWeiboClient.h; sourceTree = "<group>"; };
 		5AC126EEC71A1BC407FE1D9DB3984EF4 /* Pods-Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-frameworks.sh"; sourceTree = "<group>"; };
-		623CAF15CA1213C1C72261CFA7C66D97 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Example.a"; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		63DF6A5124E2BD2D12BE5E5CD3AE0630 /* WBHttpRequest+WeiboShare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboShare.h"; path = "libWeiboSDK/WBHttpRequest+WeiboShare.h"; sourceTree = "<group>"; };
-		6533570E0CE458D208D4DB11BE59A6A8 /* WBSDKCommentButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKCommentButton.h; path = libWeiboSDK/WBSDKCommentButton.h; sourceTree = "<group>"; };
-		67D726516397B33167DEB6B79F67C4B4 /* WeiboSDK.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = WeiboSDK.bundle; path = libWeiboSDK/WeiboSDK.bundle; sourceTree = "<group>"; };
-		71678C93B7639C6412ADF6B140D142DC /* WBSDKRelationshipButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKRelationshipButton.h; path = libWeiboSDK/WBSDKRelationshipButton.h; sourceTree = "<group>"; };
+		5FD0057EC403F851B0C90B16E79B85B3 /* SAMKeychain-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SAMKeychain-dummy.m"; sourceTree = "<group>"; };
+		63DDCF48EA7798D0FFB5A7D08F08E4F1 /* SAMKeychainQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAMKeychainQuery.h; path = Sources/SAMKeychainQuery.h; sourceTree = "<group>"; };
+		645039E66910987C15F310AEA30A9512 /* SAMKeychain-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SAMKeychain-prefix.pch"; sourceTree = "<group>"; };
+		64EA47D1927BF7F461D6AA1AD7727906 /* WBHttpRequest+WeiboGame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboGame.h"; path = "libWeiboSDK/WBHttpRequest+WeiboGame.h"; sourceTree = "<group>"; };
+		66F8A946E9F04B089894093797D9075C /* NCWeibo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NCWeibo-dummy.m"; sourceTree = "<group>"; };
+		685DA3BD50D035D90E771522EAADB408 /* NCWeiboClient+HandlerBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCWeiboClient+HandlerBlocks.h"; path = "NCWeibo/NCWeiboClient/NCWeiboClient+HandlerBlocks.h"; sourceTree = "<group>"; };
+		6C826DAF8061EFEDCAE53B9BE8662256 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Example.a"; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		72882BF8E5AE3BAB1A1A991D61A2B225 /* NCWeiboClient+User.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NCWeiboClient+User.m"; path = "NCWeibo/NCWeiboClient/API/NCWeiboClient+User.m"; sourceTree = "<group>"; };
 		74D16BBB58D3D00FC3350B65437D5E18 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
-		75E68420915EBB4E81C7FFFF20199897 /* WeiboUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WeiboUser.h; path = libWeiboSDK/WeiboUser.h; sourceTree = "<group>"; };
 		7A17B2D7486AA2A9CFA43FE47668BC7C /* Pods-Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		84B5FDC4117A18641341331D97AAB326 /* SAMKeychain.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SAMKeychain.bundle; path = Support/SAMKeychain.bundle; sourceTree = "<group>"; };
+		7FF91E2882C4D09A354C667AA5679265 /* WeiboSDK.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WeiboSDK.h; path = libWeiboSDK/WeiboSDK.h; sourceTree = "<group>"; };
+		8296D4F985B7F5282725178A6586FEB6 /* NCWeiboClient+User.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCWeiboClient+User.h"; path = "NCWeibo/NCWeiboClient/API/NCWeiboClient+User.h"; sourceTree = "<group>"; };
 		853BB94042284CB4296D1239BE467FB0 /* Pods-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Example-dummy.m"; sourceTree = "<group>"; };
+		86A251F8FD9C42101F50074A2F77EA15 /* libSAMKeychain.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSAMKeychain.a; path = libSAMKeychain.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		87A9638F2FB7E077D4DD0370007FAD88 /* SAMKeychain.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SAMKeychain.bundle; path = Support/SAMKeychain.bundle; sourceTree = "<group>"; };
+		88A0D4826D59A800C8B6246B5C33F74A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		8AABFEB4DC3330BE4BF59F15456F1F44 /* NCWeibo-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NCWeibo-prefix.pch"; sourceTree = "<group>"; };
+		8CA5EB18451939CCCEE113458A864A4E /* WeiboSDK.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = WeiboSDK.bundle; path = libWeiboSDK/WeiboSDK.bundle; sourceTree = "<group>"; };
+		8DD85BD671D74FF93CBF6CF1A96D280E /* WeiboSDK+Statistics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WeiboSDK+Statistics.h"; path = "libWeiboSDK/WeiboSDK+Statistics.h"; sourceTree = "<group>"; };
+		8E979CCE16FF2732ECD42408C4878EC1 /* NCWeiboAuthentication.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCWeiboAuthentication.m; path = NCWeibo/Model/NCWeiboAuthentication.m; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A9FF02A208E929D3B8CFF2C56ECA6361 /* SAMKeychain.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SAMKeychain.xcconfig; sourceTree = "<group>"; };
-		ABBC1B4D5C0F70581F57C22A094FA15D /* WBHttpRequest+WeiboGame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboGame.h"; path = "libWeiboSDK/WBHttpRequest+WeiboGame.h"; sourceTree = "<group>"; };
-		B4690263E3C2DD3C24DEAC554FFBD486 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		C59040F86AAF9AC113EA5FCA7D21E585 /* SAMKeychain-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SAMKeychain-dummy.m"; sourceTree = "<group>"; };
+		99E8394CBFD3A0D09BD66244EFF76320 /* NCWeiboClientConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCWeiboClientConfig.h; path = NCWeibo/NCWeiboClient/NCWeiboClientConfig.h; sourceTree = "<group>"; };
+		A0E7E0F15E493A3BF3A7ADE371FA7524 /* SAMKeychain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAMKeychain.h; path = Sources/SAMKeychain.h; sourceTree = "<group>"; };
+		A9F1904F07AE2BC34ADA81A9087DD938 /* WeiboUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WeiboUser.h; path = libWeiboSDK/WeiboUser.h; sourceTree = "<group>"; };
+		AC585E1426ED99BFB2D1B39BD43E79C4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B8208C1EBE617585A79C390151A5528A /* NCWeiboUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCWeiboUser.h; path = NCWeibo/Model/NCWeiboUser.h; sourceTree = "<group>"; };
+		B824EDB86E08E87123214788A2303776 /* NCWeiboClient+Friendship.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCWeiboClient+Friendship.h"; path = "NCWeibo/NCWeiboClient/API/NCWeiboClient+Friendship.h"; sourceTree = "<group>"; };
+		B871CA95F8121B5A47AE0050C193C8D6 /* WBSDKBasicButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBSDKBasicButton.h; path = libWeiboSDK/WBSDKBasicButton.h; sourceTree = "<group>"; };
+		B93EEFF5306AC058B9DC56CA785D1E1A /* NCWeibo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NCWeibo.h; path = NCWeibo/NCWeibo.h; sourceTree = "<group>"; };
+		BDA77A79E10E2578991C9944661F5DC6 /* NCWeiboClient.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCWeiboClient.m; path = NCWeibo/NCWeiboClient/NCWeiboClient.m; sourceTree = "<group>"; };
+		C09D357A5D7E990208F2CEAB7817D029 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		C2E4C473A4D7E0553A8214BA6AD9DE6F /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
+		C60441A20DFCCFB92DBE1B22E5028D7D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		C6E3D4A869A4034AC4D2D2194B92A7A0 /* Pods-Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-resources.sh"; sourceTree = "<group>"; };
-		CAFD15069DBFFAF7E7CD48183E2D230C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		D3BBDF07647E4FA04BF7B89E38CCA58A /* libSAMKeychain.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSAMKeychain.a; path = libSAMKeychain.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB904914F3D8C37EFEE21B22FDCDD645 /* SAMKeychain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAMKeychain.m; path = Sources/SAMKeychain.m; sourceTree = "<group>"; };
-		EC9BFA624C4A25FD7A9498CE4D093D4F /* SAMKeychain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAMKeychain.h; path = Sources/SAMKeychain.h; sourceTree = "<group>"; };
-		F04F9EA2BD20DCB83BB4B6515B537305 /* SAMKeychainQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAMKeychainQuery.m; path = Sources/SAMKeychainQuery.m; sourceTree = "<group>"; };
+		CA5D045770FFBE89646F0B95ADAE00C9 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
+		CAEC105F68DA4A87FEEBB1F76DB973C9 /* WBHttpRequest+WeiboShare.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboShare.h"; path = "libWeiboSDK/WBHttpRequest+WeiboShare.h"; sourceTree = "<group>"; };
+		CFAE0CFC6F715CFAFCE03AE45ECF4CF7 /* NCWeiboClient+Status.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NCWeiboClient+Status.h"; path = "NCWeibo/NCWeiboClient/API/NCWeiboClient+Status.h"; sourceTree = "<group>"; };
+		D722E755B32F34A4AD5B705D15E579EB /* NCWeibo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NCWeibo.xcconfig; sourceTree = "<group>"; };
+		DD23B95139412E61DECEFA710A8E92A0 /* libNCWeibo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libNCWeibo.a; path = libNCWeibo.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE3F0ECF0B19BD7AB5388088D3060A22 /* SAMKeychainQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAMKeychainQuery.m; path = Sources/SAMKeychainQuery.m; sourceTree = "<group>"; };
+		E2C5DFBD5EACFAF4883C8340FE83A5A2 /* libWeiboSDK.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libWeiboSDK.a; path = libWeiboSDK/libWeiboSDK.a; sourceTree = "<group>"; };
+		ED15E3ABBF24697E9199516FFFB9C478 /* WBHttpRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WBHttpRequest.h; path = libWeiboSDK/WBHttpRequest.h; sourceTree = "<group>"; };
+		FDAD6826BC1F08CFB054C72E131B8130 /* NCWeiboErrorResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NCWeiboErrorResponse.m; path = NCWeibo/NCWeiboErrorResponse.m; sourceTree = "<group>"; };
+		FE470FE343F66048DD5E97DF621DFEB2 /* WBHttpRequest+WeiboUser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WBHttpRequest+WeiboUser.h"; path = "libWeiboSDK/WBHttpRequest+WeiboUser.h"; sourceTree = "<group>"; };
+		FF4B66E9CCB9D5ADF442B209302A6C90 /* SAMKeychain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAMKeychain.m; path = Sources/SAMKeychain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		498BAF109A75FF6E371787C6903A002F /* Frameworks */ = {
+		210DFA2B99844596B4EE40966F446645 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B186096089085CC7D14D83DD42A54CE2 /* Foundation.framework in Frameworks */,
-				5A4AFCB23FEA5BA53ED54B10CF31AA5D /* Security.framework in Frameworks */,
+				72B740F968FB27D67E1B88F01696C673 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		849724B3E9C017215C26EA910D36220F /* Frameworks */ = {
+		A011AAD44CBC2E6278E7BC2AC2E4BAAD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B7837C9C640DC7158F51802D988C72A /* Foundation.framework in Frameworks */,
+				5B39DA4DA6269261F6E88F24D655E8BE /* Foundation.framework in Frameworks */,
+				816D8A709D7A0AE061EC0C59E28C744B /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BDE66460A2BAA852D9E230CC6C18859D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1B8D65A66C2715D9D69F7DD26288D5B /* CoreGraphics.framework in Frameworks */,
+				AE6680B7051F4C250A6D5F2A3F6A88A2 /* CoreTelephony.framework in Frameworks */,
+				39AAFAFA41A0AFC57B37AFC10DA37928 /* CoreText.framework in Frameworks */,
+				03D9016423508D8F84F1DADB060A6DA5 /* Foundation.framework in Frameworks */,
+				F716793EE9E632DE9B6E62C71BC240DE /* ImageIO.framework in Frameworks */,
+				AF9E4BE71246DF6EAE8E1C8CAE2729A1 /* MobileCoreServices.framework in Frameworks */,
+				30A686ED860AF030E5F1E1845E039239 /* QuartzCore.framework in Frameworks */,
+				585D9B01EA0D9AB039D737B5A90C313B /* Security.framework in Frameworks */,
+				6AF6A828217E1D17450EC7FA71F02898 /* SystemConfiguration.framework in Frameworks */,
+				4CE9669D79FE99C669A0234249D1E6C1 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		106E6B3861B8835DBA3B16EC73D45AC3 /* Pods */ = {
+		25B9C081185ADF35E6173C679B64D2A7 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				C993AAE17FBC75E21A65003DE5DAEC87 /* SAMKeychain */,
-				EC29D793EC03B82195195CDCFEB27DD5 /* WeiboSDK */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		2E339049816F198EB76DEA4264EF8374 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				B4690263E3C2DD3C24DEAC554FFBD486 /* Foundation.framework */,
-				CAFD15069DBFFAF7E7CD48183E2D230C /* Security.framework */,
+				C09D357A5D7E990208F2CEAB7817D029 /* CoreGraphics.framework */,
+				C2E4C473A4D7E0553A8214BA6AD9DE6F /* CoreTelephony.framework */,
+				C60441A20DFCCFB92DBE1B22E5028D7D /* CoreText.framework */,
+				AC585E1426ED99BFB2D1B39BD43E79C4 /* Foundation.framework */,
+				CA5D045770FFBE89646F0B95ADAE00C9 /* ImageIO.framework */,
+				348A3669A2F57E226816DCE05D540C56 /* MobileCoreServices.framework */,
+				4FF9F67D6687A841BB68A579617F82AC /* QuartzCore.framework */,
+				88A0D4826D59A800C8B6246B5C33F74A /* Security.framework */,
+				433CE853DBAD1A1E35896918F91C59A3 /* SystemConfiguration.framework */,
+				0B1F291C3F22A3BD75E769732EC109C9 /* UIKit.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+		2D01681DD9C42F5CCFEBF61E4B1E7BAF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2E339049816F198EB76DEA4264EF8374 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		55B39F2C03820D5156B0C45CFB5AA346 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				623CAF15CA1213C1C72261CFA7C66D97 /* libPods-Example.a */,
-				D3BBDF07647E4FA04BF7B89E38CCA58A /* libSAMKeychain.a */,
+				DD23B95139412E61DECEFA710A8E92A0 /* libNCWeibo.a */,
+				6C826DAF8061EFEDCAE53B9BE8662256 /* libPods-Example.a */,
+				86A251F8FD9C42101F50074A2F77EA15 /* libSAMKeychain.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5B71D3DA7AD3C3FF6695B788C4ABCCDE /* Resources */ = {
+		3D340A69C93F2E82592B20B1B67E6D3A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				67D726516397B33167DEB6B79F67C4B4 /* WeiboSDK.bundle */,
+				AD8D9CA54C0C555FAE80DFFF78810CDB /* NCWeibo */,
+				6BF4C2515E85BC653BC4C77D1DE5580A /* SAMKeychain */,
 			);
-			name = Resources;
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6BF4C2515E85BC653BC4C77D1DE5580A /* SAMKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				A0E7E0F15E493A3BF3A7ADE371FA7524 /* SAMKeychain.h */,
+				FF4B66E9CCB9D5ADF442B209302A6C90 /* SAMKeychain.m */,
+				63DDCF48EA7798D0FFB5A7D08F08E4F1 /* SAMKeychainQuery.h */,
+				DE3F0ECF0B19BD7AB5388088D3060A22 /* SAMKeychainQuery.m */,
+				94588794E727F4730758B48A82A6B3EA /* Resources */,
+				6F5F7DCC110F2575422BC0AB33D51217 /* Support Files */,
+			);
+			name = SAMKeychain;
+			path = SAMKeychain;
 			sourceTree = "<group>";
 		};
 		6C49482DA5D4F97709CE2787E2211CE4 /* Targets Support Files */ = {
@@ -151,118 +259,161 @@
 			path = "Target Support Files/Pods-Example";
 			sourceTree = "<group>";
 		};
-		7DB346D0F39D3F0E887471402A8071AB = {
+		6F5F7DCC110F2575422BC0AB33D51217 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				106E6B3861B8835DBA3B16EC73D45AC3 /* Pods */,
-				55B39F2C03820D5156B0C45CFB5AA346 /* Products */,
-				6C49482DA5D4F97709CE2787E2211CE4 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		B75A1FB159C6008F39F4CD7CD2B34B88 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				84B5FDC4117A18641341331D97AAB326 /* SAMKeychain.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		C4D7A0700EFE27238B86906574826E79 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				A9FF02A208E929D3B8CFF2C56ECA6361 /* SAMKeychain.xcconfig */,
-				C59040F86AAF9AC113EA5FCA7D21E585 /* SAMKeychain-dummy.m */,
-				541B8D94298CCA409DEF46A9E12E2A36 /* SAMKeychain-prefix.pch */,
+				15A2D4DB2B74087C191ACB9A543EF8DD /* SAMKeychain.xcconfig */,
+				5FD0057EC403F851B0C90B16E79B85B3 /* SAMKeychain-dummy.m */,
+				645039E66910987C15F310AEA30A9512 /* SAMKeychain-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SAMKeychain";
 			sourceTree = "<group>";
 		};
-		C993AAE17FBC75E21A65003DE5DAEC87 /* SAMKeychain */ = {
+		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
-				EC9BFA624C4A25FD7A9498CE4D093D4F /* SAMKeychain.h */,
-				DB904914F3D8C37EFEE21B22FDCDD645 /* SAMKeychain.m */,
-				2EE1B0044BC6F00CB044CFC0A869632C /* SAMKeychainQuery.h */,
-				F04F9EA2BD20DCB83BB4B6515B537305 /* SAMKeychainQuery.m */,
-				B75A1FB159C6008F39F4CD7CD2B34B88 /* Resources */,
-				C4D7A0700EFE27238B86906574826E79 /* Support Files */,
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				876F80F8AFD1240ED0B7B9EA9C5BFAD8 /* Frameworks */,
+				3D340A69C93F2E82592B20B1B67E6D3A /* Pods */,
+				2D01681DD9C42F5CCFEBF61E4B1E7BAF /* Products */,
+				6C49482DA5D4F97709CE2787E2211CE4 /* Targets Support Files */,
 			);
-			name = SAMKeychain;
-			path = SAMKeychain;
 			sourceTree = "<group>";
 		};
-		E53553BD3BD80617EF04B874CD6E3384 /* Frameworks */ = {
+		876F80F8AFD1240ED0B7B9EA9C5BFAD8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1F1A0D1DEBF441FC233908533CCA1317 /* libWeiboSDK.a */,
+				25B9C081185ADF35E6173C679B64D2A7 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EC29D793EC03B82195195CDCFEB27DD5 /* WeiboSDK */ = {
+		8F9AC44871CA25F66F5712DA8DEA295A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2AAE3856A36B867CAC5E5BD853364EF4 /* WBHttpRequest.h */,
-				ABBC1B4D5C0F70581F57C22A094FA15D /* WBHttpRequest+WeiboGame.h */,
-				63DF6A5124E2BD2D12BE5E5CD3AE0630 /* WBHttpRequest+WeiboShare.h */,
-				3A2EA61C33F50E8039814F97AC9924D7 /* WBHttpRequest+WeiboToken.h */,
-				213474A20304C331AB34A4A8A700CACD /* WBHttpRequest+WeiboUser.h */,
-				00C12579BF10DF48EE7742A21EA8B489 /* WBSDKBasicButton.h */,
-				6533570E0CE458D208D4DB11BE59A6A8 /* WBSDKCommentButton.h */,
-				71678C93B7639C6412ADF6B140D142DC /* WBSDKRelationshipButton.h */,
-				2265FB0F9EA62AF9E49481BE5A6B7812 /* WeiboSDK.h */,
-				4DE0BD175541818F0EFC1BFF781E56EA /* WeiboSDK+Statistics.h */,
-				75E68420915EBB4E81C7FFFF20199897 /* WeiboUser.h */,
-				E53553BD3BD80617EF04B874CD6E3384 /* Frameworks */,
-				5B71D3DA7AD3C3FF6695B788C4ABCCDE /* Resources */,
+				8CA5EB18451939CCCEE113458A864A4E /* WeiboSDK.bundle */,
 			);
-			name = WeiboSDK;
-			path = WeiboSDK;
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		94588794E727F4730758B48A82A6B3EA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				87A9638F2FB7E077D4DD0370007FAD88 /* SAMKeychain.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		9BDF83A197572783A4F883EC5DC579E3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D722E755B32F34A4AD5B705D15E579EB /* NCWeibo.xcconfig */,
+				66F8A946E9F04B089894093797D9075C /* NCWeibo-dummy.m */,
+				8AABFEB4DC3330BE4BF59F15456F1F44 /* NCWeibo-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/NCWeibo";
+			sourceTree = "<group>";
+		};
+		AD8D9CA54C0C555FAE80DFFF78810CDB /* NCWeibo */ = {
+			isa = PBXGroup;
+			children = (
+				B93EEFF5306AC058B9DC56CA785D1E1A /* NCWeibo.h */,
+				0CD34D3A0D65E7C1EA3272BEADC155E9 /* NCWeiboAuthentication.h */,
+				8E979CCE16FF2732ECD42408C4878EC1 /* NCWeiboAuthentication.m */,
+				5A9C17226526E5F7EA5864E6D323FA31 /* NCWeiboClient.h */,
+				BDA77A79E10E2578991C9944661F5DC6 /* NCWeiboClient.m */,
+				B824EDB86E08E87123214788A2303776 /* NCWeiboClient+Friendship.h */,
+				512B478AAA4BAAFA4036D2DB13FC4CB0 /* NCWeiboClient+Friendship.m */,
+				685DA3BD50D035D90E771522EAADB408 /* NCWeiboClient+HandlerBlocks.h */,
+				17C4B1C77C7BDD31FDFD3AF4E389F9BE /* NCWeiboClient+HandlerBlocks.m */,
+				CFAE0CFC6F715CFAFCE03AE45ECF4CF7 /* NCWeiboClient+Status.h */,
+				52D5369EF3A047AE05CE5577AEAE3284 /* NCWeiboClient+Status.m */,
+				8296D4F985B7F5282725178A6586FEB6 /* NCWeiboClient+User.h */,
+				72882BF8E5AE3BAB1A1A991D61A2B225 /* NCWeiboClient+User.m */,
+				99E8394CBFD3A0D09BD66244EFF76320 /* NCWeiboClientConfig.h */,
+				19D174A6FE79BD7E210330D4DB103B4A /* NCWeiboErrorResponse.h */,
+				FDAD6826BC1F08CFB054C72E131B8130 /* NCWeiboErrorResponse.m */,
+				B8208C1EBE617585A79C390151A5528A /* NCWeiboUser.h */,
+				0F637E826D7584E71A4449DBA2AD21A5 /* NCWeiboUser.m */,
+				ED15E3ABBF24697E9199516FFFB9C478 /* WBHttpRequest.h */,
+				64EA47D1927BF7F461D6AA1AD7727906 /* WBHttpRequest+WeiboGame.h */,
+				CAEC105F68DA4A87FEEBB1F76DB973C9 /* WBHttpRequest+WeiboShare.h */,
+				3A6287ED714026603B57FEC270DD1888 /* WBHttpRequest+WeiboToken.h */,
+				FE470FE343F66048DD5E97DF621DFEB2 /* WBHttpRequest+WeiboUser.h */,
+				B871CA95F8121B5A47AE0050C193C8D6 /* WBSDKBasicButton.h */,
+				15ED672E7FEA9ACEEDB50F6DDBFC0898 /* WBSDKCommentButton.h */,
+				1C984F63667815DC871A882C3E9A2EC5 /* WBSDKRelationshipButton.h */,
+				7FF91E2882C4D09A354C667AA5679265 /* WeiboSDK.h */,
+				8DD85BD671D74FF93CBF6CF1A96D280E /* WeiboSDK+Statistics.h */,
+				A9F1904F07AE2BC34ADA81A9087DD938 /* WeiboUser.h */,
+				B2C0FDD3521C718522F1F3F97F4DF035 /* Frameworks */,
+				8F9AC44871CA25F66F5712DA8DEA295A /* Resources */,
+				9BDF83A197572783A4F883EC5DC579E3 /* Support Files */,
+			);
+			name = NCWeibo;
+			path = NCWeibo;
+			sourceTree = "<group>";
+		};
+		B2C0FDD3521C718522F1F3F97F4DF035 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2C5DFBD5EACFAF4883C8340FE83A5A2 /* libWeiboSDK.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		B5B04C203ABA1E6F30F506186CFDE59E /* Headers */ = {
+		207C23AA38784A0C4CF539665244D74D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				254360858901CA9942E547DF68DA5BE6 /* SAMKeychain.h in Headers */,
-				FA6ACD883EA83BCB33BB465D6D303BAE /* SAMKeychainQuery.h in Headers */,
+				38FA9318A812EDBAD20773540323BF6E /* NCWeibo.h in Headers */,
+				5F56157E3F7448D50B149E1C0726FE27 /* NCWeiboAuthentication.h in Headers */,
+				C0FDDAB923C50BD31F2C29E8488E67E8 /* NCWeiboClient+Friendship.h in Headers */,
+				03E03ADD0B7C9FAF9BDED542CECA0954 /* NCWeiboClient+HandlerBlocks.h in Headers */,
+				49FBB1A48A6498F49222547CECA1CDBF /* NCWeiboClient+Status.h in Headers */,
+				8FF851521D9CD1E2CDFF5C4D77FF6845 /* NCWeiboClient+User.h in Headers */,
+				7DB4B5BC4C8D24D50F98ABF18FB3EA23 /* NCWeiboClient.h in Headers */,
+				1D6FF2ACFB6C3FC4F3ACE25199C00B5F /* NCWeiboClientConfig.h in Headers */,
+				5FC474BCB2BF93AEDC10E27951318030 /* NCWeiboErrorResponse.h in Headers */,
+				54334A7E8DE54D616431D207A932B028 /* NCWeiboUser.h in Headers */,
+				3440B6B23A539C61920742E3B7BD8784 /* WBHttpRequest+WeiboGame.h in Headers */,
+				10A069ACC6A8E852FDC1CA914D21BF34 /* WBHttpRequest+WeiboShare.h in Headers */,
+				B07463B45AC01A83BCE4DDAD426C0812 /* WBHttpRequest+WeiboToken.h in Headers */,
+				B8451734933C92409D0CCD6549EEA884 /* WBHttpRequest+WeiboUser.h in Headers */,
+				01ACCE532F2E0EFAA2B864F21E7B4C28 /* WBHttpRequest.h in Headers */,
+				58AE4A0AC7AF40DBF959810B39059FD5 /* WBSDKBasicButton.h in Headers */,
+				FBD3ACA850EAC0AC11A4721D9CDA2509 /* WBSDKCommentButton.h in Headers */,
+				B009904B93C248B3ED36C0267CD4A6E5 /* WBSDKRelationshipButton.h in Headers */,
+				EA06AC0743EF9B15755623A97467E11D /* WeiboSDK+Statistics.h in Headers */,
+				1E7692B2AA30ADD9A607842E6AD2838F /* WeiboSDK.h in Headers */,
+				0942D9AD54A5BBD5FCD8D6A1CEC59317 /* WeiboUser.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4D4E03AD9C3B423C70D925AB3C536456 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3867EF9405F2D94016A0D6E85C4B761E /* SAMKeychain.h in Headers */,
+				09344F0EB3471029AB7FFB94FE51AB9D /* SAMKeychainQuery.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		43E8516156C0D248A611590955F8102D /* Pods-Example */ = {
+		1D1932FD6466D1C534924979945BD95E /* SAMKeychain */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 797F1F36223DBA0F9E49A5033D2793D3 /* Build configuration list for PBXNativeTarget "Pods-Example" */;
+			buildConfigurationList = C2E60EB3FE75820203925C025D678012 /* Build configuration list for PBXNativeTarget "SAMKeychain" */;
 			buildPhases = (
-				30388164CCA4A3954D403B9A72141138 /* Sources */,
-				849724B3E9C017215C26EA910D36220F /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				388344A3D6E2B767FF08572A2D1FF7AC /* PBXTargetDependency */,
-			);
-			name = "Pods-Example";
-			productName = "Pods-Example";
-			productReference = 623CAF15CA1213C1C72261CFA7C66D97 /* libPods-Example.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		FFB0E91839E545942102F67D95AE50A9 /* SAMKeychain */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 107BE6F4D1852DCA2665C64BC05E7C89 /* Build configuration list for PBXNativeTarget "SAMKeychain" */;
-			buildPhases = (
-				AE9F5EC46D715CB9D84499627F659603 /* Sources */,
-				498BAF109A75FF6E371787C6903A002F /* Frameworks */,
-				B5B04C203ABA1E6F30F506186CFDE59E /* Headers */,
+				2564334C2771D8B44074E7365FA98CD5 /* Sources */,
+				A011AAD44CBC2E6278E7BC2AC2E4BAAD /* Frameworks */,
+				4D4E03AD9C3B423C70D925AB3C536456 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -270,7 +421,43 @@
 			);
 			name = SAMKeychain;
 			productName = SAMKeychain;
-			productReference = D3BBDF07647E4FA04BF7B89E38CCA58A /* libSAMKeychain.a */;
+			productReference = 86A251F8FD9C42101F50074A2F77EA15 /* libSAMKeychain.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		8A3C01D60622D28D3B2CF0C20B056991 /* Pods-Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17270F03B409F5DDC43A8BE4BE745933 /* Build configuration list for PBXNativeTarget "Pods-Example" */;
+			buildPhases = (
+				28590285BD610D9E7C8CA167C833812E /* Sources */,
+				210DFA2B99844596B4EE40966F446645 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAA118615DE73EE787E2F66A936F7ABF /* PBXTargetDependency */,
+				D2D4572369E0E2356D9B250E0FC36036 /* PBXTargetDependency */,
+			);
+			name = "Pods-Example";
+			productName = "Pods-Example";
+			productReference = 6C826DAF8061EFEDCAE53B9BE8662256 /* libPods-Example.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E76F82BAC7B43137AEA580B4479EC17D /* NCWeibo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA25B5C20828C7E5EE3D4C52E8F93BFE /* Build configuration list for PBXNativeTarget "NCWeibo" */;
+			buildPhases = (
+				9EA162A6F7C71F94581F5EC3E0794B34 /* Sources */,
+				BDE66460A2BAA852D9E230CC6C18859D /* Frameworks */,
+				207C23AA38784A0C4CF539665244D74D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B86CC9C9A2C70C7C10829DD28F9A56FB /* PBXTargetDependency */,
+			);
+			name = NCWeibo;
+			productName = NCWeibo;
+			productReference = DD23B95139412E61DECEFA710A8E92A0 /* libNCWeibo.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -290,43 +477,72 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 55B39F2C03820D5156B0C45CFB5AA346 /* Products */;
+			productRefGroup = 2D01681DD9C42F5CCFEBF61E4B1E7BAF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				43E8516156C0D248A611590955F8102D /* Pods-Example */,
-				FFB0E91839E545942102F67D95AE50A9 /* SAMKeychain */,
+				E76F82BAC7B43137AEA580B4479EC17D /* NCWeibo */,
+				8A3C01D60622D28D3B2CF0C20B056991 /* Pods-Example */,
+				1D1932FD6466D1C534924979945BD95E /* SAMKeychain */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		30388164CCA4A3954D403B9A72141138 /* Sources */ = {
+		2564334C2771D8B44074E7365FA98CD5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D60571FB4C8F461A664B5BAB34F30025 /* Pods-Example-dummy.m in Sources */,
+				AC70481983A900D32B2A29404A8AFCC0 /* SAMKeychain-dummy.m in Sources */,
+				53DE0A23D9D6AF0BC35A846709F2B92E /* SAMKeychain.m in Sources */,
+				7ECE8082820CEC44E938156F14EB2B29 /* SAMKeychainQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AE9F5EC46D715CB9D84499627F659603 /* Sources */ = {
+		28590285BD610D9E7C8CA167C833812E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				372F03C4D50DC4C0ED858A757950EC25 /* SAMKeychain-dummy.m in Sources */,
-				A158EB8F3B637A1A1D5AFBF4DC38D3A9 /* SAMKeychain.m in Sources */,
-				4D2F42D96601D0787AB6FB88FAF35B48 /* SAMKeychainQuery.m in Sources */,
+				7300081A5E550E428037F88436F56876 /* Pods-Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EA162A6F7C71F94581F5EC3E0794B34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56F50C1649BEA9C6DF0073E87A5DC1EB /* NCWeibo-dummy.m in Sources */,
+				FBE69B839E54ED8A66733BA2E3158DBF /* NCWeiboAuthentication.m in Sources */,
+				F2F3F09EE9B02916D45F100248C65E1D /* NCWeiboClient+Friendship.m in Sources */,
+				A78F098D71D6E5B2A4490F46FA579CCF /* NCWeiboClient+HandlerBlocks.m in Sources */,
+				EC830B99F71FCFEEBAAF73D8EDB04651 /* NCWeiboClient+Status.m in Sources */,
+				257BD31B16DFF6FFA37191E1C449F5F2 /* NCWeiboClient+User.m in Sources */,
+				E6A0394851081B562DF8597BD24DF2EB /* NCWeiboClient.m in Sources */,
+				64DB1A6927E3E928DFE9A118E05349AC /* NCWeiboErrorResponse.m in Sources */,
+				0120EDFCBC8AD229ECAF76CF48A69FD9 /* NCWeiboUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		388344A3D6E2B767FF08572A2D1FF7AC /* PBXTargetDependency */ = {
+		B86CC9C9A2C70C7C10829DD28F9A56FB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SAMKeychain;
-			target = FFB0E91839E545942102F67D95AE50A9 /* SAMKeychain */;
-			targetProxy = 6A647B8D2E4E33E506D66DDF4D84F38E /* PBXContainerItemProxy */;
+			target = 1D1932FD6466D1C534924979945BD95E /* SAMKeychain */;
+			targetProxy = 29D4C64F2FCBCEE5E24ED6AD0796AB42 /* PBXContainerItemProxy */;
+		};
+		CAA118615DE73EE787E2F66A936F7ABF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NCWeibo;
+			target = E76F82BAC7B43137AEA580B4479EC17D /* NCWeibo */;
+			targetProxy = 0612F8A61C98C55300B72A18BA77BBD7 /* PBXContainerItemProxy */;
+		};
+		D2D4572369E0E2356D9B250E0FC36036 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SAMKeychain;
+			target = 1D1932FD6466D1C534924979945BD95E /* SAMKeychain */;
+			targetProxy = 260573E75C56346981259F95A60A4536 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -375,42 +591,19 @@
 			};
 			name = Debug;
 		};
-		11227DC93D1BE6B90E7B03B760CB340A /* Release */ = {
+		04E1AC5179614D3DEE235BDB4E5E6B18 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9FF02A208E929D3B8CFF2C56ECA6361 /* SAMKeychain.xcconfig */;
+			baseConfigurationReference = 2C83BF6702F0C48A8D1C5A59935A2117 /* Pods-Example.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SAMKeychain/SAMKeychain-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		2480520B0B04A476A29864359CFECE5C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74D16BBB58D3D00FC3350B65437D5E18 /* Pods-Example.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -419,7 +612,30 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
-			name = Release;
+			name = Debug;
+		};
+		3C2FBB745DBFFE67152A60E9DAC38AA6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15A2D4DB2B74087C191ACB9A543EF8DD /* SAMKeychain.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SAMKeychain/SAMKeychain-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
 		};
 		44CDBB6D11DE06DB64D6268622BDC47E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -461,9 +677,9 @@
 			};
 			name = Release;
 		};
-		9459BA49F06406E29BD50A3D4B6227D1 /* Debug */ = {
+		954C62810156A0F4F34E24400DBCB73D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9FF02A208E929D3B8CFF2C56ECA6361 /* SAMKeychain.xcconfig */;
+			baseConfigurationReference = D722E755B32F34A4AD5B705D15E579EB /* NCWeibo.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -471,8 +687,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SAMKeychain/SAMKeychain-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				GCC_PREFIX_HEADER = "Target Support Files/NCWeibo/NCWeibo-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
@@ -484,19 +700,19 @@
 			};
 			name = Debug;
 		};
-		AFE0D585E9CD53765F020C701065990B /* Debug */ = {
+		B07FDD8587F7122867B3FCDABA94CCCE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C83BF6702F0C48A8D1C5A59935A2117 /* Pods-Example.debug.xcconfig */;
+			baseConfigurationReference = 74D16BBB58D3D00FC3350B65437D5E18 /* Pods-Example.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -505,16 +721,62 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
-			name = Debug;
+			name = Release;
+		};
+		DCE7F67F46957DBF69D727065C35FF78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D722E755B32F34A4AD5B705D15E579EB /* NCWeibo.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/NCWeibo/NCWeibo-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E9B2834A84B8B0DAC507250026432CBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15A2D4DB2B74087C191ACB9A543EF8DD /* SAMKeychain.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SAMKeychain/SAMKeychain-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		107BE6F4D1852DCA2665C64BC05E7C89 /* Build configuration list for PBXNativeTarget "SAMKeychain" */ = {
+		17270F03B409F5DDC43A8BE4BE745933 /* Build configuration list for PBXNativeTarget "Pods-Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9459BA49F06406E29BD50A3D4B6227D1 /* Debug */,
-				11227DC93D1BE6B90E7B03B760CB340A /* Release */,
+				04E1AC5179614D3DEE235BDB4E5E6B18 /* Debug */,
+				B07FDD8587F7122867B3FCDABA94CCCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -528,11 +790,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		797F1F36223DBA0F9E49A5033D2793D3 /* Build configuration list for PBXNativeTarget "Pods-Example" */ = {
+		C2E60EB3FE75820203925C025D678012 /* Build configuration list for PBXNativeTarget "SAMKeychain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AFE0D585E9CD53765F020C701065990B /* Debug */,
-				2480520B0B04A476A29864359CFECE5C /* Release */,
+				3C2FBB745DBFFE67152A60E9DAC38AA6 /* Debug */,
+				E9B2834A84B8B0DAC507250026432CBE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA25B5C20828C7E5EE3D4C52E8F93BFE /* Build configuration list for PBXNativeTarget "NCWeibo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				954C62810156A0F4F34E24400DBCB73D /* Debug */,
+				DCE7F67F46957DBF69D727065C35FF78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

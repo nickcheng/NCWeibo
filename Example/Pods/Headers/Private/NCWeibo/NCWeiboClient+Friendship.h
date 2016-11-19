@@ -1,0 +1,1 @@
+../../../NCWeibo/NCWeibo/NCWeiboClient/API/NCWeiboClient+Friendship.h

@@ -1,24 +1,16 @@
 PODS:
+  - NCWeibo (0.2.0):
+    - SAMKeychain (~> 1.5.2)
   - SAMKeychain (1.5.2)
-  - WeiboSDK (3.1.4)
 
 DEPENDENCIES:
+  - NCWeibo
   - SAMKeychain
-  - WeiboSDK (from `https://github.com/sinaweibosdk/weibo_ios_sdk.git`)
-
-EXTERNAL SOURCES:
-  WeiboSDK:
-    :git: https://github.com/sinaweibosdk/weibo_ios_sdk.git
-
-CHECKOUT OPTIONS:
-  WeiboSDK:
-    :commit: 3daf7147ddd0fde3b04a61d8d94327d41d0c239c
-    :git: https://github.com/sinaweibosdk/weibo_ios_sdk.git
 
 SPEC CHECKSUMS:
+  NCWeibo: b3c675adf5ca639c4ab5a35643745738bb9fd5a7
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
-  WeiboSDK: bceab625ec59b7039ba721cc4ba9f5868804f63e
 
-PODFILE CHECKSUM: 62052835cfd44b5372521b229b833f988a48c8b7
+PODFILE CHECKSUM: d5300ebf0b414977b73e85b59e152e0e3809e274
 
 COCOAPODS: 1.1.1
