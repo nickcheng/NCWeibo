@@ -1,5 +1,6 @@
 target "Example" do
     
 pod 'SAMKeychain'
+pod 'NCWeibo', :path => '/Users/nickcheng/Code/github/NCWeibo'
 
 end

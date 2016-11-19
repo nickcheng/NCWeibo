@@ -74,9 +74,11 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "../../libWeiboSDK/WeiboSDK.bundle"
   install_resource "SAMKeychain/Support/SAMKeychain.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "../../libWeiboSDK/WeiboSDK.bundle"
   install_resource "SAMKeychain/Support/SAMKeychain.bundle"
 fi
 

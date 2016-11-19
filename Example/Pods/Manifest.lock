@@ -1,12 +1,20 @@
 PODS:
+  - NCWeibo (0.2.0):
+    - SAMKeychain (~> 1.5.2)
   - SAMKeychain (1.5.2)
 
 DEPENDENCIES:
+  - NCWeibo (from `/Users/nickcheng/Code/github/NCWeibo`)
   - SAMKeychain
 
+EXTERNAL SOURCES:
+  NCWeibo:
+    :path: "/Users/nickcheng/Code/github/NCWeibo"
+
 SPEC CHECKSUMS:
+  NCWeibo: b3c675adf5ca639c4ab5a35643745738bb9fd5a7
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
 
-PODFILE CHECKSUM: f039a79f197fdd7c2e8107fa55cc9fb86b199a68
+PODFILE CHECKSUM: 61e8257af58e4eea4753c695fcef509ca8faa0d7
 
 COCOAPODS: 1.1.1
