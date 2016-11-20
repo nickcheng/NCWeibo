@@ -11,4 +11,7 @@
 
 @interface NCWeiboUser : WeiboUser
 
+@property (assign, nonatomic) int extFlag;
+@property (strong, nonatomic) NSString *extInfo;
+
 @end
