@@ -32,9 +32,9 @@
         NSOperationQueue *fetchQueue = [[NSOperationQueue alloc] init];
         fetchQueue.maxConcurrentOperationCount =1;
         
-        NSMutableArray *resultArray = [[NSMutableArray alloc] init];
+        NSMutableArray<NCWeiboUser *> *resultArray = [[NSMutableArray alloc] init];
         
-        NSInteger followingCount = [user.friendsCount integerValue];
+        NSInteger followingCount = [user.weiboUser.friendsCount integerValue];
         NSInteger cursor = 0;
         
         while (cursor < followingCount) {
@@ -45,7 +45,7 @@
                                             };
             
             [WBHttpRequest
-                requestForFriendsListOfUser:user.userID
+                requestForFriendsListOfUser:user.weiboUser.userID
                 withAccessToken:self.accessToken
                 andOtherProperties:extraParaDict
                 queue:fetchQueue
@@ -56,8 +56,8 @@
                     }
                     
                     NSDictionary *resultDict = result;
-                    for (NCWeiboUser *user in resultDict[@"users"]) {
-                        [resultArray addObject:user];
+                    for (WeiboUser *user in resultDict[@"users"]) {
+                        [resultArray addObject:[[NCWeiboUser alloc] initWithWeiboUser:user]];
                     }
                     
                     if ([resultDict[@"next_cursor"] integerValue] <= 0) {
@@ -73,7 +73,7 @@
 
 - (void)fetchFollowingForUserID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler {
     [self fetchUserWithID:userID completion:^(id responseObject, NSError *error) {
-        NCWeiboUser *user = responseObject;
+        NCWeiboUser *user = [[NCWeiboUser alloc] initWithWeiboUser:responseObject];
         [self fetchFollowingForUser:user completion:completionHandler];
     }];
 }

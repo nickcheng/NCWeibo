@@ -71,6 +71,7 @@
     [[NCWeiboClient sharedClient] fetchCurrentUserWithCompletion:^(id responseObject, NSError *error) {
         //
         NCWeiboUser *user = responseObject;
+        user.extInfo = @"hello";
         NSLog(@"responseObject: %@", user);
         
         if (error)

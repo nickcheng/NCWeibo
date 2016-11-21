@@ -33,7 +33,7 @@
                     return;
                 }
                 
-                NCWeiboUser *user = result;
+                NCWeiboUser *user = [[NCWeiboUser alloc] initWithWeiboUser:result];
                 [self processRequestCompletion:httpRequest result:user error:nil handler:completionHandler];
             }];
     } andAuthErrorProcess:completionHandler];
@@ -55,14 +55,14 @@
                     return;
                 }
                 
-                NCWeiboUser *user = result;
+                NCWeiboUser *user = [[NCWeiboUser alloc] initWithWeiboUser:result];
                 [self processRequestCompletion:httpRequest result:user error:nil handler:completionHandler];
             }];
     } andAuthErrorProcess:completionHandler];
 }
 
 - (void)followUser:(NCWeiboUser *)user completion:(NCWeiboClientCompletionBlock)completionHandler {
-    return [self followUserWithID:user.userID completion:completionHandler];
+    return [self followUserWithID:user.weiboUser.userID completion:completionHandler];
 }
 
 - (void)followUserWithID:(NSString *)userID completion:(NCWeiboClientCompletionBlock)completionHandler {
