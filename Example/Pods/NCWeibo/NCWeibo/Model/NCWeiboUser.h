@@ -9,6 +9,15 @@
 #import "WeiboUser.h"
 
 
-@interface NCWeiboUser : WeiboUser
+@class WeiboUser;
+
+@interface NCWeiboUser : NSObject
+
+@property (nonatomic) WeiboUser *weiboUser;
+
+@property (nonatomic) int extFlag;
+@property (nonatomic) NSString *extInfo;
+
+- (id)initWithWeiboUser:(WeiboUser *)weiboUser;
 
 @end
