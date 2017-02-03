@@ -13,6 +13,23 @@
 
 @implementation NCWeiboClient (Status)
 
+- (void)composeStatusWithText:(NSString *)text andImage:(UIImage *)image completion:(NCWeiboClientCompletionBlock)completionHandler {
+    //
+    WBMessageObject *message = [WBMessageObject message];
+    if (text && text.length > 0) {
+        message.text = NSLocalizedString(@"测试通过WeiboSDK发送文字到微博!", nil);
+    }
+    if (image) {
+        WBImageObject *imageObject = [WBImageObject object];
+        imageObject.imageData = UIImagePNGRepresentation(image);
+        message.imageObject = imageObject;
+    }
+
+    //
+    WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:message authInfo:nil access_token:self.accessToken];
+    [WeiboSDK sendRequest:request];
+}
+
 - (void)createStatusWithText:(NSString *)text andImage:(UIImage *)image completion:(NCWeiboClientCompletionBlock)completionHandler {
     if (!image) {
         [self createTextStatusWithText:text completion:completionHandler];
