@@ -1,5 +1,5 @@
 PODS:
-  - NCWeibo (0.2.1):
+  - NCWeibo (0.2.2):
     - SAMKeychain (~> 1.5.2)
   - SAMKeychain (1.5.2)
 
@@ -8,9 +8,9 @@ DEPENDENCIES:
   - SAMKeychain
 
 SPEC CHECKSUMS:
-  NCWeibo: dc9cfea75d2b45895ce36f6087954d94a69b01ab
+  NCWeibo: 2e5bcac1e19ff8ca9b9b195e458c92407274e839
   SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
 
 PODFILE CHECKSUM: d5300ebf0b414977b73e85b59e152e0e3809e274
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

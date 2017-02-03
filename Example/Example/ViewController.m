@@ -98,17 +98,19 @@
 - (IBAction)sendImageTapped:(id)sender {
     //
     NSString *c = self.content.text;
-    [[NCWeiboClient sharedClient] createStatusWithText:c andImage:[UIImage imageNamed:@"avator"]
-                                            completion:^(id responseObject, NSError *error) {
-                                                //
-                                                if (error)
-                                                    NSLog(@"Post status failed. Error:%@", error);
-                                                else
-                                                    NSLog(@"Post succeed.");
-                                            }];
+    [[NCWeiboClient sharedClient]
+        composeStatusWithText:c
+        andImage:[UIImage imageNamed:@"avator"]
+        completion:^(id responseObject, NSError *error) {
+            //
+            if (error)
+                NSLog(@"Post status failed. Error:%@", error);
+            else
+                NSLog(@"Post succeed.");
+        }];
 }
 
-- (IBAction)sendTapped:(id)sender {  
+- (IBAction)sendTapped:(id)sender {
     //
     NSString *c = self.content.text;
     [[NCWeiboClient sharedClient] createStatusWithText:c

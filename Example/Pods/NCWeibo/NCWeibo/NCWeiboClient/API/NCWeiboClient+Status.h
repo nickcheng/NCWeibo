@@ -12,5 +12,6 @@
 @interface NCWeiboClient (Status)
 
 - (void)createStatusWithText:(NSString *)text andImage:(UIImage *)image completion:(NCWeiboClientCompletionBlock)completionHandler;
+- (void)composeStatusWithText:(NSString *)text andImage:(UIImage *)image completion:(NCWeiboClientCompletionBlock)completionHandler;
 
 @end
