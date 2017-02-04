@@ -17,7 +17,7 @@
     //
     WBMessageObject *message = [WBMessageObject message];
     if (text && text.length > 0) {
-        message.text = NSLocalizedString(@"测试通过WeiboSDK发送文字到微博!", nil);
+        message.text = text;
     }
     if (image) {
         WBImageObject *imageObject = [WBImageObject object];
